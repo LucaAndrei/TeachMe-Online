@@ -32,7 +32,6 @@ var prof_classes_list_classes_controller = function($scope, $http, $state, $root
 
     $scope.checkIfEmpty = function() {
         console.log("checkIfEmpty");
-        //angular.copy(userCredentials.userClasses, classes);
         if ($scope.classes.length > 0) {
             $scope.emptyClassesList = false;
         } else if ($scope.classes.length == 0) {
@@ -47,7 +46,6 @@ var prof_classes_list_classes_controller = function($scope, $http, $state, $root
     $scope.selectClass = function(mClass) {
         console.log("select mClass : ");
         console.dir(mClass);
-        //$("#selectedClass").css("display","block");
         if (mClass.subject == "") {
             $scope.class_name = "-";
         } else {
@@ -100,22 +98,17 @@ var prof_classes_list_classes_controller = function($scope, $http, $state, $root
         }
         class_id = mClass._id;
     }
-    //$state.go('account_elev.signup');
-
-   /*$("#class_modal").on('show.bs.modal', function (mClass) {
-    });*/
-
 
     $scope.deleteClass = function() {
         console.log("delete class  :" + class_id)
         console.log("delete class   userCredentials._id:" + userCredentials._id)
-        return $http.put('/deleteClass', {
+        return $http.put('/api/users/deleteClass', {
             class_id: class_id
         }).success(function(data) {
             console.log("correctly deleted");
             console.dir(data);
             $("#class_modal").modal('hide');
-            return $http.get('/listClasses/'+userCredentials._id).success(function(classes){
+            return $http.get('/api/users/listClasses').success(function(classes){
                 console.log("list classes after delete : ",classes)
                 $scope.classes = classes;
                 $scope.checkIfEmpty();

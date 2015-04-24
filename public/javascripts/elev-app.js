@@ -8,10 +8,14 @@ var account_elev = angular.module('account_elev', ['ui.router','main_app']).
             parent: 'root',
             url: "",
             templateUrl: "modules/Elev/MainPageElev.html",
-            controller: function($scope,$state){
+            controller : function($scope,$state,$http,$rootScope){
                 $scope.logout = function(){
-                    userCredentials = null;
-                    $state.go('root.mainpage');
+                    $http.get('/api/users/logout').success(function(data){
+                        console.log("data on logout",data);
+                        userCredentials = null;
+                        $rootScope.userCredentials = null;
+                        $state.go("root.mainpage")
+                    })
                 }
                 $state.go("account_elev.dashboard");
             },
@@ -27,13 +31,25 @@ var account_elev = angular.module('account_elev', ['ui.router','main_app']).
             url: "calendar",
             templateUrl: "modules/Calendar/Templates/Calendar.html",
             controller: calendar_controller,
-            resolve: {}
+            resolve: {
+                calendar_events: function($http) {
+                    return $http.get('/api/users/calendar').success(function(data){
+                        console.log("calendarService -> data : " + data);
+                    });
+                }
+            }
         })
         .state('account_elev.grades', {
             url: "grades",
             templateUrl: "modules/Elev/Grades/Templates/Elev_Grades_ListGrades.html",
             controller: elev_grades_list_grades_controller,
-            resolve: {}
+            resolve: {
+                grades : function($http) {
+                    return $http.get('/api/users/my_grades').success(function(data){
+                        console.log("myGrades -> data : " + data);
+                    });
+                }
+            }
         })
         .state('account_elev.classes', {
             url: "classes",
@@ -41,7 +57,7 @@ var account_elev = angular.module('account_elev', ['ui.router','main_app']).
             controller: elev_classes_list_classes_controller,
             resolve: {
                     promise : function($http){
-                        return $http.get('/listAllClasses').success(function(data){
+                        return $http.get('/api/users/listAllClasses').success(function(data){
                             console.log("list classes promise data", data);
                         })
                     }
@@ -54,12 +70,12 @@ var account_elev = angular.module('account_elev', ['ui.router','main_app']).
             controller: elev_tasks_exams_controller,
             resolve: {
                 exams:function($http){
-                    return $http.get('/exams/'+userCredentials._id).success(function(data) {
+                    return $http.get('/api/users/exams').success(function(data) {
                         console.log(">>>>>>>>>>>>>exams-> data : ",data);
                     });
                 }
                 /*tasksPromise : function($http){
-                    return $http.get('/tasks').success(function(data) {
+                    return $http.get('/api/users/my_tasks/' + userCredentials._id).success(function(data) {
                         console.log(">>>>>>>>>>>>> usersExams tasks-> data : ",data);
                     });
                 }*/
@@ -86,19 +102,12 @@ var account_elev = angular.module('account_elev', ['ui.router','main_app']).
                     console.log("dd " + dd)
                     console.log("mm " + mm)
                     console.log("yyyy " + yyyy)
-                    //console.log("computeToday " + today)
                     today = dd + '.' + mm + '.' + yyyy;
 
                 }
-                $http.put('/userAccessedTest/'+userCredentials._id,{idTest : "Test_Dnd", today : today}).success(function(data) {
+                $http.put('/api/users/userAccessedTest',{idTest : "Test_Dnd", today : today}).success(function(data) {
                     console.log("userAccessedTest data",data);
                 });
-                /*$scope.logout = function(){
-                    userCredentials = null;
-                    $state.go('root.mainpage');
-                }
-                console.log("aicishaaaaaa<<<<<<<<<<<<<<<<<<<")
-                $state.go("account_prof.dashboard")*/
             },
             resolve: {}
         })
@@ -112,37 +121,7 @@ var account_elev = angular.module('account_elev', ['ui.router','main_app']).
 
 }).run(function ($rootScope, $http){
     console.log("run elev aPP");
-
-        /*var cookie = getCookie('CautOrice_Session');
-
-        if(cookie != "" && cookie != undefined && cookie != null && cookie.length == 26) {
-            $http.get('/api/users/cookie/' + cookie).success(function (data) {
-
-                userCredentials = data;
-                checkCredentials($rootScope);
-
-            }).error(function () {
-
-                userCredentials = null;
-                $rootScope.userCredentials = null;
-
-            });
-        }
-*/
-        $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error){
-            console.log('error:', error, 'toState:', toState );
-        });
+    $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error){
+        console.log('error:', error, 'toState:', toState );
+    });
 });
-/*templateUrl : 'views/dashboardElev.html',
-        controller : 'dashboardElevController',
-        resolve: {
-            // The resolve will execute before anything else. It will take all the users from the database so they can be used in the controller
-            // The rendering of the page will not continue until it receives the result from the promise (which is asynchronous)
-            postPromise: ['dashboardElevService', function(dashboardElevService){
-                //dashboardElevService.getCurrentUser();
-                //computeToday();
-                return dashboardElevService.getCurrentUser();
-
-            }]
-        }*/
-

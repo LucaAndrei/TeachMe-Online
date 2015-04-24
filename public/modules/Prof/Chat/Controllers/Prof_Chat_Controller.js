@@ -17,10 +17,6 @@ var prof_chat_controller = function($scope, $http, $state, $rootScope, $timeout,
     var online_users = [];
     for(var i = 0; i < promise.data.length ; i++){
         console.log("promise data isonline : " + promise.data[i].isOnline)
-        /*
-        if(promise.data[i]._id == online_users_promise.data[i]._id){
-            online_users.push(promise.data[i]);
-        }*/
     }
     $scope.online_users = online_users;
     if ($scope.users.length > 0) {

@@ -1,20 +1,11 @@
 // app/routes.js
 var User = require('../models/user');
-var Task = require('../models/task');
-var Subject = require('../models/subject');
-var Class = require('../models/class');
-var Grade = require('../models/grade');
 var Event = require('../models/event');
-var Message = require('../models/message');
-module.exports = function(app, passport) {
+module.exports = function(app, db) {
 
-    app.get('/calendar/:user', function(req, res, next) {
-        // This get is used when the 'teacher' wants to list the grades for a specific user.
-        // First, the app.param('user', [...]) is called, to find the user by his id
-        // Then, this get is called and the json that will be sent back will be populated with the users, received as parameter [/:user], tasks
-        //console.log("specific calendar : " + req.user.events)
+    app.get('/api/users/calendar', function(req, res, next) {
         User.findOne({
-            _id : req.user._id
+            _id : req.user_id
         }, function(err, user){
             if(err){
                 throw err;
@@ -24,11 +15,11 @@ module.exports = function(app, passport) {
         })
     });
 
-    app.put('/users/events/delete/:user', function(req, res, next) {
-        console.log("app put /users/events/delete/"+req.user._id + " with event id : " + req.body.eventId)
-        console.log(req.user._id)
+    app.put('/api/users/users/events/delete', function(req, res, next) {
+        console.log("app put /users/events/delete/"+req.user_id + " with event id : " + req.body.eventId)
+        console.log(req.user_id)
         User.update({
-            _id: req.user._id
+            _id: req.user_id
         }, {
             $pull: {
                 "events": {
@@ -45,7 +36,7 @@ module.exports = function(app, passport) {
         });
     });
 
-    app.put('/users/events/:user', function(req, res, next) {
+    app.put('/api/users/users/events', function(req, res, next) {
         console.log("app put /users/events/:user")
         var event = new Event();
         event.user = req.user;
@@ -54,7 +45,7 @@ module.exports = function(app, passport) {
         event.end = req.body.end;
 
         User.update({
-            _id: req.user._id
+            _id: req.user_id
         },{
             $push : {
                 "events" : event

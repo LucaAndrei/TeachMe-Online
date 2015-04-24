@@ -42,7 +42,7 @@ var settings_controller = function($scope, $http, $state, $rootScope, $timeout) 
                 prenume : $('#prenumeUpdate').val(),
                 email : $('#emailUpdate').val()
             }
-            $http.put('/updateUser/' + userCredentials._id,updatedUser).success(function(data){
+            $http.put('/api/users/updateUser',updatedUser).success(function(data){
                 console.log("data after update",data);
                 $("#msg-correct").css("display","block");
                 setTimeout(function(){
@@ -51,11 +51,4 @@ var settings_controller = function($scope, $http, $state, $rootScope, $timeout) 
             })
         }
     }
-    /*$scope.users = promise.data;
-    if ($scope.users.length > 0) {
-        $scope.emptyList = false;
-    } else if ($scope.users.length == 0) {
-        $scope.emptyList = true;
-    }
-    console.log("promise : ", promise.data);*/
 }

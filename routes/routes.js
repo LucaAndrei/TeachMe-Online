@@ -6,42 +6,41 @@ var Class = require('../models/class');
 var Grade = require('../models/grade');
 var Event = require('../models/event');
 var Message = require('../models/message');
-module.exports = function(app, passport) {
+module.exports = function(app, db) {
 
-    app.get('/getCurrentUser', function(req, res, next) {
-        User.findOne({
-            _id: req.user._id
-        }, function(err, user) {
-            if (err) {
-                //console.log("Error while trying to find user.");
+    app.use('/api',function(req,res, next){
+        console.log("is logged in middleware");
+        var session_id = req.cookies.session;
+        if(!session_id){
+            console.log("session is not set");
+            //return res.redirect('/');
+            //console.log("next",next);
+            //return next(new Error("forbidden"));
+            return res.send("Hello world")
+        }
+        console.log("req.cookies.session",req.cookies.session);
+         db.collection('user_session').findOne({ '_id' : session_id }, function(err, session) {
+            "use strict";
+
+            if (err){
+                console.log("session findone err",err);
             }
-            if (user) {
-                console.log("found user. updating...")
-                User.update({
-                    _id: req.user._id
-                }, {
-                    $set: {
-                        "isOnline" : true
-                    }
-                },
-                function(err, setToOnline) {
-                    if (err) {
-                        //console.log("Error processing request. Cannot find user with this id with a userClasses with this name.");
-                    } else if (setToOnline) {
-                        //console.log("userClasses has been found for this user. eventDeleted successfuly");
-                    }
-                }
-            );
-                //console.log("User found with a subject with this name.");
-                /*res.json({
-                    message: "Subject with this name already exists."
-                })*/
-            } else {
-                //console.log("A user with this id has been found, but it doesn't have a subject with this name.Creating new subject ...");
-                // Create a new Subject object based on the Subject model. Set the properties received from the request.
+
+            if (!session) {
+                console.log("session not found");
+                return next();
             }
+
+            if (!err && session) {
+                console.log("req.username",session.username);
+                req.username = session.username;
+                req.user_id = session.user_id;
+                req.myTest = "myTestasdfg";
+            }
+            return next();
         });
-        res.json(req.user);
+
+
     });
 
     app.param('user', function(req, res, next, id) {
@@ -60,77 +59,11 @@ module.exports = function(app, passport) {
         });
     });
 
-    app.post('/onlineUsers/:user', function(req, res, next) {
-        console.log("app post /users/subjects/:user")
-        console.log("req user id : " + req.user._id);
-        console.log("name  : " + req.user.nume);
-        UserSession.findOne({
-            _id: req.user._id
-        }, function(err, user) {
-            if (err) {
-                //console.log("Error while trying to find user.");
-            }
-            if (user) {
-                console.log("found user session. updating...")
-                //console.log("User found with a subject with this name.");
-                /*res.json({
-                    message: "Subject with this name already exists."
-                })*/
-            } else {
-                //console.log("A user with this id has been found, but it doesn't have a subject with this name.Creating new subject ...");
-                // Create a new Subject object based on the Subject model. Set the properties received from the request.
-                console.log("didnt find user session. adding one now");
-                var subject = new Subject();
-                subject.user = req.user;
-                subject.subject_name = req.body.name;
-                console.dir("subject : " + subject)
-                req.user.subjects.push(subject); // Save the subject and also push the subject object in the user's subjects array
-                req.user.save(function(err, user) {
-                    if (err) {
-                        return next(err);
-                    }
-                    res.json(subject); // Send the subject back to the caller
-                });
-            }
-        });
-            //console.log("req.user : " + req.user);
-            //console.log("req.body.name : " + req.body.name);
-       /* UserSession
-        User.findOne({
-            _id: req.user._id,
-            'subjects.subject_name': req.body.name
-        }, function(err, user) {
-            if (err) {
-                //console.log("Error while trying to find user.");
-            }
-            if (user) {
-                //console.log("User found with a subject with this name.");
-                res.json({
-                    message: "Subject with this name already exists."
-                })
-            } else {
-                //console.log("A user with this id has been found, but it doesn't have a subject with this name.Creating new subject ...");
-                // Create a new Subject object based on the Subject model. Set the properties received from the request.
-                var subject = new Subject();
-                subject.user = req.user;
-                subject.subject_name = req.body.name;
-                console.dir("subject : " + subject)
-                req.user.subjects.push(subject); // Save the subject and also push the subject object in the user's subjects array
-                req.user.save(function(err, user) {
-                    if (err) {
-                        return next(err);
-                    }
-                    res.json(subject); // Send the subject back to the caller
-                });
-            }
-        });*/
-    });
 
-
-app.put('/updateUser/:user', function(req, res, next) {
+    app.put('/api/users/updateUser', function(req, res, next) {
         console.log("req.body",req.body);
         User.update({
-            _id: req.user._id
+            _id: req.user_id
         }, {
             $set : {
                 "nume" : req.body.nume,
@@ -141,16 +74,9 @@ app.put('/updateUser/:user', function(req, res, next) {
             if (err) {
                 //console.log("Error while trying to find user.");
             }
-            if (updated) {
-                console.log("found user. updating...",updated)
-                res.json(updated);
-            } else {
-                //console.log("A user with this id has been found, but it doesn't have a subject with this name.Creating new subject ...");
-                // Create a new Subject object based on the Subject model. Set the properties received from the request.
-                console.log("not updated");
-            }
+            console.log("found user. updating...",updated)
+            res.json(updated);
         });
-        //res.json(req.user);
     });
 };
 

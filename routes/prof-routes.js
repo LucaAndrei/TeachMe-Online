@@ -1,16 +1,15 @@
 // app/routes.js
 var User = require('../models/user');
 var Task = require('../models/task');
-var Subject = require('../models/subject');
 var Class = require('../models/class');
 var Grade = require('../models/grade');
-var Event = require('../models/event');
-var Message = require('../models/message');
-module.exports = function(app, passport) {
+module.exports = function(app, db) {
 
 
-    app.get('/listUsers', function(req, res, next) {
+    app.get('/api/users/listUsers', function(req, res, next) {
         console.log("/listUsers");
+        console.log("/listUsers req.username",req.username)
+        console.log("/listUsers req.myTest",req.myTest);
         //console.log("req: ",req)
         //console.log("req.body", req.query.userCredentials)
         var Arr = new Array();
@@ -26,11 +25,12 @@ module.exports = function(app, passport) {
                     return next(err);
                 }
                 Class.find({
-                    "user" : ""+json._id
+                    "user" : req.user_id
                 }, function(err, classList) {
                     if (err) {
                         //console.log("Error while trying to find user.");
                     }
+                    console.log("classList",classList);
                     //console.log("classList",classList)
                     //console.log("userList",userList)
                     for(var i = 0 ; i <classList.length ; i++){
@@ -59,71 +59,37 @@ module.exports = function(app, passport) {
             });
     });
 
-    app.get('/listSubjects', function(req, res, next) {
-        console.log("/listUsers");
-        // Search through the User model all the objects that have the property 'tipUser : student'
-        Subject.find({}, function(err, subjectList) {
-            if (err) {
-                //console.log("err : " + err);
-                return next(err);
-            }
-            console.log("subjectList : " + subjectList);
-            res.json(subjectList);
-        });
-    });
-
-
-
-
-    app.get('/prof/getSelectedUser/:user', function(req, res, next) {
+    app.get('/api/users/getSelectedUser/:user', function(req, res, next) {
         console.log("app get /users/tasks/:user : "); // + req.user)
         res.json(req.user);
     });
 
 
-    app.put('/users/grades/delete/:user', function(req, res, next) {
+    app.put('/api/users/grades/delete/:user', function(req, res, next) {
         console.log("app post /users/grades/delete/:user")
-        //console.log("req.user : " + req.user);
-        //console.log("req.body : ",req.body);
-        //console.log("req.body uid: " + req.body.uid);
-        //console.log("req.user.id >>>>>> : " + req.user._id);
-        User.findOne({
-            _id: req.user._id
-        }, function(err, user) {
+        User.update({
+            _id: req.user_id
+        }, {
+            $pull: {
+                "grades": {
+                    "_id": req.body.uid
+                }
+            }
+        }, function(err, gradeDeleted) {
             if (err) {
-                //console.log("Error processing request. Cannot find user with this id.");
-            } else if (user) {
-                 User.update({
-                                    _id: req.user._id
-                                }, {
-                                    $pull: {
-                                        "grades": {
-                                            "_id": req.body.uid
-                                        }
-                                    }
-                                },
-                                function(err, gradeDeleted) {
-                                    if (err) {
-                                        console.log("Error processing request. Cannot find user with this id with a events with this name.");
-                                    } else if (gradeDeleted) {
-                                        console.log("grade has been found for this user. gradeDeleted successfuly");
-                                    }
-                                }
-                            );
-                            res.send("Grade deleted successfuly");
+                console.log("Error processing request. Cannot find user with this id with a events with this name.");
+            } else if (gradeDeleted) {
+                console.log("grade has been found for this user. gradeDeleted successfuly");
+                res.json(gradeDeleted);
             }
         });
     });
 
-    app.put('/users/grades/:user', function(req, res, next) {
+    app.put('/api/users/grades/:user', function(req, res, next) {
         console.log("app put /users/grades/:user")
-        //console.log("req.user : " + req.user);
-        // console.log("req.body : ",req.body);
-        //console.log("req.body id: " + req.body.uid);
-        //console.log("req.user.id >>>>>> : " + req.user._id);
         var flag = false;
         User.findOne({
-            _id: req.user._id
+            _id: req.user_id
         }, function(err, user) {
             if (err) {
                 //console.log("Error processing request. Cannot find user with this id.");
@@ -155,7 +121,7 @@ module.exports = function(app, passport) {
                         if (req.body.uid == user.grades[i]._id) {
                             //console.log("><><><><><><><><><<><><> grade has been found : " + user.grades[i]._id);
                             User.update({
-                                    _id: req.user._id,
+                                    _id: req.user_id,
                                     "grades._id": user.grades[i]._id
                                 }, {
                                     $set: {
@@ -187,52 +153,34 @@ module.exports = function(app, passport) {
                         grade.name = req.body.name;
                         grade.nota = req.body.nota;
                         grade.data = req.body.data;
+                        User.update({
+                            '_id' :
+                        },{
+                            $push : {
+                                "grades" : grade
+                            }
+                        }, function(err, inserted){
+                            if(err){
+                                return next(err);
+                            }
+                            res.json(grade);
+                        })
                         //console.log("i am here")
                         //console.dir(grade)
-                        req.user.grades.push(grade); // Save the grade and also push the grade object in the user's grades array
+                        /*req.user.grades.push(grade); // Save the grade and also push the grade object in the user's grades array
                         req.user.save(function(err, user) {
                             if (err) {
                                 return next(err);
                             }
                             res.json(grade); // Send the grade back to the caller
-                        });
+                        });*/
                     }
                 }
             }
         });
     });
 
-    app.post('/users/tasks/:user', function(req, res, next) {
-        console.log("app post /users/:user/tasks")
-            //console.log("req.user : " + req.user);
-            //console.log("req.body : " + req.body);
-            {
-                // Create a new Task object based on the Task model. Set the properties received from the request.
-                var task = new Task();
-                task.user = req.user;
-                task.body = req.body.body;
-                task.nota = req.body.nota;
-                task.timp = req.body.timp;
-                console.dir(task)
-            }
-
-        task.save(function(err, task) {
-            if (err) {
-                return next(err);
-            }
-            //console.log("task : " + task);
-            //console.log("req tasks : " + req.user.tasks)
-            req.user.tasks.push(task); // Save the task and also push the task object in the user's tasks array
-            req.user.save(function(err, user) {
-                if (err) {
-                    return next(err);
-                }
-                res.json(task); // Send the task back to the caller
-            });
-        });
-    });
-
-app.put('/modifyAccessToUser/:user', function(req, res, next) {
+    app.put('/api/users/modifyAccessToUser/:user', function(req, res, next) {
         console.log("app put /grantAccessToUser/:user")
         console.log("req.user",req.user);
         console.log("req.body",req.body);
@@ -246,14 +194,14 @@ app.put('/modifyAccessToUser/:user', function(req, res, next) {
                 console.log("task found",task);
                 var userAlreadyInserted = false;
                 var registerUser = {
-                    idUser : ''+req.user._id,
+                    idUser : ''+req.user_id,
                     incercari : req.body.incercari,
                     lastAccessed : req.body.lastAccessed
                 }
                     for(var j = 0; j<task.registeredUsers.length;j++){
                         console.log("task.registeredUsers[j].idUser >> " + task.registeredUsers[j].idUser)
-                        console.log("req.user._id >> " + req.user._id);
-                        if(task.registeredUsers[j].idUser == ('' + req.user._id)){
+                        console.log("req.user_id >> " + req.user_id);
+                        if(task.registeredUsers[j].idUser == ('' + req.user_id)){
                             console.log("error, user already found in this array");
                             userAlreadyInserted = true;
                             task.registeredUsers.splice(j,1);

@@ -1,88 +1,124 @@
 // set up ======================================================================
 // get all the tools we need
-var express  = require('express');
-var app      = express();
-var port     = process.env.PORT || 8080;
-var mongoose = require('mongoose');
-var passport = require('passport');
-var flash    = require('connect-flash');
-var morgan = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var session      = require('express-session');
+/*
 
-var configDB = require('./config/database.js');
+MIDDLEWARE - FUNCTIE CARE SE APELEAZA LA FIECARE REQUEST
+IN EXPRESS ESTE : APP.USE(FUNCTIE_MIDDLEWARE());
+
+*/
+var express  = require('express');
+var app      = express();// Web framework to handle routing requests
+var mongoose = require('mongoose');
+//var passport = require('passport');
+//var cookieParser = require('cookie-parser');
+//var bodyParser = require('body-parser');
+var MongoClient = require('mongodb').MongoClient;//Driver for connecting to MongoDB
+
+//var routes = require('./routes'); // Routes for our application
 
 var path = require('path');
+/*
+MongoClient.connect('mongodb://127.0.0.1:27017/licentaDB', function(err, db) {
+    "use strict";
+    if(err) throw err;
 
-//var routes = require('./routes/index');
-//var users = require('./public/javascripts');
+    // configuration ===============================================================
 
-// configuration ===============================================================
-//mongoose.connect(configDB.url); // connect to our database
+    // view engine setup
+    app.set('views', path.join(__dirname, 'views'));
+    app.set('view engine', 'ejs');
+
+    app.use(express.static(path.join(__dirname, 'public')));
+
+    // Express middleware to populate 'req.cookies' so we can access cookies
+    app.use(express.cookieParser());
+
+    // Express middleware to populate 'req.body' so we can access POST variables
+    app.use(express.bodyParser());
+
+    // Application routes
+    //routes(app, db);
 mongoose.connect('mongodb://127.0.0.1/licentaDB');
 var db = mongoose.connection;
-require('./config/passport')(passport); // pass passport for configuration
 
-app.use(morgan('dev'));
-app.use(bodyParser());
-app.use(cookieParser());
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
-
-app.use(express.static(path.join(__dirname, 'public')));
+        require('./routes/routes.js')(app, db); // load our routes and pass in our app and fully configured passport
+        require('./routes/auth-routes.js')(app, db); // load our routes and pass in our app and fully configured passport
+        require('./routes/prof-routes.js')(app, db); // load our routes and pass in our app and fully configured passport
+        require('./routes/elev-routes.js')(app, db); // load our routes and pass in our app and fully configured passport
+        require('./routes/calendar-routes.js')(app, db); // load our routes and pass in our app and fully configured passport
+        require('./routes/class-routes.js')(app, db); // load our routes and pass in our app and fully configured passport
 
 
-//app.use(session({ secret: 'myAppSecret' })); // session secret
-//app.use(passport.initialize());
-//app.use(passport.session()); // persistent login sessions
-app.use(flash()); // use connect-flash for flash messages stored in session
 
-require('./routes/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
-require('./routes/auth-routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
-require('./routes/prof-routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
-require('./routes/elev-routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
-require('./routes/calendar-routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
-require('./routes/class-routes.js')(app, db); // load our routes and pass in our app and fully configured passport
-
-
-// launch ======================================================================
-
-
-//app.use('/', routes);
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-});
-
-// error handlers
-
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
+    // catch 404 and forward to error handler
+    app.use(function(req, res, next) {
+        var err = new Error('Not Found');
+        err.status = 404;
+        next(err);
     });
-}
 
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
+    app.listen(8080);
+    console.log('The magic happens on port 8080');
+});*/
+    // configuration ===============================================================
+
+    // view engine setup
+    app.set('views', path.join(__dirname, 'views'));
+    app.set('view engine', 'ejs');
+
+    app.use(express.static(path.join(__dirname, 'public')));
+
+    // Express middleware to populate 'req.cookies' so we can access cookies
+    app.use(express.cookieParser());
+
+    // Express middleware to populate 'req.body' so we can access POST variables
+    app.use(express.bodyParser());
+
+    // Application routes
+    //routes(app, db);
+mongoose.connect('mongodb://127.0.0.1/licentaDB');
+var db = mongoose.connection;
+
+        require('./routes/routes.js')(app, db); // load our routes and pass in our app and fully configured passport
+        require('./routes/auth-routes.js')(app, db); // load our routes and pass in our app and fully configured passport
+        require('./routes/prof-routes.js')(app, db); // load our routes and pass in our app and fully configured passport
+        require('./routes/elev-routes.js')(app, db); // load our routes and pass in our app and fully configured passport
+        require('./routes/calendar-routes.js')(app, db); // load our routes and pass in our app and fully configured passport
+        require('./routes/class-routes.js')(app, db); // load our routes and pass in our app and fully configured passport
+
+
+
+    // catch 404 and forward to error handler
+    app.use(function(req, res, next) {
+        console.log("catch 404");
+        var err = new Error('Not Found');
+        err.status = 404;
+        res.send('404 route not found');
+        next(err);
     });
-});
-app.listen(port);
-console.log('The magic happens on port ' + port);
+
+
+
+    app.listen(8080);
+    console.log('The magic happens on port 8080');
 
 module.exports = app;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

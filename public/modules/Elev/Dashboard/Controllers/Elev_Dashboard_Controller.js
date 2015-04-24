@@ -27,7 +27,7 @@ var elev_dashboard_controller = function($scope, $http, $state, $rootScope, $tim
 	weekday[6] = "Saturday";
 	var n = weekday[d.getDay()];
 
-    $http.get('/users/classes/' + userCredentials._id).success(function(data){
+    $http.get('/api/users/classes').success(function(data){
 		for(var i = 0 ; i<data.length;i++){
 			if(data[i].day == n){
 				contor_classes++;
@@ -40,19 +40,4 @@ var elev_dashboard_controller = function($scope, $http, $state, $rootScope, $tim
 		}
 		$scope.number_classes = contor_classes;
 	});
-	$http.get('/users/tasks/' + userCredentials._id).success(function(data){
-		for(var i = 0 ; i<data.length;i++){
-			if(data[i].day == n){
-				contor_tasks++;
-			}
-		}
-		if(contor_tasks > 0){
-			$scope.number_tasks = contor_tasks;
-		} else {
-			$scope.number_tasks = 0;
-		}
-	});
-
-    //$state.go('account_elev.signup');
-
 }

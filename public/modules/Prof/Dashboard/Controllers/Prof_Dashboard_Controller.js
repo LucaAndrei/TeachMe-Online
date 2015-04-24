@@ -13,7 +13,4 @@ var prof_dashboard_controller = function($scope, $http, $state, $rootScope, $tim
     console.log("prof_dashboard_controller.js : ",userCredentials);
     $scope.userCredentials = userCredentials;
     console.log($rootScope.userCredentials)
-   // console.log(promise);
-
-    //$state.go('account_prof.signup');
 }

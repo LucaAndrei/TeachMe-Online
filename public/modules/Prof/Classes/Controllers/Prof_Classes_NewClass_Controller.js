@@ -65,7 +65,7 @@ var prof_classes_new_class_controller = function($scope, $http, $state, $rootSco
                     break;
                 } else {
                     console.log("subject does not exist");
-                    return $http.post('/addSubject', objToInsert).success(function(data) {
+                    return $http.post('/api/users/addSubject', objToInsert).success(function(data) {
                             console.log(data[0])
                             $scope.subjects.push(data[0]);
                             if ($scope.subjects.length > 0) {
@@ -143,27 +143,27 @@ var prof_classes_new_class_controller = function($scope, $http, $state, $rootSco
 
 
     function addNewClass(){
-            console.log("add new class function");
-            var mClass = {
-                subject : '' + $('#classSubject option:selected').text(),
-                credite : $('#classCredite').val(),
-                tipExam : '' + $("input:radio[name ='tipExamen']:checked").val(),
-                room : '' + $('#classRoom').val(),
-                day : '' + $('#classDay option:selected').text(),
-                start_time : '' + $('#start_time').val(),
-                end_time : '' + $('#end_time').val(),
-                teacher : '' + $('#classTeacher').val(),
-                descriere : '' + $('#descriptionClass').val(),
-                registeredUsers : []
-            }
+        console.log("add new class function");
+        var mClass = {
+            subject : '' + $('#classSubject option:selected').text(),
+            credite : $('#classCredite').val(),
+            tipExam : '' + $("input:radio[name ='tipExamen']:checked").val(),
+            room : '' + $('#classRoom').val(),
+            day : '' + $('#classDay option:selected').text(),
+            start_time : '' + $('#start_time').val(),
+            end_time : '' + $('#end_time').val(),
+            teacher : '' + $('#classTeacher').val(),
+            descriere : '' + $('#descriptionClass').val(),
+            registeredUsers : []
+        }
 
-            return $http.post('/addClass/'+userCredentials._id,mClass).success(function(data) {
-                $("#descriptionClass").val("");
-                $("#classRoom").val("");
-                console.log("ADAUGARE CLASS SUCCES ",data)
-                $scope.$parent.classes.push(data);
-                $scope.checkIfEmpty();
-            });
+        return $http.post('/api/users/addClass',mClass).success(function(data) {
+            $("#descriptionClass").val("");
+            $("#classRoom").val("");
+            console.log("ADAUGARE CLASS SUCCES ",data)
+            $scope.$parent.classes.push(data);
+            $scope.checkIfEmpty();
+        });
     }
 }
 

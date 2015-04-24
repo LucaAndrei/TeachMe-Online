@@ -21,8 +21,6 @@ var prof_tasks_users_exams_controller = function($scope, $http, $state, $rootSco
 
     $scope.userCredentials = userCredentials;
     $scope.selectedUser = selectedUserPromise.data;
-    //$scope.tasks = selectedUserPromise.data.tasks;
-    //$scope.emptyTasksList = false;
 
     $scope.tasksArray = tasksArray;
 
@@ -33,11 +31,6 @@ var prof_tasks_users_exams_controller = function($scope, $http, $state, $rootSco
         console.log("empty list true")
         $scope.emptyList = true;
     }
-   /* if($scope.tasks.length > 0){
-        $scope.emptyTasksList = false;
-    } else if($scope.tasks.length == 0) {
-        $scope.emptyTasksList = true;
-    }*/
 
 
 
@@ -58,23 +51,8 @@ var prof_tasks_users_exams_controller = function($scope, $http, $state, $rootSco
             }
         }
         if(found){
-                $http.put('/modifyAccessToUser/'+$scope.selectedUser._id, tasksArray[i]).success(function(data) {
+                $http.put('/api/users/modifyAccessToUser/'+$scope.selectedUser._id, tasksArray[i]).success(function(data) {
                     console.log("revokeAccessToUser data",data);
-                    //console.log("OPERATIA S-A TERMINAT CU SUCCES " + data.name)
-                    /*console.log("add new usbj string  : " + data.toString());
-                    console.log("add new usbj msg: " + data.message)
-                    if (data.message == null) {
-                        console.log("jsonul asta nu are un mesaj");
-                        $scope.subjects.push(data);
-                        if ($scope.subjects.length > 0) {
-                            $scope.error_subjectListEmpty = false;
-                        }
-                        $("#new_subject_modal").modal("hide");
-                        $scope.subjectExists = false;
-                    } else {
-                        console.log("jsonul asta are un mesaj");
-                        $scope.subjectExists = true;
-                    }*/
                 });
         } else {
             console.log("error. task not found to revoke access");
@@ -96,23 +74,8 @@ var prof_tasks_users_exams_controller = function($scope, $http, $state, $rootSco
             }
         }
         if(found){
-                $http.put('/modifyAccessToUser/'+$scope.selectedUser._id, tasksArray[i]).success(function(data) {
+                $http.put('/api/users/modifyAccessToUser/'+$scope.selectedUser._id, tasksArray[i]).success(function(data) {
                     console.log("grantAccessToUser data",data);
-                    //console.log("OPERATIA S-A TERMINAT CU SUCCES " + data.name)
-                    /*console.log("add new usbj string  : " + data.toString());
-                    console.log("add new usbj msg: " + data.message)
-                    if (data.message == null) {
-                        console.log("jsonul asta nu are un mesaj");
-                        $scope.subjects.push(data);
-                        if ($scope.subjects.length > 0) {
-                            $scope.error_subjectListEmpty = false;
-                        }
-                        $("#new_subject_modal").modal("hide");
-                        $scope.subjectExists = false;
-                    } else {
-                        console.log("jsonul asta are un mesaj");
-                        $scope.subjectExists = true;
-                    }*/
                 });
         } else {
             console.log("error. task not found");
@@ -152,33 +115,4 @@ var prof_tasks_users_exams_controller = function($scope, $http, $state, $rootSco
             tasksArray.push(myObj);
         }
     }
-
-    /*computeTasks();
-
-    function computeTasks(){
-        var tasksNames = ["Test Radio", "Test Check", "Test DND"];
-        for (var i = 0; i < 3; i++) {
-            console.log("$scope.tasks[i].nota " + $scope.tasks[i].nota);
-            if($scope.tasks[])
-
-            var myObj = {
-                name : tasksNames[i],
-                incercari : $scope.tasks[]
-                uid: $scope.tasks[i]._id,
-                customId: tasksArray.length + 1,
-                nume: $scope.tasks[i].name,
-                nota: $scope.tasks[i].nota,
-                data: $scope.tasks[i].data,
-                user: $scope.grades[i].user,
-                status: $scope.grades[i].nota,
-                validated: true,
-                editing: false
-            };
-            $("#selectedUserSubjectGrade-" + myObj.customId).text("" + ($scope.grades[i].nota));
-            tasksArray.push(myObj);
-        }
-    }*/
-
-
-
 }

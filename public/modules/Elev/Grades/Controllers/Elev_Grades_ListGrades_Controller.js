@@ -9,37 +9,15 @@ Pentru documentatie, vezi ce e scris in acest site.
 
 */
 'use strict';
-var elev_grades_list_grades_controller = function($scope, $http, $state, $rootScope, $timeout){
+var elev_grades_list_grades_controller = function($scope, $http, $state, $rootScope, $timeout, grades){
     console.log("gradesElevController.js : ",userCredentials);
-    var grades = [];
+    console.log("Grades",grades.data.length);
     $scope.userCredentials = userCredentials;
-    $scope.grades = grades;
     $scope.emptyList = null;
-    /*if($scope.grades.length > 0){
-		$("#userGradesEmpty").hide();
-		$(".gradesTable").show();
+    if(grades.data.length > 0){
+		$scope.emptyList = false;
+		$scope.grades = grades.data;
+	} else if(grades.data.length == 0){
+		$scope.emptyList = true;
 	}
-*/
-    getUsersGrades(userCredentials._id);
-    function getUsersGrades(id){
-    	console.log("gradesService -> id " + id);
-
-		// This method is called when 'Show Grades' button is pressed, in the resolve of this route
-		// The parameter received is accessed with $route.current.params.user and it represents the id of the user for which we want to know the grades
-
-		//o.userSelectedForGrades(id);
-		return $http.get('/grades/' + id).success(function(data){
-			console.log("gradesService -> data : " + data);
-			angular.copy(data, grades);
-			if(grades.length > 0){
-				$scope.emptyList = false;
-			} else if(grades.length == 0){
-				$scope.emptyList = true;
-			}
-			console.log("gradesService -> o.grades : ", $scope.emptyList);
-		});
-    }
-
-    console.log("here")
-    //$state.go('account_elev.signup');
 }

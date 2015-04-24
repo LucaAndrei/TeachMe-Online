@@ -8,11 +8,16 @@ config(function($stateProvider, $urlRouterProvider) {
             parent: 'root',
             url: "",
             templateUrl: "modules/Prof/MainPageProf.html",
-            controller : function($scope,$state,$http){
-                console.log("main page prof controller")
+            controller : function($scope,$state,$http,$rootScope){
                 $scope.logout = function(){
-                    userCredentials = null;
-                    $state.go('root.mainpage');
+                    //userCredentials = null;
+                    //$state.go('root.mainpage');
+                    $http.get('/api/users/logout').success(function(data){
+                        console.log("data on logout",data);
+                        userCredentials = null;
+                        $rootScope.userCredentials = null;
+                        $state.go("root.mainpage")
+                    })
                 }
                 console.log("aicishaaaaaa<<<<<<<<<<<<<<<<<<<")
                 $state.go("account_prof.dashboard")
@@ -31,7 +36,7 @@ config(function($stateProvider, $urlRouterProvider) {
             controller: calendar_controller,
             resolve: {
                 calendar_events: function($http) {
-                    return $http.get('/calendar/' + userCredentials._id).success(function(data){
+                    return $http.get('/api/users/calendar').success(function(data){
                         console.log("calendarService -> data : " + data);
                     });
                 }
@@ -43,7 +48,7 @@ config(function($stateProvider, $urlRouterProvider) {
             controller: prof_grades_list_users_controller,
             resolve: {
                 promise: function($http) {
-                    return $http.get('/listUsers',{params : {userCredentials : userCredentials}}).success(function(data) {
+                    return $http.get('/api/users/listUsers').success(function(data) {
                         console.log("promise data", data);
                     });
                 }
@@ -55,13 +60,13 @@ config(function($stateProvider, $urlRouterProvider) {
             controller: prof_grades_users_grades_controller,
             resolve: {
                 usersClasses : function($http,$stateParams){
-                    return $http.get('/registeredClasses/'+ $stateParams.ID).success(function(data) {
+                    return $http.get('/api/users/registeredClasses/'+ $stateParams.ID).success(function(data) {
                         console.log("promise usersClasses", data);
                     });
                 },
                 selectedUserPromise:function($http,$stateParams){
                     console.log("selectedUserPromise : " + $stateParams.ID)
-                    return $http.get('/prof/getSelectedUser/' + $stateParams.ID).success(function(data) {
+                    return $http.get('/api/users/getSelectedUser/' + $stateParams.ID).success(function(data) {
                         console.log(">>>>>>>>>>>>> getSelectedUser selectedUserPromise-> data : ",data);
                     });
                 }
@@ -73,7 +78,7 @@ config(function($stateProvider, $urlRouterProvider) {
             //controller: usersController,
             resolve: {
                 promise: function($http) {
-                    return $http.get('/listUsers',{params:{userCredentials : userCredentials}}).success(function(data) {
+                    return $http.get('/api/users/listUsers').success(function(data) {
                         console.log("promise data", data);
                     });
                 }
@@ -85,7 +90,7 @@ config(function($stateProvider, $urlRouterProvider) {
             controller: prof_classes_list_classes_controller,
             resolve: {
                 promise : function($http){
-                    return $http.get('/listClasses/'+userCredentials._id).success(function(data){
+                    return $http.get('/api/users/listClasses').success(function(data){
                         console.log("list classes promise data", data);
                     })
                 }
@@ -97,7 +102,7 @@ config(function($stateProvider, $urlRouterProvider) {
             controller: prof_classes_new_class_controller,
             resolve: {
                 promise : function($http){
-                    return $http.get('/listSubjects').success(function(data){
+                    return $http.get('/api/users/listSubjects').success(function(data){
                         console.log("new class promise data", data);
                     })
                 }
@@ -109,7 +114,7 @@ config(function($stateProvider, $urlRouterProvider) {
             controller: prof_exams_controller,
             resolve: {
                 promise: function($http) {
-                    return $http.get('/listUsers',{params:{userCredentials : userCredentials}}).success(function(data) {
+                    return $http.get('/api/users/listUsers').success(function(data) {
                         console.log("promise data", data);
                     });
                 }
@@ -122,7 +127,7 @@ config(function($stateProvider, $urlRouterProvider) {
             resolve: {
                 promise: function($http) {
                     console.log("userCredentials",userCredentials._id)
-                    return $http.get('/listUsers',{params:{userCredentials : userCredentials}}).success(function(data) {
+                    return $http.get('/api/users/listUsers').success(function(data) {
                         console.log("promise data", data);
                     });
                 }
@@ -135,12 +140,12 @@ config(function($stateProvider, $urlRouterProvider) {
             resolve: {
                 selectedUserPromise:function($http,$stateParams){
                     console.log("selectedUserPromise : " + $stateParams.ID)
-                    return $http.get('/prof/getSelectedUser/' + $stateParams.ID).success(function(data) {
+                    return $http.get('/api/users/getSelectedUser/' + $stateParams.ID).success(function(data) {
                         console.log(">>>>>>>>>>>>> getSelectedUser selectedUserPromise-> data : ",data);
                     });
                 },
                 tasksPromise : function($http){
-                    return $http.get('/tasks').success(function(data) {
+                    return $http.get('/api/users/tasks').success(function(data) {
                         console.log(">>>>>>>>>>>>> usersExams tasks-> data : ",data);
                     });
                 }
@@ -164,12 +169,12 @@ config(function($stateProvider, $urlRouterProvider) {
             controller: prof_chat_controller,
             resolve: {
                 promise: function($http) {
-                    return $http.get('/listUsers',{params:{userCredentials : userCredentials}}).success(function(data) {
+                    return $http.get('/api/users/listUsers').success(function(data) {
                         console.log("promise data", data);
                     });
                 },
                 online_users_promise : function($http){
-                    return $http.get('/listUsers',{params:{userCredentials : userCredentials}}).success(function(data) {
+                    return $http.get('/api/users/listUsers').success(function(data) {
                         console.log("promise data", data);
                     });
                 }
@@ -182,37 +187,7 @@ config(function($stateProvider, $urlRouterProvider) {
 
 }).run(function($rootScope, $http) {
     console.log("run profApp");
-
-
-    /*var cookie = getCookie('CautOrice_Session');
-
-        if(cookie != "" && cookie != undefined && cookie != null && cookie.length == 26) {
-            $http.get('/api/users/cookie/' + cookie).success(function (data) {
-
-                userCredentials = data;
-                checkCredentials($rootScope);
-
-            }).error(function () {
-
-                userCredentials = null;
-                $rootScope.userCredentials = null;
-
-            });
-        }
-*/
     $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
         console.log('error:', error, 'toState:', toState);
     });
 });
-/*templateUrl : 'views/dashboardProf.html',
-        controller : 'dashboardProfController',
-        resolve: {
-            // The resolve will execute before anything else. It will take all the users from the database so they can be used in the controller
-            // The rendering of the page will not continue until it receives the result from the promise (which is asynchronous)
-            postPromise: ['dashboardProfService', function(dashboardProfService){
-                //dashboardProfService.getCurrentUser();
-                //computeToday();
-                return dashboardProfService.getCurrentUser();
-
-            }]
-        }*/

@@ -51,24 +51,6 @@ var prof_grades_users_grades_controller = function($scope, $http, $state, $rootS
     $scope.mySelect = $scope.gradesNames[0];
 
 
-
-    // this function is used to identify the current user whose grades are being edited
-    /*function userSelectedForGrades(id) {
-        console.log("userSelectedForGrades : " + id);
-        return $http.get('/prof/getSelectedUser/' + id).success(function(data) {
-            console.log(">>>>>>>>>>>>> userSelectedForGrades -> data : ",data);
-            $scope.selectedUser = data;
-            $scope.grades = data.grades;
-
-            computeSelectedUserGrades();
-            computeGradesNames();
-            computeToday();
-        });
-    };*/
-
-
-
-
     $scope.showGrade = function(grade) {
         console.log("showGrade : ", grade);
         var selected = [];
@@ -81,13 +63,6 @@ var prof_grades_users_grades_controller = function($scope, $http, $state, $rootS
         }
         return selected.length ? selected[0].text : 'Not set';
     };
-
-
-    // this function is called whenever the Add Row button is pressed
-    // it creates a new object which is inserted in the array that is used to store the grades
-
-
-
 
 
     $scope.saveGrade = function(customId) {
@@ -114,7 +89,7 @@ var prof_grades_users_grades_controller = function($scope, $http, $state, $rootS
                 break;
             }
         }
-        return $http.put('/users/grades/' + $scope.selectedUser._id, gradeToSave).success(function(data) {
+        return $http.put('/api/users/grades/' + $scope.selectedUser._id, gradeToSave).success(function(data) {
             console.log("assignGrade data : ", data);
             $scope.disableAddRow = false;
         });
@@ -138,7 +113,7 @@ var prof_grades_users_grades_controller = function($scope, $http, $state, $rootS
                 $scope.gradesArray[i].validated = true;
                 console.log("selectedUserGrades[i] nota : " + selectedUserGrades[i].nota + " >> data : " + selectedUserGrades[i].data + " >> user : " + selectedUserGrades[i].user +
                     " >> validated : " + selectedUserGrades[i].validated + " >> editing : " + selectedUserGrades[i].editing + " >> uid : " + selectedUserGrades[i].uid)
-                return $http.put('/users/grades/' + $scope.selectedUser._id, selectedUserGrades[i]).success(function(data) {
+                return $http.put('/api/users/grades/' + $scope.selectedUser._id, selectedUserGrades[i]).success(function(data) {
                     console.log("assignGrade data : ", data);
                     $scope.disableAddRow = false;
                 });
@@ -181,6 +156,8 @@ var prof_grades_users_grades_controller = function($scope, $http, $state, $rootS
         }
     }
 
+    // this function is called whenever the Add Row button is pressed
+    // it creates a new object which is inserted in the array that is used to store the grades
     $scope.addRow = function() {
         console.log("$scope.addRow");
         $scope.toInsert = {
@@ -204,7 +181,7 @@ var prof_grades_users_grades_controller = function($scope, $http, $state, $rootS
         console.log("$scope.removeRow index : " + index + " >>>> selectedUserGrades[index] name: " + selectedUserGrades[index])
         console.log("$scope.removeRow $scope.selectedUser._id : " + $scope.selectedUser._id)
 
-        return $http.put('/users/grades/delete/' + $scope.selectedUser._id, selectedUserGrades[index]).success(function(data) {
+        return $http.put('/api/users/grades/delete/' + $scope.selectedUser._id, selectedUserGrades[index]).success(function(data) {
             console.log("deleted correctly",data);
             $scope.disableAddRow = false;
             selectedUserGrades.splice(index, 1);

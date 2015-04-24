@@ -64,7 +64,7 @@ var calendar_controller = function($scope, $http, $state, $rootScope, $timeout,c
 		var title = prompt('Event Title:');
 		if (title) {
 			var event = {title : title,start : start, end : end};
-			$http.put('/users/events/' + userCredentials._id,event).success(function(data){
+			$http.put('/api/users/users/events',event).success(function(data){
 				console.log("data",data)
 
 				$("#msg-correct").css("display","block");
@@ -81,7 +81,7 @@ var calendar_controller = function($scope, $http, $state, $rootScope, $timeout,c
 
 	deleteEventById = function(eventId){
 		console.log("eventId : " + eventId.eventId);
-		return $http.put('/users/events/delete/' + userCredentials._id,eventId).success(function(data){
+		return $http.put('/api/users/users/events/delete',eventId).success(function(data){
 			console.log("correctly deleted");
 			$("#msg-delete").css("display","block");
 			setTimeout(function(){

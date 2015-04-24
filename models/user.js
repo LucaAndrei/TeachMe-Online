@@ -25,11 +25,4 @@ userSchema.methods.validPassword = function(password){
 	return bcrypt.compareSync(password, this.password);
 };
 
-userSchema.methods.assignTask = function(task,cb) {
-	console.log("userschema assigntask:cb "  + cb)
-	console.log("userschema assigntask:task "  + task)
-  	this.tasks.push(task);
-  	this.save(cb);
-};
-
 module.exports = mongoose.model('User', userSchema);

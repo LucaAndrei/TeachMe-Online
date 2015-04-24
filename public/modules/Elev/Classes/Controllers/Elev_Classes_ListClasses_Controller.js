@@ -143,7 +143,7 @@ var elev_classes_list_classes_controller = function($scope, $http, $state, $root
 
     $scope.registerClass = function() {
         console.log("register class " + class_id);
-        return $http.post('/registerClass/'+userCredentials._id, {
+        return $http.post('/api/users/registerClass', {
             class_id: class_id
         }).success(function(data) {
             console.log("correctly register");
@@ -151,7 +151,7 @@ var elev_classes_list_classes_controller = function($scope, $http, $state, $root
             buildClassesArray()
             $("#class_modal").modal('hide');
            /*
-            return $http.get('/listClasses/'+userCredentials._id).success(function(classes){
+            return $http.get('/api/users/listClasses/'+userCredentials._id).success(function(classes){
                 console.log("list classes after delete : ",classes)
                 $scope.classes = classes;
                 $scope.checkIfEmpty();
@@ -161,7 +161,7 @@ var elev_classes_list_classes_controller = function($scope, $http, $state, $root
 
 
     function buildClassesArray(){
-        return $http.get('/listAllClasses').success(function(classes){
+        return $http.get('/api/users/listAllClasses').success(function(classes){
                 console.log("list classes after register : ",classes)
                 commonClasses = [];
                 myClasses = classes;
