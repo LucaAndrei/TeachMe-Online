@@ -1,10 +1,12 @@
-var mainControler = function($scope, $http, $state, $rootScope, $timeout){
+var mainControler = function($scope, $http, $state, $rootScope, $timeout, userLoggedIn){
     console.log("MainController.js");
     console.log("rootScope userCredentials",$rootScope.userCredentials)
     console.log("userCredentials",userCredentials)
-    if(userCredentials != null && userCredentials != ""){
+
+
+    if(userLoggedIn.data != null && userLoggedIn.data != ""){
         console.log("intra cumva pe-aici?")
-        if(userCredentials.tipUser == "teacher"){
+        if(userLoggedIn.data.tipUser == "teacher"){
             $state.go('account_prof');
         } else {
             $state.go('account_elev');

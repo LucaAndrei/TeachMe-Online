@@ -5,10 +5,13 @@ angular.module('main_app', ['ui.router', 'account_prof','account_elev']).
     $stateProvider
         .state('root', {
             url: "/",
+            abstract : true,
+
             templateUrl: "modules/Home/Templates/Home.html",
             controller: function($state,$rootScope){
                 console.log("home controller.")
                 console.log("home ctrrl userCredentials",userCredentials)
+
                 $state.go("root.mainpage")
             },
             resolve: {}
@@ -17,7 +20,24 @@ angular.module('main_app', ['ui.router', 'account_prof','account_elev']).
             url: "main",
             templateUrl: "modules/Home/Templates/MainPage.html",
             controller: mainControler,
-            resolve: {}
+            resolve: {
+                userLoggedIn : function($http,$state,$rootScope){
+                    return $http.get("/cookie").success(function(data){
+                        console.log("/cookie data ",data);
+                        if(data != null && data != ""){
+                            console.log("redirect")
+                             userCredentials = data;
+                                $rootScope.userCredentials = userCredentials;
+                            if(data.tipUser == "teacher"){
+                                $state.go('account_prof.dashboard');
+                            } else {
+
+                                $state.go('account_elev.dashboard');
+                            }
+                        }
+                    })
+                }
+            }
         })
         .state('root.login', {
             url: "login",
@@ -37,7 +57,9 @@ angular.module('main_app', ['ui.router', 'account_prof','account_elev']).
     //console.log("location provieder")
     //$locationProvider.html5Mode(true);
 }]).run(function ($rootScope, $http){
+    console.log("run")
     $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
         console.log('error:', error, 'toState:', toState);
     });
+
 });

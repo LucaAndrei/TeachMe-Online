@@ -19,28 +19,63 @@ module.exports = function(app, db) {
             return res.send("Hello world")
         }
         console.log("req.cookies.session",req.cookies.session);
-         db.collection('user_session').findOne({ '_id' : session_id }, function(err, session) {
+        db.collection('user_session').findOne({ '_id' : session_id }, function(err, session) {
             "use strict";
 
-            if (err){
+            /*if (err){
                 console.log("session findone err",err);
             }
 
             if (!session) {
                 console.log("session not found");
                 return next();
-            }
+            }*/
 
             if (!err && session) {
                 console.log("req.username",session.username);
                 req.username = session.username;
                 req.user_id = session.user_id;
                 req.myTest = "myTestasdfg";
+                return next();
             }
-            return next();
+
         });
+    });
 
+    app.get("/cookie",function(req,res, next){
+       console.log("cookie /cookie");
+       console.log("req.cookies",req.cookies)
+        var session_id = req.cookies.session;
+        if(session_id){
+            console.log("/cookie req.cookies.session",req.cookies.session);
+            db.collection('user_session').findOne({ '_id' : session_id }, function(err, session) {
+                "use strict";
 
+                if (err){
+                    console.log("cookie session findone err",err);
+                }
+
+                if (!session) {
+                    console.log("cookie session not found");
+                    return next();
+                }
+
+                if (!err && session) {
+                    console.log("cookie session.username",session.username);
+                    User.findOne({_id : session.user_id},function(err,user){
+                        if(err) {
+                            console.log("err")
+                        }
+                        console.log(">>>>>>>.retuyrn the user")
+                        res.json(user);
+                    })
+                }
+                //return next();
+            });
+        } else {
+            console.log("return");
+            res.json();
+        }
     });
 
     app.param('user', function(req, res, next, id) {

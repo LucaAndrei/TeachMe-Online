@@ -10,7 +10,9 @@ module.exports = function(app, db) {
     app.get('/', function(req, res) {
         console.log(" ---=== auth-routes.js --->>> /")
         console.log("Is user logged in : " + req.username);
-        res.render('index.ejs');
+        //res.locals({username : req.username})
+        //res.render('index.ejs',{username: req.username,});
+        res.render('index.ejs')
     });
 
 
