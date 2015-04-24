@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>TeachMe - Online</title>
+
+    <!-- Stylesheets -->
+    <link type="text/css" rel="stylesheet" href="stylesheets/bootstrap.css">
+
+    <!-- Custom CSS -->
+    <link type="text/css" rel="stylesheet" href="stylesheets/teachme.css">
+
+    <!-- Custom CSS -->
+    <link type="text/css" rel="stylesheet" href="stylesheets/sb-admin.css">
+
+    <link type="text/css" rel="stylesheet" href='stylesheets/fullcalendar.css'>
+    <link type="text/css" rel="stylesheet" href='stylesheets/fullcalendar.print.css' media='print'>
+
+
+    <!-- Custom Fonts-->
+    <link type="text/css" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700">
+    <link type="text/css" rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic">
+
+    <!-- Javascripts-->
+    <script type="text/javascript" src="//code.jquery.com/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="javascripts/libs/bootstrap.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+    <script type="text/javascript" src="javascripts/libs/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src='javascripts/libs/moment.min.js'></script>
+    <script type="text/javascript" src='javascripts/libs/fullcalendar.js'></script>
+
+    <!-- Custom JS -->
+    <script type="text/javascript" src="javascripts/libs/teachme.js"></script>
+
+    <!-- Custom JS -->
+    <script src="modules/Home/Controllers/MainController.js"></script>
+    <script src="modules/Authentication/Controllers/AuthenticationController.js"></script>
+
+
+
+     <script src="modules/Prof/Dashboard/Controllers/Prof_Dashboard_Controller.js"></script>
+    <script src="modules/Prof/Grades/Controllers/Prof_Grades_ListUsersController.js"></script>
+    <script src="modules/Prof/Grades/Controllers/Prof_Grades_UsersGradesController.js"></script>
+    <script src="modules/Calendar/Controllers/CalendarController.js"></script>
+    <script src="modules/Prof/Tasks/Controllers/Prof_Exams_Controller.js"></script>
+    <script src="modules/Prof/Tasks/Controllers/Prof_Homework_Controller.js"></script>
+    <script src="modules/Prof/Tasks/Controllers/Prof_Tasks_UsersExamsController.js"></script>
+        <script src="modules/Prof/Tasks/Controllers/Prof_Tasks_UsersHomeworkController.js"></script>
+
+    <script src="modules/Settings/Controllers/SettingsController.js"></script>
+        <script src="modules/Prof/Chat/Controllers/Prof_Chat_Controller.js"></script>
+
+    <script src="modules/Elev/Dashboard/Controllers/Elev_Dashboard_Controller.js"></script>
+    <script src="modules/Elev/Grades/Controllers/Elev_Grades_ListGrades_Controller.js"></script>
+    <script src="modules/Calendar/Controllers/CalendarController.js"></script>
+    <script src="modules/Elev/Classes/Controllers/Elev_Classes_ListClasses_Controller.js"></script>
+
+    <script src="modules/Prof/Classes/Controllers/Prof_Classes_ListClasses_Controller.js"></script>
+    <script src="modules/Prof/Classes/Controllers/Prof_Classes_NewClass_Controller.js"></script>
+
+    <script src="javascripts/main-app.js"></script>
+    <script src="javascripts/prof-app.js"></script>
+    <script src="javascripts/elev-app.js"></script>
+
+
+
+    <script type="text/javascript"  src="javascripts/libs/jquery.timepicker.js"></script>
+  <link rel="stylesheet" type="text/css"  src="javascripts/libs/jquery.timepicker.css" />
+
+  <link href="stylesheets/bootstrap-timepicker.min.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="javascripts/libs/bootstrap-timepicker.js"></script>
+
+
+
+
+
+
+
+
+
+</head>
+
+<body id="page-top" ng-app="main_app">
+    <script>
+        var userCredentials = null;
+    </script>
+    userCredentials
+    <div ui-view></div>
+</body>
+</html>

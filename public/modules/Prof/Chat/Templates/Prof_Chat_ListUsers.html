@@ -1,0 +1,119 @@
+<div class="row">
+	<div class="col-lg-12">
+	    <h1 class="page-header">Exams : {{emptyClassesList}}</h1>
+	        </div>
+	    </div><!-- /.row -->
+<div ng-if="emptyList == true">
+	No users in the database
+</div>
+<div class="container">
+	<div class="row " style="padding-top:40px;">
+		<div class="col-md-4">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+				ONLINE USERS
+				</div>
+				<div class="panel-body">
+					<ul class="media-list">
+						<li class="media">
+							<div class="media-body">
+								<div class="media">
+									<a class="pull-left" href="#">
+										<img class="media-object img-circle" style="max-height:40px;" src="images/user.png" />
+									</a>
+									<div class="media-body" >
+										<h5>Alex Deo | User </h5>
+										<small class="text-muted">Active From 3 hours</small>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="media">
+							<div class="media-body">
+								<div class="media">
+									<a class="pull-left" href="#">
+										<img class="media-object img-circle" style="max-height:40px;" src="images/user.png" />
+									</a>
+									<div class="media-body" >
+										<h5>Alex Deo | User </h5>
+										<small class="text-muted">Active From 3 hours</small>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-8">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					RECENT CHAT HISTORY
+				</div>
+				<div class="panel-body">
+					<ul class="media-list">
+						<li class="media">
+							<div class="media-body">
+								<div class="media">
+									<a class="pull-left" href="#">
+										<img class="media-object img-circle " src="assets/img/user.png" />
+									</a>
+									<div class="media-body" >
+										Donec sit amet ligula enim. Duis vel condimentum massa.Donec sit amet ligula enim. Duis vel condimentum massa.Donec sit amet ligula enim.Duis vel condimentum massa.Donec sit amet ligula enim. Duis vel condimentum massa.
+										<br />
+										<small class="text-muted">Alex Deo | 23rd June at 5:00pm</small>
+										<hr />
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="panel-footer">
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Enter Message" />
+						<span class="input-group-btn">
+							<button class="btn btn-info" type="button">SEND</button>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="loading" ng-if="emptyList == null"></div>
+<div ng-repeat="user in users" ng-if="emptyList == false"></div>
+
+<div class="user-online"></div> &nbsp; <span class="user-online-text">{{user.nume}} {{user.prenume}}</span>
+</div>
+<div ng-repeat="user in online_users" ng-if="emptyList == false">
+	<div class="user-offline"></div> &nbsp; <span class="user-online-text">{{user.nume}} {{user.prenume}}</span>
+</div>
+<div ng-repeat="user in users" ng-if="emptyList == false">
+	<div class="user-online" ng-if="online == true"></div>
+	<div class="row-fluid">
+		<div class="container-fluid well col-lg-4 col-lg-offset-1">
+			<div class="row-fluid">
+				<div class="col-lg-1" >
+					<img src="https://secure.gravatar.com/avatar/de9b11d0f9c0569ba917393ed5e5b3ab?s=140&r=g&d=mm" class="img-circle">
+				</div>
+
+				<div class="col-lg-4 col-lg-offset-3">
+					<h3>{{user.nume}} {{user.prenume}}</h3>
+					<h6>Email: {{user.email}}</h6>
+					<h6>Facultate: {{user.facultate}}</h6>
+				</div>
+
+				<div class="col-lg-4 col-lg-offset-3">
+					<div class="btn-group">
+						<a ui-sref="account_prof.usersExams({ID: user._id })">
+							<button type="button" class="btn btn-info">
+								Exams {{user._id}}
+							</button>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

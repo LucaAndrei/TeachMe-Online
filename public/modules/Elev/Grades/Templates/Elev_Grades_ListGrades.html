@@ -1,0 +1,33 @@
+
+<h1>Implement <a href="https://scotch.io/tutorials/sort-and-filter-a-table-using-angular" target="_blank">THIS</a></h1>
+Prof_Grades_UsersGrades.html
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Grades : {{gradesUser.nume}} {{gradesUser.prenume}}</h1>
+        </div>
+    </div><!-- /.row -->
+    <div class="row">
+        <div id="loading" ng-if="emptyList == null"></div>
+        <div ng-if="emptyList == true">
+            No users in the database
+        </div>
+        <div id="userGradesEmpty" ng-if="emptyList == true">
+            No grades for this user. Select another user or assign grades to
+            currently selected user.
+        </div>
+
+        <div class="gradesTable col-md-8 col-md-offset-2" ng-if="emptyList == false">
+            <table>
+                <tr>
+                    <td colspan="2">{{userCredentials.nume}}</td>
+                </tr>
+                <tr ng-repeat="grade in grades track by $index">
+                    <td class="col-md-6">{{grade.name}}</td>
+                    <td class="col-md-6">{{grade.nota}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

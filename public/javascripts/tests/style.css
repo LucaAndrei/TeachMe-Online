@@ -1,0 +1,613 @@
+#applet {font-size: 16px; width : 1350px; height : 580px; border : 0; position : absolute; left : 170px; top : 100px; overflow:hidden; font-family:Arial, Helvetica, sans-serif; background:#F7F7F7; }
+#appletScreen{position: absolute;width: 700px;height: 520px;}
+.screenClass{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;}
+
+#stage1 { width: 700px; height: 520px; position:absolute; left:0; top:0}
+
+.loading{
+	width : 700px; height : 520px; border : 0; position : absolute; left : 0; top : 0;
+	overflow:hidden;
+	background: url("libs/loading.gif") center center no-repeat white;
+}
+
+
+/* butonul verifica */
+button{
+	margin: 0;
+    padding: 0;
+    border: none;
+	cursor: pointer;
+}
+#butVerifica{
+	position: absolute;
+	display: inline-block;
+	width: 72px;
+	height: 31px;
+	background: url("assets/image/button_green_up.png") no-repeat;
+	left:20px;
+	top:100px;
+}
+#butVerifica[class='valideaza']:hover{
+	background: url("assets/image/button_green_over.png") no-repeat;
+}
+#butVerifica[class='valideaza']:active{
+	background: url("assets/image/button_green_down.png") no-repeat;
+}
+#butVerifica *{
+	position:relative;
+}
+/* butonul reset */
+#butReset{
+	position: absolute;
+	display: inline-block;
+	width: 72px;
+	height: 31px;
+	background: url("assets/image/button_blue_up.png") no-repeat;
+	left:100px;
+	top:100px;
+}
+#butReset[class='reseteaza']:hover{
+	background: url("assets/image/button_blue_over.png") no-repeat;
+}
+#butReset[class='reseteaza']:active{
+	background: url("assets/image/button_blue_down.png") no-repeat;
+}
+#butReset *{
+	position:relative;
+}
+
+/* butonul next */
+#butNext {
+	position: absolute;
+	top: 490px;
+	right: 200px;
+	width: 72px;
+	height: 31px;
+	display: block;
+	cursor: pointer;
+	background: url("assets/image/button_blue_up.png") no-repeat;
+}
+#butNext[class='']:hover{
+	background: url("assets/image/button_blue_over.png") no-repeat;
+}
+#butNext[class='']:active{
+	background: url("assets/image/button_blue_down.png") no-repeat;
+}
+#butNext *{
+	position:relative;
+}
+
+/* butonul prev */
+#butPrev {
+	position: absolute;
+	top: 490px;
+	left: 200px;
+	width: 72px;
+	height: 31px;
+	display: block;
+	cursor: pointer;
+	background: url("assets/image/button_blue_up.png") no-repeat;
+}
+#butPrev[class='']:hover{
+	background: url("assets/image/button_blue_over.png") no-repeat;
+}
+#butPrev[class='']:active{
+	background: url("assets/image/button_blue_down.png") no-repeat;
+}
+#butPrev *{
+	position:relative;
+}
+.simbol{
+	background: url("assets/image/simboluri.png") no-repeat;
+	width: 45px;
+	height: 30px;
+	display: inline-block;
+}
+.simbol.validare{
+	background-position: 0px -7px;
+}
+.simbol.reset{
+	background-position: -53px -8px;
+}
+.simbol.next{
+	background-position: 0px -51px;
+}
+.simbol.prev{
+	background-position: -153px -6px;
+}
+.disabled{
+	opacity: 0.6;
+	cursor: default !important;
+}
+/* end butoane */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**************************QUIZ DND*************/
+/* start quiz */
+#quizContainer1{
+	width: 1350px;
+	height: 580px;
+	top: 0px;
+	left: 0px;
+	/*background: url("assets/image/background1.jpg") no-repeat;*/
+
+}
+#quizContainer2{
+	width: 1350px;
+	height: 580px;
+	top: 0px;
+	left: 1360px;
+	/*background: url("assets/image/background3.jpg") no-repeat;*/
+}
+.quizContainer{
+	position: absolute;
+	display: block;
+	border-radius: 6px 6px 6px 6px;
+	background-color: #ebebeb;
+	border: 2px solid #000000;
+}
+.quizContainer_correct{
+	background-color: #82BF35;
+	border: 2px solid #395418;
+}
+.quizContainer_incorrect{
+	background-color: #EF7F61;
+	border: 2px solid #C93814;
+}
+.container_answers{
+	background-color:#EFE7D4;
+	display: block;
+	margin: 2px 2px;
+	height: auto;
+	padding: 5px 5px 5px 5px;
+}
+.container_answersDND{
+	display: block;
+	margin: 2px 2px;
+	height: auto;
+	padding: 5px 5px 5px 5px;
+}
+.question_init{
+	padding:6px;
+}
+
+.prop{
+	display:inline-block;
+	height: 20px;
+	vertical-align: middle;
+}
+.drag{
+	position: absolute;
+	width: 113px;
+	height: 52px;
+	padding: 2px 2px 2px 2px;
+	line-height: normal;
+	z-index:99;
+	background: url("assets/image/drag1.png") no-repeat;
+}
+.drop{
+	position: absolute;
+	width: 113px;
+	height: 52px;
+	vertical-align: middle;
+	background: url("assets/image/drop1.png") no-repeat;
+}
+.spacer{
+	margin: 3px;
+}
+.text-drag{
+	display: table-cell;
+	width: inherit;
+	height: inherit;
+	vertical-align: middle;
+	position: absolute;
+	margin-top: 5px;
+	margin-right: 0px;
+	text-align: center;
+}
+.text-drag2{
+	display: table-cell;
+	width: inherit;
+	height: inherit;
+	vertical-align: middle;
+	position: absolute;
+	margin-top: 15px;
+	margin-right: 35px;
+}
+.text-drag3{
+	display: table-cell;
+	width: inherit;
+	height: inherit;
+	vertical-align: middle;
+	position: absolute;
+	margin-top: 15px;
+	margin-right: 55px;
+}
+
+/************QUIZ RADIO 1*****/
+.answer{
+	margin-bottom: 45px;
+}
+.radio {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	background-position: 0px 0px;
+	vertical-align: middle;
+	background: url("assets/image/radio.png") no-repeat;
+}
+.check {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	background-position: 0px 0px;
+	vertical-align: middle;
+	background: url("assets/image/check.png") no-repeat;
+}
+.selected{
+	background-position: -30px 0px;
+}
+.corect {
+	background-position: -60px 0px;
+}
+.gresit {
+	background-position: -90px 0px;
+}
+
+
+
+
+
+
+
+
+#drag_1_1{
+	top: 120px;
+	left: 527px;
+}
+#drag_1_2{
+	top: 180px;
+	left: 527px;
+}
+#drag_1_3{
+	top: 240px;
+	left: 527px;
+}
+#drag_1_4{
+	top: 300px;
+	left: 527px;
+}
+
+
+#drop_1_1{
+	top: 135px;
+	left: 345px;
+}
+#drop_1_2{
+	top: 351px;
+	left: 375px;
+}
+#drop_1_3{
+	top: 225px;
+	left: 200px;
+}
+#drop_1_4{
+	top: 351px;
+	left: 215px;
+}
+
+
+#quiz11{
+	position: absolute;
+	left: 0px;
+}
+#quiz12{
+	position: absolute;
+	left: 1360px;
+	top:110px;
+	width:650px;
+	height: 352px;
+}
+#quiz13{
+	position: absolute;
+	left: 1360px;
+	top:110px;
+	width:650px;
+	height: 352px;
+}
+
+
+
+
+
+
+#titlu1{
+	position: absolute;
+	left: 20px;
+	top: 20px;
+	width: 650px;
+}
+#titlu2{
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	display:none;
+	width: 650px;
+}
+#titlu3{
+	position: absolute;
+	top: 20px;
+	left: 0px;
+	width: 650px;
+}
+#subtitlu2{
+	position: absolute;
+	top: 105px;
+	left: 400px;
+	display:none;
+}
+#qMark{
+	position: absolute;
+	top: 100px;
+	left: 40px;
+	background: url("assets/image/qmark.png") no-repeat;
+	width: 101px;
+	height: 101px;
+	display:none;
+}
+
+
+.numar{
+	position: absolute;
+	background: url("assets/image/b_1.png") no-repeat;
+	width: 35px;
+	height: 35px;
+}
+.numar span{
+	position: absolute;
+	top: 7px;
+	right: 12px;
+}
+#numar1{
+	left:235px;
+	top:105px;
+}
+#numar2{
+	left:280px;
+	top:150px;
+}
+#numar3{
+	left:235px;
+	top:205px;
+}#numar4{
+	left:330px;
+	top:210px;
+}
+
+
+#text1{
+	position: absolute;
+	top: 195px;
+	left: 340px;
+}
+#text2{
+	position: absolute;
+	top: 240px;
+	left: 215px;
+}
+#text3{
+	position: absolute;
+	top: 325px;
+	left: 265px;
+}
+#text4{
+	position: absolute;
+	top: 260px;
+	left: 360px;
+}
+#text5{
+	position: absolute;
+	top: 155px;
+	left: 485px;
+}
+#text6{
+	position: absolute;
+	top: 230px;
+	left: 465px;
+}
+#text7{
+	position: absolute;
+	top: 310px;
+	left: 557px;
+}
+#text8{
+	position: absolute;
+	top: 190px;
+	left: 625px;
+}
+#text9{
+	position: absolute;
+	top: 310px;
+	left: 185px;
+}
+#text10{
+	position: absolute;
+	top: 310px;
+	left: 490px;
+}
+
+#titluCol1{
+	position: absolute;
+	left: 45px;
+	top: 12px;
+}
+#titluCol2{
+	position: absolute;
+	left: 197px;
+	top: 12px;
+}
+#titluCol3{
+	position: absolute;
+	left: 253px;
+	top: 12px;
+}
+
+#r1col1{
+	position: absolute;
+	left: 80px;
+	top: 38px;
+}
+#r2col1{
+	position: absolute;
+	left: 54px;
+	top: 65px;
+}
+#r3col1{
+	position: absolute;
+	left: 57px;
+	top: 93px;
+}
+#r4col1{
+	position: absolute;
+	left: 85px;
+	top: 120px;
+}
+
+#r1col2{
+	position: absolute;
+	left: 203px;
+	top: 38px;
+}
+#r2col2{
+	position: absolute;
+	left: 199px;
+	top: 65px;
+}
+#r3col2{
+	position: absolute;
+	left: 203px;
+	top: 93px;
+}
+#r4col2{
+	position: absolute;
+	left: 203px;
+	top: 120px;
+}
+
+#r1col3{
+	position: absolute;
+	left: 280px;
+	top: 38px;
+}
+#r2col3{
+	position: absolute;
+	left: 275px;
+	top: 65px;
+}
+#r3col3{
+	position: absolute;
+	left: 280px;
+	top: 93px;
+}
+#r4col3{
+	position: absolute;
+	left: 280px;
+	top: 120px;
+}
+
+
+
+#textNumar1{
+	position: absolute;
+	top: 70px;
+	left: 380px;
+	width: 290px;
+}
+#textNumar2{
+	position: absolute;
+	top: 110px;
+	left: 380px;
+	width: 290px;
+}
+#textNumar3{
+	position: absolute;
+	top: 155px;
+	left: 380px;
+	width: 290px;
+}
+#textNumar4{
+	position: absolute;
+	top: 200px;
+	left: 380px;
+	width: 290px;
+}
+
+
+#tabel{
+	position: absolute;
+	background: url("assets/image/tabel.png") no-repeat;
+	width: 340px;
+	height: 157px;
+	top: 280px;
+	left: 330px;
+}
+
+#A{
+	position: absolute;
+	left: 190px;
+	top: 225px;
+}
+#B{
+	position: absolute;
+	left: 190px;
+	top: 95px;
+}
+#C{
+	position: absolute;
+	left: 225px;
+	top: 60px;
+}
+#D{
+	position: absolute;
+	left: 360px;
+	top: 60px;
+}
+
+#textA{
+	position: absolute;
+	left: 270px;
+	top: 270px;
+}
+#textB{
+	position: absolute;
+	left: 270px;
+	top: 290px;
+}
+#textC{
+	position: absolute;
+	left: 270px;
+	top: 310px;
+}
+#textD{
+	position: absolute;
+	left: 270px;
+	top: 330px;
+}
