@@ -1,0 +1,36 @@
+{
+	"__v": 6,
+	"_id": "Test_Check",
+	"numeTest": "Test Check",
+	"registeredUsers": []
+}
+{
+	"__v": 20,
+	"_id": "Test_Dnd",
+	"numeTest": "Test DND",
+	"registeredUsers": [
+		{
+			"_id": {
+				"$oid": "553636fd3027e2ed1089ac10"
+			},
+			"idUser": "54df3fd669606c6009912122",
+			"incercari": 1,
+			"lastAccessed": "23.04.2015"
+		}
+	]
+}
+{
+	"__v": 16,
+	"_id": "Test_Radio",
+	"numeTest": "Test Radio111",
+	"registeredUsers": [
+		{
+			"_id": {
+				"$oid": "55379a6b6faa588d6eda7fac"
+			},
+			"idUser": "54df3fd669606c6009912122",
+			"incercari": 1,
+			"lastAccessed": "-"
+		}
+	]
+}

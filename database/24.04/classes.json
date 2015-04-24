@@ -1,0 +1,140 @@
+{
+	"__v": 3,
+	"_id": {
+		"$oid": "552e6c02a8fa32551de0e3bb"
+	},
+	"credite": 3,
+	"day": "Monday",
+	"descriere": "descr1",
+	"end_time": "1:00",
+	"registeredUsers": [
+		{
+			"$oid": "54df3fd669606c6009912123"
+		},
+		{
+			"$oid": "54df3fd669606c6009912122"
+		}
+	],
+	"room": "g",
+	"start_time": "0:00",
+	"subject": "Math1",
+	"teacher": "1 1",
+	"tipExam": "Examen",
+	"user": {
+		"$oid": "548c36c78738fdec1c1f1918"
+	}
+}
+{
+	"__v": 4,
+	"_id": {
+		"$oid": "552e6c3da8fa32551de0e3bc"
+	},
+	"credite": 1,
+	"day": "Monday",
+	"descriere": "descr2",
+	"end_time": "2:00",
+	"registeredUsers": [
+		{
+			"$oid": "54df3fd669606c6009912122"
+		}
+	],
+	"room": "g2",
+	"start_time": "0:00",
+	"subject": "Math",
+	"teacher": "1 1",
+	"tipExam": "Examen",
+	"user": {
+		"$oid": "548c36c78738fdec1c1f1918"
+	}
+}
+{
+	"__v": 4,
+	"_id": {
+		"$oid": "552e7630665d320e2224b75d"
+	},
+	"credite": 1,
+	"day": "Monday",
+	"descriere": "descr43",
+	"end_time": "1:00",
+	"registeredUsers": [
+		{
+			"$oid": "54df3fd669606c6009912122"
+		}
+	],
+	"room": "g12",
+	"start_time": "0:00",
+	"subject": "Math12",
+	"teacher": "1 1",
+	"tipExam": "Examen",
+	"user": {
+		"$oid": "548c36c78738fdec1c1f1918"
+	}
+}
+{
+	"__v": 1,
+	"_id": {
+		"$oid": "552f82545c556a541ff1899d"
+	},
+	"credite": 3,
+	"day": "Monday",
+	"descriere": "descccc",
+	"end_time": "1:00",
+	"registeredUsers": [
+		{
+			"$oid": "54df3fd669606c6009912125"
+		},
+		{
+			"$oid": "54df3fd669606c6009912122"
+		}
+	],
+	"room": "MY room",
+	"start_time": "0:00",
+	"subject": "Math",
+	"teacher": "1 1",
+	"tipExam": "Examen",
+	"user": {
+		"$oid": "548c36c78738fdec1c1f1918"
+	}
+}
+{
+	"__v": 1,
+	"_id": {
+		"$oid": "552f82a35c556a541ff189a1"
+	},
+	"credite": 2,
+	"day": "Monday",
+	"descriere": "my desc2",
+	"end_time": "1:00",
+	"registeredUsers": [
+		{
+			"$oid": "54df3fd669606c6009912122"
+		}
+	],
+	"room": "my room 2",
+	"start_time": "0:00",
+	"subject": "My subj2",
+	"teacher": "1 1",
+	"tipExam": "Examen",
+	"user": {
+		"$oid": "548c36c78738fdec1c1f1918"
+	}
+}
+{
+	"__v": 0,
+	"_id": {
+		"$oid": "5537bc8d5fee28f401bf86f0"
+	},
+	"credite": 1,
+	"day": "Monday",
+	"descriere": "ddd",
+	"end_time": "1:00",
+	"registeredUsers": [],
+	"room": "asd",
+	"start_time": "0:00",
+	"subject": "fff",
+	"teacher": "1 1",
+	"tipExam": "Examen",
+	"user": {
+		"$oid": "548c36c78738fdec1c1f1918"
+	}
+}

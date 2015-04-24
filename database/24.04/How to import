@@ -1,0 +1,6 @@
+To import :
+mongoimport -d licentaDB -c classes --drop classes.json
+mongoimport -d licentaDB -c subjects --drop subjects.json
+mongoimport -d licentaDB -c tasks --drop tasks.json
+mongoimport -d licentaDB -c user_session --drop user_session.json
+mongoimport -d licentaDB -c users --drop users.json

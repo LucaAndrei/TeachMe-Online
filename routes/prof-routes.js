@@ -153,7 +153,7 @@ module.exports = function(app, db) {
                         grade.name = req.body.name;
                         grade.nota = req.body.nota;
                         grade.data = req.body.data;
-                        User.update({
+                        /*User.update({
                             '_id' :
                         },{
                             $push : {
@@ -164,16 +164,16 @@ module.exports = function(app, db) {
                                 return next(err);
                             }
                             res.json(grade);
-                        })
+                        })*/
                         //console.log("i am here")
                         //console.dir(grade)
-                        /*req.user.grades.push(grade); // Save the grade and also push the grade object in the user's grades array
+                        req.user.grades.push(grade); // Save the grade and also push the grade object in the user's grades array
                         req.user.save(function(err, user) {
                             if (err) {
                                 return next(err);
                             }
                             res.json(grade); // Send the grade back to the caller
-                        });*/
+                        });
                     }
                 }
             }
