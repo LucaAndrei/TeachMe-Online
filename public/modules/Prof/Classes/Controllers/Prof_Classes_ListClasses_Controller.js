@@ -1,17 +1,7 @@
-/*Since we are making a single page application and we don’t want any page refreshes, we’ll use Angular’s routing capabilities.
-
-Let’s look in our Angular file and add to our application. We will be using $routeProvider in Angular to handle our routing.
-This way, Angular will handle all of the magic required to go get a new file and inject it into our layout.
-
-Tutorial luat de pe : http://scotch.io/tutorials/javascript/single-page-apps-with-angularjs-routing-and-templating
-
-Pentru documentatie, vezi ce e scris in acest site.
-
-*/
 'use strict';
 var classes = [];
 var prof_classes_list_classes_controller = function($scope, $http, $state, $rootScope, $timeout, promise) {
-    console.log("prof_classes_list_classes_controller.js : ", userCredentials);
+    //console.log("prof_classes_list_classes_controller.js : ", userCredentials);
 
     $scope.userCredentials = userCredentials;
     $scope.emptyClassesList = null;
@@ -31,7 +21,6 @@ var prof_classes_list_classes_controller = function($scope, $http, $state, $root
     var class_id = null;
 
     $scope.checkIfEmpty = function() {
-        console.log("checkIfEmpty");
         if ($scope.classes.length > 0) {
             $scope.emptyClassesList = false;
         } else if ($scope.classes.length == 0) {
@@ -44,8 +33,6 @@ var prof_classes_list_classes_controller = function($scope, $http, $state, $root
 
 
     $scope.selectClass = function(mClass) {
-        console.log("select mClass : ");
-        console.dir(mClass);
         if (mClass.subject == "") {
             $scope.class_name = "-";
         } else {
@@ -100,16 +87,12 @@ var prof_classes_list_classes_controller = function($scope, $http, $state, $root
     }
 
     $scope.deleteClass = function() {
-        console.log("delete class  :" + class_id)
-        console.log("delete class   userCredentials._id:" + userCredentials._id)
         return $http.put('/api/users/deleteClass', {
             class_id: class_id
         }).success(function(data) {
-            console.log("correctly deleted");
             console.dir(data);
             $("#class_modal").modal('hide');
-            return $http.get('/api/users/listClasses').success(function(classes){
-                console.log("list classes after delete : ",classes)
+            return $http.get('/api/users/listClasses').success(function(classes) {
                 $scope.classes = classes;
                 $scope.checkIfEmpty();
             });
@@ -117,4 +100,3 @@ var prof_classes_list_classes_controller = function($scope, $http, $state, $root
     }
 
 }
-

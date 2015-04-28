@@ -38,7 +38,7 @@ module.exports = function(app, db) {
             if (err) {
                 //console.log("Error processing request. Cannot find user with this id.");
             } else if (user) {
-                console.log("user.grades",user.grades);
+                //console.log("user.grades",user.grades);
                 res.json(user.grades);
             }
         });
@@ -58,7 +58,7 @@ module.exports = function(app, db) {
             if (err) {
                 //console.log("Error processing request. Cannot find user with this id.");
             } else if (updated) {
-                console.log("updated : " + updated);
+                //console.log("updated : " + updated);
                 res.json(updated);
             }
         });

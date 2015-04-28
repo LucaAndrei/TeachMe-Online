@@ -34,8 +34,8 @@ module.exports = function(app, db) {
     app.post('/api/users/addClass', function(req, res, next) {
         console.log("app post /addClass")
         //console.log("req.user : " + req.user);
-        console.log("req.body : ",req.body);
-        console.log("req user",req.user)
+        //console.log("req.body : ",req.body);
+        //console.log("req user",req.user)
         // Create a new Class object based on the Class model. Set the properties received from the request.
         var mClass = new Class();
         mClass.subject = req.body.subject;
@@ -56,19 +56,19 @@ module.exports = function(app, db) {
             if(err) {
                 throw err;
             }
-            console.log("inserted : ", inserted);
+            //console.log("inserted : ", inserted);
             res.json(mClass);
         });
     });
 
     app.post('/api/users/addSubject', function(req, res) {
         console.log("app post /addSubject")
-        console.log("req.body",req.body)
+        //console.log("req.body",req.body)
         db.collection('subjects').insert({subject_name : req.body.name,user : req.body.userId}, function(err, inserted) {
             if(err) {
                 throw err;
             }
-            console.log("inserted : ", inserted);
+            //console.log("inserted : ", inserted);
             res.json(inserted);
         });
     });
@@ -81,7 +81,7 @@ module.exports = function(app, db) {
                 //console.log("err : " + err);
                 return next(err);
             }
-            console.log("subjectList : " + subjectList);
+            //console.log("subjectList : " + subjectList);
             res.json(subjectList);
         });
     });
@@ -101,9 +101,9 @@ module.exports = function(app, db) {
     });
 
      app.get('/api/users/registeredClasses/:user', function(req,res,next){
-        console.log("/registeredClasses/"+req.user_id)
+        console.log("/registeredClasses/"+req.user._id)
         Class.find({
-            "registeredUsers.idUser" : {$in : [req.user_id]}
+            "registeredUsers" : {$in : [req.user._id]}
         }, function(err, classList) {
             if (err) {
                 //console.log("err : " + err);
@@ -126,7 +126,7 @@ module.exports = function(app, db) {
             if (err) {
                 throw err;
             } else if (inserted) {
-                console.log("registered correctly")
+                //console.log("registered correctly")
                 res.json(inserted);
             }
         });

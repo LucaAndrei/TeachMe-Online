@@ -76,28 +76,36 @@ var db = mongoose.connection;
 
     // Application routes
     //routes(app, db);
-mongoose.connect('mongodb://127.0.0.1/licentaDB');
-var db = mongoose.connection;
+    mongoose.connect('mongodb://127.0.0.1/licentaDB');
+    var db = mongoose.connection;
 
-        require('./routes/routes.js')(app, db); // load our routes and pass in our app and fully configured passport
-        require('./routes/auth-routes.js')(app, db); // load our routes and pass in our app and fully configured passport
-        require('./routes/prof-routes.js')(app, db); // load our routes and pass in our app and fully configured passport
-        require('./routes/elev-routes.js')(app, db); // load our routes and pass in our app and fully configured passport
-        require('./routes/calendar-routes.js')(app, db); // load our routes and pass in our app and fully configured passport
-        require('./routes/class-routes.js')(app, db); // load our routes and pass in our app and fully configured passport
-
-
-
-    // catch 404 and forward to error handler
-    app.use(function(req, res, next) {
-        console.log("catch 404");
-        var err = new Error('Not Found');
-        err.status = 404;
-        res.send('404 route not found');
-        next(err);
-    });
+    require('./routes/routes.js')(app, db); // load our routes and pass in our app and fully configured passport
+    require('./routes/auth-routes.js')(app, db); // load our routes and pass in our app and fully configured passport
+    require('./routes/prof-routes.js')(app, db); // load our routes and pass in our app and fully configured passport
+    require('./routes/elev-routes.js')(app, db); // load our routes and pass in our app and fully configured passport
+    require('./routes/calendar-routes.js')(app, db); // load our routes and pass in our app and fully configured passport
+    require('./routes/class-routes.js')(app, db); // load our routes and pass in our app and fully configured passport
 
 
+
+        // catch 404 and forward to error handler
+       /* app.use(function(req, res, next) {
+            console.log("catch 404");
+            var err = new Error('Not Found');
+            err.status = 404;
+            res.send('404 route not found');
+            next(err);
+        });
+        app.use(errorHandler);
+
+
+      function errorHandler(err, req, res, next) {
+        console.log("errorHandler");
+        res.status(500);
+        res.render('403.ejs', { error: err });
+    }
+
+*/
 
     app.listen(8080);
     console.log('The magic happens on port 8080');

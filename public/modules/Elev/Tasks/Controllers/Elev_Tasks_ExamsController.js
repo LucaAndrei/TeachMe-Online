@@ -11,7 +11,6 @@ Pentru documentatie, vezi ce e scris in acest site.
 'use strict';
 var elev_tasks_exams_controller = function($scope, $http, $state, $rootScope, $timeout,exams){
     console.log("elev_tasks_exams_controller.js : ",userCredentials);
-    console.log("taskspromise");
     var examsArray = [];
     computeExamsArray(exams.data);
 

@@ -30,6 +30,8 @@ module.exports = function(passport){
             process.nextTick(function() {
             // find a user whose email is the same as the forms email
             // we are checking to see if the user trying to login already exists
+            console.log("password")
+            console.log(password);
             User.findOne({ 'email' :  email }, function(err, user) {
                 console.log("passports.js - /local-signup user.findone")
                 // if there are any errors, return the error

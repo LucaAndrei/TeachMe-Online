@@ -1,6 +1,7 @@
 // app/routes.js
 var User = require('../models/user');
 var Event = require('../models/event');
+var ObjectId = require('mongoose').Types.ObjectId;
 module.exports = function(app, db) {
 
     app.get('/api/users/calendar', function(req, res, next) {
@@ -17,13 +18,13 @@ module.exports = function(app, db) {
 
     app.put('/api/users/users/events/delete', function(req, res, next) {
         console.log("app put /users/events/delete/"+req.user_id + " with event id : " + req.body.eventId)
-        console.log(req.user_id)
+        //console.log(req.user_id)
         User.update({
             _id: req.user_id
         }, {
             $pull: {
                 "events": {
-                    "_id": req.body.eventId
+                    "_id": new ObjectId(req.body.eventId)
                 }
             }
         }, function(err, deleted) {
@@ -54,10 +55,9 @@ module.exports = function(app, db) {
             if (err) {
                 throw err;
             } else if (inserted) {
-                console.log("inserted : ",inserted);
+                //console.log("inserted : ",inserted);
                 res.json(event);
             }
         });
     });
-
 };

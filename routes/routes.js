@@ -8,43 +8,32 @@ var Event = require('../models/event');
 var Message = require('../models/message');
 module.exports = function(app, db) {
 
+
     app.use('/api',function(req,res, next){
-        console.log("is logged in middleware");
+        //console.log("is logged in middleware");
         var session_id = req.cookies.session;
         if(!session_id){
-            console.log("session is not set");
-            //return res.redirect('/');
-            //console.log("next",next);
-            //return next(new Error("forbidden"));
-            return res.send("Hello world")
+            //console.log("session is not set");
+            res.status(404).send('Not found');
+        } else {
+            //console.log("req.cookies.session",req.cookies.session);
+            db.collection('user_session').findOne({ '_id' : session_id }, function(err, session) {
+                "use strict";
+                if (!err && session) {
+                    req.user_id = session.user_id;
+                    return next();
+                }
+
+            });
         }
-        console.log("req.cookies.session",req.cookies.session);
-        db.collection('user_session').findOne({ '_id' : session_id }, function(err, session) {
-            "use strict";
-
-            /*if (err){
-                console.log("session findone err",err);
-            }
-
-            if (!session) {
-                console.log("session not found");
-                return next();
-            }*/
-
-            if (!err && session) {
-                console.log("req.username",session.username);
-                req.username = session.username;
-                req.user_id = session.user_id;
-                req.myTest = "myTestasdfg";
-                return next();
-            }
-
-        });
     });
+
+
+
 
     app.get("/cookie",function(req,res, next){
        console.log("cookie /cookie");
-       console.log("req.cookies",req.cookies)
+       //console.log("req.cookies",req.cookies)
         var session_id = req.cookies.session;
         if(session_id){
             console.log("/cookie req.cookies.session",req.cookies.session);
@@ -61,7 +50,6 @@ module.exports = function(app, db) {
                 }
 
                 if (!err && session) {
-                    console.log("cookie session.username",session.username);
                     User.findOne({_id : session.user_id},function(err,user){
                         if(err) {
                             console.log("err")
@@ -73,7 +61,8 @@ module.exports = function(app, db) {
                 //return next();
             });
         } else {
-            console.log("return");
+            console.log("no cookie.return");
+            //res.status(404).send('Not found');
             res.json();
         }
     });

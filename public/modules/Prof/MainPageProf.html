@@ -17,8 +17,8 @@
                 <a style="cursor:pointer" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{userCredentials.nume}} {{userCredentials.prenume}} <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a ui-sref="account_prof.profile_settings"><i class="fa fa-fw fa-power-off"></i> Settings</a>
-                        <a style="cursor:pointer" ng-click="logout()"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                        <a ui-sref="account_prof.profile_settings"><i class="fa fa-fw fa-power-off"></i> Setari</a>
+                        <a style="cursor:pointer" ng-click="logout()"><i class="fa fa-fw fa-power-off"></i> Logout</a>
                     </li>
                 </ul>
             </li>
@@ -27,31 +27,31 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav my-nav">
                 <li>
-                    <a ui-sref="account_prof.dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                    <a ui-sref="account_prof.dashboard"><i class="fa fa-fw fa-dashboard"></i> Acasa</a>
                 </li>
                 <li>
                     <a ui-sref="account_prof.calendar"><i class="fa fa-fw fa-calendar"></i> Calendar</a>
                 </li>
                 <li>
-                    <a ui-sref="account_prof.grades"><i class="fa fa-fw fa-pencil"></i> Grades</a>
+                    <a ui-sref="account_prof.grades"><i class="fa fa-fw fa-pencil"></i> Catalog</a>
                 </li>
                 <li>
-                    <a ui-sref="account_prof.classes"><i class="fa fa-fw fa-university"></i> Classes</a>
+                    <a ui-sref="account_prof.classes"><i class="fa fa-fw fa-university"></i> Cursuri</a>
                 </li>
                 <li>
                     <a ui-sref="account_prof.chat"><i class="fa fa-fw fa-group"></i> Chat</a>
                 </li>
                 <li>
-                    <a ui-sref="account_prof.users"><i class="fa fa-fw fa-group"></i> Users</a>
+                    <a ui-sref="account_prof.users"><i class="fa fa-fw fa-group"></i> Utilizatori</a>
                 </li>
                 <li>
-                    <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Tasks <i class="fa fa-fw fa-caret-down"></i></a>
+                    <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Task <i class="fa fa-fw fa-caret-down"></i></a>
                     <ul id="demo" class="collapse">
                         <li>
-                            <a ui-sref="account_prof.exams">Exams</a>
+                            <a ui-sref="account_prof.homework">Teme</a>
                         </li>
                         <li>
-                            <a ui-sref="account_prof.homework">Homework</a>
+                            <a ui-sref="account_prof.exams">Examene</a>
                         </li>
                     </ul>
                 </li>

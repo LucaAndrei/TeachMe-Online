@@ -2,7 +2,7 @@
     <form id="new-class-form" autocomplete="off" action="/signup" method="post">
         <header class="icon">
             <div class="text">
-                <p class="heading"><i class="fa fa-fw fa-columns fa-2x"></i>New Class</p>
+                <p class="heading"><i class="fa fa-fw fa-columns fa-2x"></i>Curs Nou</p>
             </div>
         </header>
 
@@ -11,7 +11,7 @@
     <!-- Display Popup Button -->
         <div class="new-class-field">
 
-                <em>Subject</em>
+                <em>Materie</em>
                 <select class="" id="classSubject">
                     <option ng-repeat="subject in subjects">{{subject.subject_name}}</option>
                 </select>
@@ -21,11 +21,11 @@
 
                 <div class="alert alert-danger" role="alert" ng-show="error_subject == true">
                     <span class="fa fa-fw fa-exclamation-circle" aria-hidden="true"></span>
-                    <span class="sr-only">Error:</span>You need to specify the subject
+                    <span class="sr-only">Eroare:</span>Trebuie sa specificati materia
                 </div>
                  <div class="alert alert-danger" role="alert" ng-show="error_subjectListEmpty == true">
                     <span class="fa fa-fw fa-exclamation-circle" aria-hidden="true"></span>
-                    <span class="sr-only">Error:</span>No subjects added. click o nthe plus sign to add a subject
+                    <span class="sr-only">Eroare:</span>Nu a fost adaugat nicio materie. Apasati pe semnul 'Plus' pentru a adauga o materie noua
                 </div>
         </div>
         <div class="new-class-field">
@@ -33,7 +33,7 @@
                 <input type="number" value="1" min="1" max="10" step="1" id="classCredite"/>
         </div>
         <div class="new-class-field">
-                <em>Exam</em>
+                <em>Tip examen</em>
                 <label >
                     <input type="radio" id="exam" name="tipExamen" checked="checked" value="Examen" /> Examen
                 </label>
@@ -43,15 +43,15 @@
                 </label>
         </div>
         <div class="new-class-field">
-                <em>Room</em>
+                <em>Sala</em>
                 <input class="ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength ng-valid-minlength" type="text" ng-maxlength="50" ng-minlength="2" name="name" id="classRoom">
                 <div class="alert alert-danger" role="alert" ng-show="error_room == true">
                     <span class="fa fa-fw fa-exclamation-circle" aria-hidden="true"></span>
-                    <span class="sr-only">Error:</span>You need to specify the room
+                    <span class="sr-only">Eroare:</span>Trebuie sa specificati sala
                 </div>
         </div>
         <div class="new-class-field">
-                <em>Day</em>
+                <em>Zi</em>
                 <select class="" id="classDay">
                     <option ng-repeat="day in days">{{day}}</option>
                 </select>
@@ -65,7 +65,7 @@
 
                 <div class="alert alert-danger" role="alert" ng-show="error_time == true">
                     <span class="fa fa-fw fa-exclamation-circle" aria-hidden="true"></span>
-                    <span class="sr-only">Error:</span>Invalid hours
+                    <span class="sr-only">Eroare:</span>Orele introduse sunt invalide.
                 </div>
                 <script type="text/javascript">
                     $(document).ready(function () {
@@ -78,16 +78,16 @@
 
         </div>
         <div class="new-class-field">
-                <em>Teacher</em>
+                <em>Profesor</em>
                 <input class="ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength ng-valid-minlength" type="text" ng-maxlength="50" ng-minlength="2" required="" name="name" id="classTeacher" ng-model="teacher.name" disabled />
         </div>
         <div class="new-class-field">
             <em>Descriere [optional]</em>
-            <textarea placeholder="Describe what will be studied here..." class="form-control" id="descriptionClass" rows="3" style="resize:none"></textarea>
+            <textarea placeholder="Descrie aici ce va fi studiat la curs..." class="form-control" id="descriptionClass" rows="3" style="resize:none"></textarea>
          </div>
         <div class="addNewClassBtns clearfix">
-            <button type="button" ng-click="addNewClass(currentUser)" class="btn btn-primary btn-lg dark-blue-btn">Save</button>
-            <button type="button" ui-sref="account_prof.classes" class="btn btn-primary btn-lg dark-blue-btn">Cancel</button>
+            <button type="button" ng-click="addNewClass(currentUser)" class="btn btn-primary btn-lg dark-blue-btn">Adauga</button>
+            <button type="button" ui-sref="account_prof.classes" class="btn btn-primary btn-lg dark-blue-btn">Inchide</button>
         </div>
     </form>
 
@@ -99,34 +99,32 @@
           <div class="modal-header icon">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <div class="text">
-                        <p class="heading ng-binding" ><i class="fa fa-fw fa-book fa-2x"></i>New Subject</p>
+                        <p class="heading ng-binding" ><i class="fa fa-fw fa-book fa-2x"></i>Materie Noua</p>
                     </div>
           </div>
           <div class="modal-body">
                     <form class="ng-pristine ng-invalid ng-invalid-required" novalidate="" autocomplete="off" action="/addNewClass" method="post" name="subjectForm">
                             <div class="with-color-picker clearfix">
                                 <div>
-                                    <em>Name</em>
+                                    <em>Nume</em>
                                     <input class="ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength ng-valid-minlength" type="text" ng-maxlength="50" ng-minlength="2" required="" name="name" id="subjectName">
                                     <div class="alert alert-danger" role="alert" ng-show="error_empty_string == true">
                                         <span class="fa fa-fw fa-exclamation-circle" aria-hidden="true"></span>
-                                        <span class="sr-only">Error:</span>Empty string
+                                        <span class="sr-only">Eroare:</span>Numele materiei trebuie completat
                                     </div>
                                 </div>
                             </div>
                         <div class="text">
-                            <h4>What Are Subjects?</h4>
-                            <p>Subjects are also known as courses and enable you to group all of your classes, tasks and exams for that course.</p>
                             <div class="alert alert-danger" role="alert" ng-if="subjectExists == true">
                                 <span class="fa fa-fw fa-exclamation-circle" aria-hidden="true"></span>
-                                <span class="sr-only">Error:</span>A subject with this name already exists
+                                <span class="sr-only">Eroare:</span>O materie cu acest nume exista deja
                             </div>
                         </div>
                     </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary btn-lg dark-blue-btn" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary btn-lg dark-blue-btn" ng-click="addNewSubject()" >Save</button>
+            <button type="button" class="btn btn-primary btn-lg dark-blue-btn" data-dismiss="modal">Inchide</button>
+            <button type="button" class="btn btn-primary btn-lg dark-blue-btn" ng-click="addNewSubject()">Adauga</button>
           </div>
         </div>
       </div>

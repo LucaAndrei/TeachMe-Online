@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="intro-text">
-                <span class="name">Sign-up</span>
+                <span class="name">Inregistrare</span>
                     <hr class="star-white">
                 </div>
             </div>
@@ -14,61 +14,63 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
-                <form id="contactForm" action="/signup" method="post">
+                <form id="contactForm" ><!-- action="/signup" method="post" -->
                     <div class="row control-group">
                         <div class="form-group floating-label-form-group col-xs-12">
                             <label>Nume</label>
-                            <input type="text" class="form-control" placeholder="Nume" id="nume" name="nume" required data-validation-required-message="Va rugam introduceti numele dumneavoastra.">
-                            <p class="help-block text-danger"></p>
+                            <input type="text" class="form-control" ng-model="nume" placeholder="Nume" id="nume" name="nume">
                         </div>
                     </div>
                     <div class="row control-group">
                         <div class="form-group floating-label-form-group col-xs-12">
                             <label>Prenume</label>
-                            <input type="text" class="form-control" placeholder="Prenume" id="prenume" name="prenume" required data-validation-required-message="Va rugam introduceti prenumele dumneavoastra.">
-                            <p class="help-block text-danger"></p>
+                            <input type="text" class="form-control" ng-model="prenume" placeholder="Prenume" id="prenume" name="prenume">
                         </div>
                     </div>
                     <div class="row control-group">
                         <div class="form-group floating-label-form-group col-xs-12">
                             <label>E-mail</label>
-                            <input type="text" class="form-control" placeholder="E-mail" id="email" name="email" required data-validation-required-message="Va rugam introduceti e-mailul dumneavoastra.">
-                            <p class="help-block text-danger"></p>
+                            <input type="text" class="form-control" ng-model="email" placeholder="E-mail" id="email" name="email">
+                        </div>
+                        <div role="alert" ng-show="error_register_email == true">
+                            <span class="sr-only">Eroare:</span>Exista un user inregistrat cu acest email.
                         </div>
                     </div>
                     <div class="row control-group">
                         <div class="form-group floating-label-form-group col-xs-12">
                             <label>Parola</label>
-                            <input type="password" class="form-control" placeholder="Parola" id="password" name="password" required data-validation-required-message="Va rugam introduceti parola.">
-                            <p class="help-block text-danger"></p>
+                            <input type="password" class="form-control" ng-model="password" placeholder="Parola" id="password" name="password">
                         </div>
                     </div>
                     <div class="row control-group">
                         <div class="form-group floating-label-form-group col-xs-12">
                             <label>Facultate</label>
-                            <input type="text" class="form-control" placeholder="Facultate" id="facultate" name="facultate" required data-validation-required-message="Va rugam introduceti facultatea la care studiati.">
-                            <p class="help-block text-danger"></p>
+                            <input type="text" class="form-control" ng-model="facultate" placeholder="Facultate" id="facultate" name="facultate">
                         </div>
                     </div>
                     <br />
                     <div class="row control-group">
                         <div class="checkbox">
-                            <label><input type="checkbox" name="tipUser" value="teacher">Teacher</label>
+                            <label><input type="checkbox" id="tipUser" name="tipUser" value="teacher">Profesor</label>
                         </div>
+                    </div>
+                    <div class="alert alert-danger" role="alert" ng-show="error_register == true">
+                        <span class="fa fa-fw fa-exclamation-circle" aria-hidden="true"></span>
+                        <span class="sr-only">Eroare:</span>Inregistrarea nu s-a putut efectua. Va rugam reincercati.
                     </div>
                     <br /><br />
                     <div class="row">
                         <div class="form-group col-xs-12">
-                            <button type="submit" class="btn btn-primary btn-lg">Register</button>
+                            <button type="submit" class="btn btn-primary btn-lg" ng-click="sendSignUp()">Inregistrare</button>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-xs-12">
                             <div class="col-lg-4 col-lg-offset-4">
                                 <div style="border-top: 1px solid#FFF; padding-top:15px; font-size:85%" >
-                                    Already have an account?
+                                    Ai deja un cont?
                                     <a ui-sref="root.login" class="ng-click-pointer">
-                                        Sign In Here
+                                        Autentifica-te aici
                                     </a>
                                 </div>
                             </div>

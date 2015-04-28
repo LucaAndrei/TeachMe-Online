@@ -1,5 +1,5 @@
 var DEBUG = true;
-var account_prof = angular.module('account_prof', ['ui.router','main_app']).
+var account_prof = angular.module('account_prof', ['ui.router', 'main_app']).
 config(function($stateProvider, $urlRouterProvider) {
     'use strict';
     //console.log("state : " + $state.$current)
@@ -8,16 +8,26 @@ config(function($stateProvider, $urlRouterProvider) {
             parent: 'root',
             url: "",
             templateUrl: "modules/Prof/MainPageProf.html",
-            controller : function($scope,$state,$http,$rootScope){
-                $scope.logout = function(){
-                    //userCredentials = null;
-                    //$state.go('root.mainpage');
-                    $http.get('/api/users/logout').success(function(data){
-                        console.log("data on logout",data);
-                        userCredentials = null;
-                        $rootScope.userCredentials = null;
-                        $state.go("root.mainpage")
+            controller: function($scope, $state, $http, $rootScope) {
+                $scope.logout = function() {
+                    console.log("logging out");
+                    return $http.get("/cookie").success(function(data) {
+                        console.log("/cookie data ", data);
+                        if (data != null && data != "") {
+                            $http.get('/logout').success(function(data) {
+                                console.log("data on logout", data);
+                                userCredentials = null;
+                                $rootScope.userCredentials = null;
+                                $state.go("root.mainpage")
+                            })
+                        } else {
+                            console.log("no cookie. set user credentials to null")
+                            userCredentials = null;
+                            $rootScope.userCredentials = null;
+                            $state.go("root.mainpage")
+                        }
                     })
+
                 }
                 console.log("aicishaaaaaa<<<<<<<<<<<<<<<<<<<")
                 $state.go("account_prof.dashboard")
@@ -36,7 +46,7 @@ config(function($stateProvider, $urlRouterProvider) {
             controller: calendar_controller,
             resolve: {
                 calendar_events: function($http) {
-                    return $http.get('/api/users/calendar').success(function(data){
+                    return $http.get('/api/users/calendar').success(function(data) {
                         console.log("calendarService -> data : " + data);
                     });
                 }
@@ -59,15 +69,15 @@ config(function($stateProvider, $urlRouterProvider) {
             templateUrl: "/modules/Prof/Grades/Templates/Prof_Grades_UsersGrades.html",
             controller: prof_grades_users_grades_controller,
             resolve: {
-                usersClasses : function($http,$stateParams){
-                    return $http.get('/api/users/registeredClasses/'+ $stateParams.ID).success(function(data) {
+                usersClasses: function($http, $stateParams) {
+                    return $http.get('/api/users/registeredClasses/' + $stateParams.ID).success(function(data) {
                         console.log("promise usersClasses", data);
                     });
                 },
-                selectedUserPromise:function($http,$stateParams){
+                selectedUserPromise: function($http, $stateParams) {
                     console.log("selectedUserPromise : " + $stateParams.ID)
                     return $http.get('/api/users/getSelectedUser/' + $stateParams.ID).success(function(data) {
-                        console.log(">>>>>>>>>>>>> getSelectedUser selectedUserPromise-> data : ",data);
+                        console.log(">>>>>>>>>>>>> getSelectedUser selectedUserPromise-> data : ", data);
                     });
                 }
             }
@@ -89,8 +99,8 @@ config(function($stateProvider, $urlRouterProvider) {
             templateUrl: "/modules/Prof/Classes/Templates/Prof_Classes_ListClasses.html",
             controller: prof_classes_list_classes_controller,
             resolve: {
-                promise : function($http){
-                    return $http.get('/api/users/listClasses').success(function(data){
+                promise: function($http) {
+                    return $http.get('/api/users/listClasses').success(function(data) {
                         console.log("list classes promise data", data);
                     })
                 }
@@ -101,8 +111,8 @@ config(function($stateProvider, $urlRouterProvider) {
             templateUrl: "/modules/Prof/Classes/Templates/Prof_Classes_NewClass.html",
             controller: prof_classes_new_class_controller,
             resolve: {
-                promise : function($http){
-                    return $http.get('/api/users/listSubjects').success(function(data){
+                promise: function($http) {
+                    return $http.get('/api/users/listSubjects').success(function(data) {
                         console.log("new class promise data", data);
                     })
                 }
@@ -126,7 +136,6 @@ config(function($stateProvider, $urlRouterProvider) {
             controller: prof_homework_controller,
             resolve: {
                 promise: function($http) {
-                    console.log("userCredentials",userCredentials._id)
                     return $http.get('/api/users/listUsers').success(function(data) {
                         console.log("promise data", data);
                     });
@@ -138,15 +147,15 @@ config(function($stateProvider, $urlRouterProvider) {
             templateUrl: "/modules/Prof/Tasks/Templates/Prof_Tasks_UsersExams.html",
             controller: prof_tasks_users_exams_controller,
             resolve: {
-                selectedUserPromise:function($http,$stateParams){
+                selectedUserPromise: function($http, $stateParams) {
                     console.log("selectedUserPromise : " + $stateParams.ID)
                     return $http.get('/api/users/getSelectedUser/' + $stateParams.ID).success(function(data) {
-                        console.log(">>>>>>>>>>>>> getSelectedUser selectedUserPromise-> data : ",data);
+                        console.log(">>>>>>>>>>>>> getSelectedUser selectedUserPromise-> data : ", data);
                     });
                 },
-                tasksPromise : function($http){
+                tasksPromise: function($http) {
                     return $http.get('/api/users/tasks').success(function(data) {
-                        console.log(">>>>>>>>>>>>> usersExams tasks-> data : ",data);
+                        console.log(">>>>>>>>>>>>> usersExams tasks-> data : ", data);
                     });
                 }
             }
@@ -172,11 +181,6 @@ config(function($stateProvider, $urlRouterProvider) {
                     return $http.get('/api/users/listUsers').success(function(data) {
                         console.log("promise data", data);
                     });
-                },
-                online_users_promise : function($http){
-                    return $http.get('/api/users/listUsers').success(function(data) {
-                        console.log("promise data", data);
-                    });
                 }
             }
         });
@@ -185,9 +189,16 @@ config(function($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.otherwise('/dashboard');
 
-}).run(function($rootScope, $http) {
+}).run(function($rootScope, $http, $state) {
     console.log("run profApp");
     $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
         console.log('error:', error, 'toState:', toState);
+        console.log(error)
+        if (error.status == "404") {
+            console.log("this is a 404 error");
+            //var url = $location.url();
+            //console.log("url",url);
+            $state.go("root.mainpage")
+        }
     });
 });
