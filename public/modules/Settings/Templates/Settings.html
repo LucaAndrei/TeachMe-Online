@@ -27,7 +27,7 @@ Settings.html
                     </tr>
                     <tr>
                         <td class="col-md-6">Prenume</td>
-                        <td class="col-md-6"><input type="text" id="prenumeUpdate" style="text-align:center" value={{userCredentials.prenume}}></td>.
+                        <td class="col-md-6"><input type="text" id="prenumeUpdate" style="text-align:center" value={{userCredentials.prenume}}></td>
                         <div class="alert alert-danger" role="alert" ng-show="error_prenumeUpdate == true">
                             <span class="fa fa-fw fa-exclamation-circle" aria-hidden="true"></span>
                             <span class="sr-only">Error:</span>You need to specify the prenume
@@ -41,6 +41,18 @@ Settings.html
                             <span class="sr-only">Error:</span>You need to specify the email
                         </div>
                     </tr>
+                    <tr>
+                        <td class="col-md-6" >
+                            <div class="col-md-6 col-md-offset-3">
+                            <img ng-src="{{userCredentials.imgPath}}" style="width:64px; height:64px" class="img-circle" />
+                            </div>
+                        </td>
+                        <td class="col-md-6" style="text-align:center">
+                            <a data-toggle="modal" data-target="#upload_pic">
+                                <button type="button" class="btn btn-primary btn-lg">Adauga poza</button>
+                            </a>
+                        </td>
+                    </tr>
                 </div>
             </table>
             <br />
@@ -49,3 +61,29 @@ Settings.html
         </div>
     </div>
 </div>
+
+
+    <div class="modal fade" id="upload_pic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header icon">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <div class="text">
+                        <p class="heading ng-binding" ><i class="fa fa-fw fa-file-image-o fa-2x"></i>Adauga poza</p>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <form class="ng-pristine ng-invalid ng-invalid-required" novalidate="" autocomplete="off" action="/upload" enctype="multipart/form-data" method="post" name="uploadPictureForm">
+                        Cauta poza: <br><br><input name="upload" type="file" />
+                        <br><br>
+                        *Dupa upload veti fi redirectionat catre pagina principala
+                        <br><br>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary btn-lg dark-blue-btn" data-dismiss="modal">Inchide</button>
+                            <button type="submit" class="btn btn-primary btn-lg dark-blue-btn">Upload</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -14,6 +14,11 @@ var mongoose = require('mongoose');
 //var bodyParser = require('body-parser');
 var MongoClient = require('mongodb').MongoClient;//Driver for connecting to MongoDB
 
+var formidable = require('formidable'),
+    util = require('util')
+    fs   = require('fs-extra'),
+    qt   = require('quickthumb');
+
 //var routes = require('./routes'); // Routes for our application
 
 var path = require('path');
@@ -72,7 +77,8 @@ var db = mongoose.connection;
     app.use(express.cookieParser());
 
     // Express middleware to populate 'req.body' so we can access POST variables
-    app.use(express.bodyParser());
+    //app.use(express.bodyParser());
+    app.use(express.json()).use(express.urlencoded())
 
     // Application routes
     //routes(app, db);
@@ -85,7 +91,6 @@ var db = mongoose.connection;
     require('./routes/elev-routes.js')(app, db); // load our routes and pass in our app and fully configured passport
     require('./routes/calendar-routes.js')(app, db); // load our routes and pass in our app and fully configured passport
     require('./routes/class-routes.js')(app, db); // load our routes and pass in our app and fully configured passport
-
 
 
         // catch 404 and forward to error handler

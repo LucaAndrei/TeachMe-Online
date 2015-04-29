@@ -43,7 +43,7 @@ var calendar_controller = function($scope, $http, $state, $rootScope, $timeout, 
                 start: start,
                 end: end
             };
-            $http.put('/api/users/users/events', event).success(function(data) {
+            $http.put('/api/users/events', event).success(function(data) {
                 $("#msg-correct").css("display", "block");
                 setTimeout(function() {
                     $("#msg-correct").css("display", "none");
@@ -57,7 +57,7 @@ var calendar_controller = function($scope, $http, $state, $rootScope, $timeout, 
     }
 
     deleteEventById = function(eventId) {
-        return $http.put('/api/users/users/events/delete', eventId).success(function(data) {
+        return $http.put('/api/users/events/delete', eventId).success(function(data) {
             $("#msg-delete").css("display", "block");
             setTimeout(function() {
                 $("#msg-delete").css("display", "none");

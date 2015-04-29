@@ -6,6 +6,9 @@ var Class = require('../models/class');
 var Grade = require('../models/grade');
 var Event = require('../models/event');
 var Message = require('../models/message');
+var formidable = require('formidable'),
+    util = require('util')
+    fs   = require('fs-extra');
 module.exports = function(app, db) {
 
 
@@ -23,7 +26,6 @@ module.exports = function(app, db) {
                     req.user_id = session.user_id;
                     return next();
                 }
-
             });
         }
     });
@@ -102,5 +104,74 @@ module.exports = function(app, db) {
             res.json(updated);
         });
     });
+
+
+
+
+    app.post('/upload', function (req, res){
+            console.log("/////////upload")
+            console.log("req.user_id",req.user)
+          var form = new formidable.IncomingForm();
+          form.on('end', function(fields, files) {
+            /* Temporary location of our uploaded file */
+            console.log("this",this.openedFiles[0].path.split("/tmp/")[1])
+            var temp_path = this.openedFiles[0].path;
+            /* The file name of the uploaded file */
+            var file_name = this.openedFiles[0].name;
+            /* Location where we want to copy the uploaded file */
+            var new_location = 'public/images/uploads/';
+            if(file_name == ""){
+                console.log("file name is empty")
+                var session_id = req.cookies.session;
+                db.collection('user_session').findOne({ '_id' : session_id }, function(err, session) {
+                    "use strict";
+                    User.update({_id : session.user_id},{
+                        $set : {
+                            "imgPath" : "images/uploads/dummyuser.png"
+                        }
+                    },function(err,updated){
+                        if(err){
+                            console.log("error finding user")
+                        }
+                        console.log("img path updated : "+ updated)
+                        //console.log("user found",user)
+                    })
+                });
+            } else {
+                var session_id = req.cookies.session;
+                db.collection('user_session').findOne({ '_id' : session_id }, function(err, session) {
+                    "use strict";
+                    var new_file_name = session.user_id + "_" + file_name;
+                    fs.copy(temp_path, new_location + new_file_name, function(err) {
+                      if (err) {
+                        console.error(err);
+                      } else {
+                        console.log("success!")
+                        User.update({_id : session.user_id},{
+                            $set : {
+                                "imgPath" : "images/uploads/"+new_file_name
+                            }
+                        },function(err,updated){
+                            if(err){
+                                console.log("error finding user")
+                            }
+                            console.log("img path updated : "+ updated)
+                            //console.log("user found",user)
+                        })
+                      }
+                    });
+                });
+
+            }
+          });
+          form.parse(req, function(err, fields, files) {
+            console.log("here")
+            res.redirect('/')
+          });
+    });
+
+
+
+
 };
 

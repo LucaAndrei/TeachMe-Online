@@ -37,20 +37,21 @@ module.exports = function(app, db) {
         //console.log("req.body : ",req.body);
         //console.log("req user",req.user)
         // Create a new Class object based on the Class model. Set the properties received from the request.
-        var mClass = new Class();
-        mClass.subject = req.body.subject;
-        mClass.credite = req.body.credite;
-        mClass.tipExam = req.body.tipExam;
-        mClass.room = req.body.room;
-        mClass.day = req.body.day;
-        mClass.start_time = req.body.start_time;
-        mClass.end_time = req.body.end_time;
-        mClass.teacher = req.body.teacher;
-        mClass.descriere = req.body.descriere;
-        mClass.user = req.user_id;
-        mClass.registeredUsers = req.body.registeredUsers;
+        var mClass = {
+            subject : req.body.subject,
+            credite : req.body.credite,
+            tipExam : req.body.tipExam,
+            room : req.body.room,
+            day : req.body.day,
+            start_time : req.body.start_time,
+            end_time : req.body.end_time,
+            teacher : req.body.teacher,
+            descriere : req.body.descriere,
+            user : req.user_id,
+            registeredUsers : req.body.registeredUsers
+        }
 
-        console.dir(mClass)
+        //console.log(mClass)
 
         db.collection('classes').insert(mClass, function(err, inserted) {
             if(err) {

@@ -4,7 +4,7 @@ var prof_classes_new_class_controller = function($scope, $http, $state, $rootSco
     //console.log("prof_classes_new_class_controller.js : ", userCredentials);
     $scope.userCredentials = userCredentials;
     $scope.subjects = promise.data;
-    $scope.days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+    $scope.days = ['Luni', 'Marti', 'Miercuri', 'Joi', 'vineri'];
     $scope.subjectExists = false;
     $scope.error_subjectListEmpty = false;
     $scope.teacher = {
@@ -66,10 +66,10 @@ var prof_classes_new_class_controller = function($scope, $http, $state, $rootSco
         var t = $('#classRoom').val();
 
 
-        var start_time_hour = $('#start_time').val().split(":")[0];
-        var end_time_hour = $('#end_time').val().split(":")[0];
-        var start_time_minutes = $('#start_time').val().split(":")[1];
-        var end_time_minutes = $('#end_time').val().split(":")[1];
+        var start_time_hour = parseInt($('#start_time').val().split(":")[0]);
+        var end_time_hour = parseInt($('#end_time').val().split(":")[0]);
+        var start_time_minutes = parseInt($('#start_time').val().split(":")[1]);
+        var end_time_minutes = parseInt($('#end_time').val().split(":")[1]);
 
         if ($('#classRoom').val() == "") {
             $scope.error_room = true;

@@ -45,6 +45,22 @@ module.exports = function(app, db) {
             });
     });
 
+    app.get('/api/users/prof_classes/:day', function(req, res, next) {
+        console.log("/api/users/my_classes")
+        console.log("req.body",req.params.day)
+        Class.find({
+            user: req.user_id,
+            day : req.params.day
+        }, function(err, classList) {
+            if (err) {
+                //console.log("Error processing request. Cannot find user with this id.");
+            } else if (classList) {
+                console.log("classList",classList);
+                res.json(classList);
+            }
+        });
+    });
+
     app.get('/api/users/getSelectedUser/:user', function(req, res, next) {
         console.log("app get /users/tasks/:user : "); // + req.user)
         res.json(req.user);
@@ -82,20 +98,19 @@ module.exports = function(app, db) {
             } else if (user) {
                 if (user.grades.length == 0) {
                     var grade = new Grade();
-                    grade.user = req.user;
+                    grade.user = req.body.user;
                     grade.name = req.body.name;
                     grade.nota = req.body.nota;
                     grade.data = req.body.data;
                     console.dir(grade)
-                    req.user.grades.push(grade); // Save the grade and also push the grade object in the user's grades array
-                    req.user.save(function(err, user) {
+                    user.grades.push(grade); // Save the grade and also push the grade object in the user's grades array
+                    user.save(function(err, user) {
                         if (err) {
                             return next(err);
                         }
                         res.json(grade); // Send the grade back to the caller
                     });
                 } else {
-                    console.log("in else")
                     for (var i = 0; i < user.grades.length; i++) {
                         //console.log(">>>id : "  + user.grades[i]._id);
                         if (req.body.uid == user.grades[i]._id) {
@@ -124,7 +139,7 @@ module.exports = function(app, db) {
                     }
                     if (flag == false) {
                         var grade = new Grade();
-                        grade.user = req.user;
+                        grade.user = req.body.user;
                         grade.name = req.body.name;
                         grade.nota = req.body.nota;
                         grade.data = req.body.data;

@@ -8,6 +8,7 @@ var userSchema = mongoose.Schema({
 		password : String,
 		facultate : String,
 		tipUser : String,
+		imgPath : String,
 		tasks: [{type:mongoose.Schema.Types.Mixed, ref: 'Task'}],
 		subjects: [{type:mongoose.Schema.Types.Mixed, ref: 'Subject'}],
 		grades: [{type:mongoose.Schema.Types.Mixed, ref: 'Grade'}],

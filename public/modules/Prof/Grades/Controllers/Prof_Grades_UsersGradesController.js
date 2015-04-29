@@ -76,9 +76,9 @@ var prof_grades_users_grades_controller = function($scope, $http, $state, $rootS
         var x = $("#selectedUserSubject-" + customId).val(); // this takes the value from the subject names select list from the frontend
         var y = $("#selectedUserGrade-" + customId).val();
         var gradeToSave;
+        var tmp_index;
         for (var i = 0; i < selectedUserGrades.length; i++) {
             if (selectedUserGrades[i].customId == customId) {
-                console.log(selectedUserGrades[i])
                 selectedUserGrades[i].validated = true;
                 selectedUserGrades[i].editing = false;
                 selectedUserGrades[i].nume = $scope.gradesNames[x]; // this maps the value from the subject names select list from the frontend to a string
@@ -91,11 +91,13 @@ var prof_grades_users_grades_controller = function($scope, $http, $state, $rootS
                     uid: selectedUserGrades[i].uid,
                     user : selectedUserGrades[i].user
                 }
+                tmp_index = i;
                 break;
             }
         }
         return $http.put('/api/users/grades', gradeToSave).success(function(data) {
             $scope.disableAddRow = false;
+            selectedUserGrades[tmp_index].uid = data._id;
         });
     };
 
@@ -128,6 +130,7 @@ var prof_grades_users_grades_controller = function($scope, $http, $state, $rootS
         $scope.disableAddRow = true;
         for (var i = 0; i < selectedUserGrades.length; i++) {
             if (selectedUserGrades[i].customId == customId) {
+
                 selectedUserGrades[i].validated = false;
                 selectedUserGrades[i].editing = true;
                 $scope.gradesArray[i].editing = true;

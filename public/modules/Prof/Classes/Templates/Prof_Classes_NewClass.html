@@ -59,9 +59,9 @@
         <div class="new-class-field">
                 <em>Ora</em>
 
-                <input type="text" style="width : 80px" id="start_time" name="start_time" class="timepicker" placeholder="h:mm" data-default-time="false" value="0:00">
+                <input type="text" style="width : 80px" id="start_time" name="start_time" class="timepicker" placeholder="h:mm" data-default-time="false" value="8:00">
                 to
-                <input type="text" style="width : 80px" id="end_time" name="end_time" class="timepicker" placeholder="h:mm" data-default-time="false" value="0:00">
+                <input type="text" style="width : 80px" id="end_time" name="end_time" class="timepicker" placeholder="h:mm" data-default-time="false" value="10:00">
 
                 <div class="alert alert-danger" role="alert" ng-show="error_time == true">
                     <span class="fa fa-fw fa-exclamation-circle" aria-hidden="true"></span>
@@ -94,26 +94,26 @@
 
 
     <div class="modal fade" id="new_subject_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header icon">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <div class="text">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header icon">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <div class="text">
                         <p class="heading ng-binding" ><i class="fa fa-fw fa-book fa-2x"></i>Materie Noua</p>
                     </div>
-          </div>
-          <div class="modal-body">
+                </div>
+                <div class="modal-body">
                     <form class="ng-pristine ng-invalid ng-invalid-required" novalidate="" autocomplete="off" action="/addNewClass" method="post" name="subjectForm">
-                            <div class="with-color-picker clearfix">
-                                <div>
-                                    <em>Nume</em>
-                                    <input class="ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength ng-valid-minlength" type="text" ng-maxlength="50" ng-minlength="2" required="" name="name" id="subjectName">
-                                    <div class="alert alert-danger" role="alert" ng-show="error_empty_string == true">
-                                        <span class="fa fa-fw fa-exclamation-circle" aria-hidden="true"></span>
-                                        <span class="sr-only">Eroare:</span>Numele materiei trebuie completat
-                                    </div>
+                        <div class="with-color-picker clearfix">
+                            <div>
+                                <em>Nume</em>
+                                <input class="ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength ng-valid-minlength" type="text" ng-maxlength="50" ng-minlength="2" required="" name="name" id="subjectName">
+                                <div class="alert alert-danger" role="alert" ng-show="error_empty_string == true">
+                                    <span class="fa fa-fw fa-exclamation-circle" aria-hidden="true"></span>
+                                    <span class="sr-only">Eroare:</span>Numele materiei trebuie completat
                                 </div>
                             </div>
+                        </div>
                         <div class="text">
                             <div class="alert alert-danger" role="alert" ng-if="subjectExists == true">
                                 <span class="fa fa-fw fa-exclamation-circle" aria-hidden="true"></span>
@@ -121,16 +121,13 @@
                             </div>
                         </div>
                     </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary btn-lg dark-blue-btn" data-dismiss="modal">Inchide</button>
-            <button type="button" class="btn btn-primary btn-lg dark-blue-btn" ng-click="addNewSubject()">Adauga</button>
-          </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btn-lg dark-blue-btn" data-dismiss="modal">Inchide</button>
+                    <button type="button" class="btn btn-primary btn-lg dark-blue-btn" ng-click="addNewSubject()">Adauga</button>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-
-
-
 
 </div>

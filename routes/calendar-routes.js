@@ -16,8 +16,8 @@ module.exports = function(app, db) {
         })
     });
 
-    app.put('/api/users/users/events/delete', function(req, res, next) {
-        console.log("app put /users/events/delete/"+req.user_id + " with event id : " + req.body.eventId)
+    app.put('/api/users/events/delete', function(req, res, next) {
+        console.log("app put /users/delete/"+req.user_id + " with event id : " + req.body.eventId)
         //console.log(req.user_id)
         User.update({
             _id: req.user_id
@@ -37,10 +37,9 @@ module.exports = function(app, db) {
         });
     });
 
-    app.put('/api/users/users/events', function(req, res, next) {
-        console.log("app put /users/events/:user")
+    app.put('/api/users/events', function(req, res, next) {
+        console.log("app put /events/:user")
         var event = new Event();
-        event.user = req.user;
         event.title = req.body.title;
         event.start = req.body.start;
         event.end = req.body.end;

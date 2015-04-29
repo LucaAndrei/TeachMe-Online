@@ -12,7 +12,7 @@ Prof_Grades_UsersGrades.html
 
         <div ng-if="emptyGradesList == true">No grades for this user. Select another user or assign grades to currently selected user.</div>
 
-        <div class="gradesTable col-md-6 col-md-offset-3" ng-if="emptyGradesList == false">
+        <div class="gradesTable col-md-8 col-lg-6 col-md-offset-3" ng-if="emptyGradesList == false">
             <table id="myTable">
                 <tr>
                     <th colspan="4">
@@ -23,7 +23,7 @@ Prof_Grades_UsersGrades.html
                     <th class="alignLeftWithPadding">Materie</th>
                     <th>Nota</th>
                     <th class="alignRightWithPadding">Data</th>
-                    <th class="alignRightWithPadding">Edit</th>
+                    <th class="">Edit</th>
                 </tr>
                 <tr ng-repeat="grade in gradesArray track by $index">
                     <td class="col-md-2 alignLeftWithPadding">
