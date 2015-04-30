@@ -45,7 +45,20 @@ module.exports = function(app, db) {
     });
 
 
-
+    app.get('/api/users/my_exams', function(req, res, next) {
+        console.log("/api/users/my_classes")
+        console.log("req.body",req.params.day)
+        Task.find({
+            "registeredUsers.idUser" : {$in : [req.user_id]}
+        }, function(err, taskList) {
+            if (err) {
+                //console.log("Error processing request. Cannot find user with this id.");
+            } else if (taskList) {
+                console.log("taskList",taskList);
+                res.json(taskList);
+            }
+        });
+    });
 
     app.put('/api/users/userAccessedTest', function(req, res, next) {
         console.log("/api/users/userAccessedTest")

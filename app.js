@@ -94,23 +94,15 @@ var db = mongoose.connection;
 
 
         // catch 404 and forward to error handler
-       /* app.use(function(req, res, next) {
+       app.use(function(req, res, next) {
             console.log("catch 404");
             var err = new Error('Not Found');
             err.status = 404;
             res.send('404 route not found');
             next(err);
         });
-        app.use(errorHandler);
 
 
-      function errorHandler(err, req, res, next) {
-        console.log("errorHandler");
-        res.status(500);
-        res.render('403.ejs', { error: err });
-    }
-
-*/
 
     app.listen(8080);
     console.log('The magic happens on port 8080');

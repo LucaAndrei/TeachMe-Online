@@ -779,6 +779,14 @@ body {
 body.modal-open {overflow : auto;}
 
 .class_title {
-  font-size:16px;
+  font-size:18px;
   font-weight : bold;
+}
+
+.class_details{
+  font-size:17px;
+}
+
+.background_color_grey{
+  background-color: #ececec;
 }

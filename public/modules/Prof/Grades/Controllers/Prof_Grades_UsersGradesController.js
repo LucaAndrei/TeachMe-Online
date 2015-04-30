@@ -174,11 +174,16 @@ var prof_grades_users_grades_controller = function($scope, $http, $state, $rootS
     // this function is called whenever the Remove Row button is pressed
     $scope.removeRow = function(index) {
         console.log("remove row")
-        return $http.put('/api/users/grades/delete', selectedUserGrades[index]).success(function(data) {
-            console.log("removed")
+        if(parseInt(selectedUserGrades[index].uid) == ((selectedUserGrades.length - 1) +  "" + 1)) {
             $scope.disableAddRow = false;
             selectedUserGrades.splice(index, 1);
-        });
+        } else {
+            return $http.put('/api/users/grades/delete', selectedUserGrades[index]).success(function(data) {
+                console.log("removed")
+                $scope.disableAddRow = false;
+                selectedUserGrades.splice(index, 1);
+            });
+        }
     };
 
     // this function computes the users grades that will be shown in the table

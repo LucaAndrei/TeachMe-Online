@@ -3,6 +3,11 @@ var elev_grades_list_grades_controller = function($scope, $http, $state, $rootSc
     //console.log("gradesElevController.js : ",userCredentials);
     $scope.userCredentials = userCredentials;
     $scope.emptyList = null;
+
+    $scope.sortType     = 'name'; // set the default sort type
+  	$scope.sortReverse  = false;  // set the default sort order
+  	$scope.searchFish   = '';     // set the default search/filter term
+
     if (grades.data.length > 0) {
         $scope.emptyList = false;
         $scope.grades = grades.data;

@@ -127,13 +127,19 @@ var elev_classes_list_classes_controller = function($scope, $http, $state, $root
     }
 
     $scope.registerClass = function() {
-        return $http.post('/api/users/registerClass', {
-            class_id: class_id
-        }).success(function(data) {
-            console.dir(data);
-            buildClassesArray()
+        var r = confirm("Atentie ! Odata ce va inregistrati, nu mai puteti reveni asupra deciziei.");
+        if(r){
+            return $http.post('/api/users/registerClass', {
+                class_id: class_id
+            }).success(function(data) {
+                console.dir(data);
+                buildClassesArray()
+                $("#class_modal").modal('hide');
+            });
+        } else {
             $("#class_modal").modal('hide');
-        });
+        }
+
     }
 
 

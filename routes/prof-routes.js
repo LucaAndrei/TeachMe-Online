@@ -45,7 +45,7 @@ module.exports = function(app, db) {
             });
     });
 
-    app.get('/api/users/prof_classes/:day', function(req, res, next) {
+    app.get('/api/users/my_classes/:day', function(req, res, next) {
         console.log("/api/users/my_classes")
         console.log("req.body",req.params.day)
         Class.find({
@@ -61,6 +61,8 @@ module.exports = function(app, db) {
         });
     });
 
+
+
     app.get('/api/users/getSelectedUser/:user', function(req, res, next) {
         console.log("app get /users/tasks/:user : "); // + req.user)
         res.json(req.user);
@@ -69,6 +71,7 @@ module.exports = function(app, db) {
 
     app.put('/api/users/grades/delete', function(req, res, next) {
         console.log("app put /users/grades/delete")
+        console.log(req.body)
         User.update({
             _id: req.body.user
         }, {

@@ -17,8 +17,8 @@
                 <a style="cursor:pointer" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{userCredentials.nume}} {{userCredentials.prenume}} <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li>
-                         <a ui-sref="account_elev.profile_settings"><i class="fa fa-fw fa-power-off"></i> Setari</a>
-                        <a style="cursor:pointer" ng-click="logout()"><i class="fa fa-fw fa-power-off"></i> Deconectare</a>
+                        <a ui-sref="account_elev.profile_settings"><i class="fa fa-fw fa-power-off"></i> Setari</a>
+                        <a style="cursor:pointer" ng-click="logout()"><i class="fa fa-fw fa-power-off"></i> Logout</a>
                     </li>
                 </ul>
             </li>
@@ -42,7 +42,7 @@
                     <a href="#"><i class="fa fa-fw fa-group"></i> Chat</a>
                 </li>
                 <li>
-                    <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Task<i class="fa fa-fw fa-caret-down"></i></a>
+                    <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Task <i class="fa fa-fw fa-caret-down"></i></a>
                     <ul id="demo" class="collapse">
                         <li>
                             <a ui-sref="account_elev.homework">Teme</a>
@@ -53,10 +53,13 @@
                     </ul>
                 </li>
             </ul>
-        </div><!-- /.navbar-collapse -->
+        </div>
+        <!-- /.navbar-collapse -->
     </nav>
 
     <div id="page-wrapper">
         <div ui-view></div>
-    </div><!-- /#page-wrapper -->
-</div> <!-- /#wrapper -->
+    </div>
+    <!-- /#page-wrapper -->
+</div>
+<!-- /#wrapper -->

@@ -82,18 +82,6 @@ config(function($stateProvider, $urlRouterProvider) {
                 }
             }
         })
-        .state('account_prof.users', {
-            url: "users",
-            templateUrl: "/modules/Prof/Users/Templates/Users.html",
-            //controller: usersController,
-            resolve: {
-                promise: function($http) {
-                    return $http.get('/api/users/listUsers').success(function(data) {
-                        console.log("promise data", data);
-                    });
-                }
-            }
-        })
         .state('account_prof.classes', {
             url: "classes",
             templateUrl: "/modules/Prof/Classes/Templates/Prof_Classes_ListClasses.html",

@@ -5,21 +5,12 @@ var prof_tasks_users_exams_controller = function($scope, $http, $state, $rootSco
     var users = [];
     var selectedUser = [];
     var tasksArray = [];
-    $scope.emptyList = false;
     checkIfSelectedUserHasAccess();
 
     $scope.userCredentials = userCredentials;
     $scope.selectedUser = selectedUserPromise.data;
 
     $scope.tasksArray = tasksArray;
-
-    if ($scope.selectedUser) {
-        $scope.emptyList = false;
-    } else {
-        $scope.emptyList = true;
-    }
-
-
 
     // function called when the button EDIT from the template is pressed
     // this is used to show the edit/delete button and to make a dropdown list from the grade.
