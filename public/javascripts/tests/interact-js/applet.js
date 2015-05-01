@@ -1,138 +1,65 @@
 $(document).ready(function(){
 start();
 });
-
-var stage1 = null;
-var canvas1 = null;
-var images = [];
-var loaded = 0;
-var sources;
-var sunete;
-var preload;
-
-
-var background_bmp;
-var snd;
-
-function init(){
-	console.log("!@@!!@!@#!#@#@!@#@!$@##@%@#%@#%@%@init");
-
-	canvas1 = document.getElementById("stage1");
-	canvas1.width = 700;
-	canvas1.height = 520;
-
-	stage1 = new StageX(canvas1);
-	stage1.name = "STAGE1";
-
-	sources = [
-				{src:"javascripts/tests/assets/image/background1.jpg", id:"background"}
-			  ];
-
-	sunete = [
-				"javascripts/tests/assets/audio/correct.mp3",
-				"javascripts/tests/assets/audio/wrong.mp3"
-			  ];
-/*
-	createjs.Sound.registerPlugins([createjs.WebAudioPlugin, createjs.HTMLAudioPlugin]);
-	createjs.Sound.addEventListener("fileload", handleSoundLoad);
-	for (var i = 0; i<sunete.length ; i++){
-		createjs.Sound.registerSound(sunete[i], sunete[i].substring(sunete[i].lastIndexOf("/")+1,sunete[i].lastIndexOf(".")));
-	}
-*/
-	preload = new createjs.LoadQueue(false);
-	preload.on("fileload", handleFileLoad);
-	preload.on("complete",handleLoadComplete);
-	preload.loadManifest(sources);
-	//log("loadManifest");
-}
-
-function handleFileLoad(event){
-	var item = event.item; // A reference to the item that was passed in to the LoadQueue
-	var type = item.type;
-	if(type == "image"){
-		var img = new Image();
-		img.id = item.id;
-		img.src = item.src;
-		images.push(img);
-		loaded++;
-		//log("loadImage : "+item.id+" : "+ item.src+"("+loaded+"/"+(sources.length+sunete.length)+")");
-	}
-}
-/*
-function handleSoundLoad(event){
-	if (event.id){
-		createjs.Sound.createInstance(event.id);
-		loaded++;
-		//log("******* loadSound : "+event.id+" : "+event.src+"("+loaded+"/"+(sources.length+sunete.length)+")");
-		handleLoadComplete(null);
-	}
-}
-*/
-function handleLoadComplete(event){
-	if(loaded == sources.length+sunete.length){
-		$("#ldd").remove();
-		setupSprites();
-		start();
-		//log("active plugin : "+createjs.Sound.activePlugin);
-	}
-}
-
-//setup sunet
-/*
-function playSound(id, onSndComplete){
-	if (createjs.Sound.BrowserDetect.isIOS) createjs.WebAudioPlugin.playEmptySound();
-	setTimeout(function(){
-		stopSound();
-		//API.openAudio();
-		snd = createjs.Sound.play(id);
-		snd.id = id;
-		if (onSndComplete!=null){
-			snd.onSndComplete = onSndComplete;
-			snd.addEventListener("complete", onSndComplete);
-		}
-		snd.addEventListener("complete", stopSound);
-	},1);
-}
-
-function stopSound(){
-	if (snd){
-		//API.closeAudio();
-		snd.stop();
-		snd.removeEventListener("complete", stopSound);
-		if (snd.onSndComplete!=null){
-			snd.removeEventListener("complete", snd.onSndComplete);
-		}
-	}
-}
-*/
-
-//setup animatii
-function setupSprites(){
-	//test sprite
-
-}
+$(document).mousemove(function(event){ 
+        $("#myspan").text("X: " + event.pageX + ", Y: " + event.pageY); 
+    });
 
 //setup stage
 function start(){
 	//log("start");
 	//add some background
-	//background_bmp = new Bitmap(getImageById("background"));
-	//stage1.addChild(background_bmp);
 
-	for(var i = 1; i<=10;i++){
-		$("#text"+i).css("display","none");
-		if(i<=4){
-			$("#textNumar"+i).css("display","none");
-		}
-	}
-
-	navigare();
-	initDndQuiz(1);
+	//navigare();
+	//initDndQuiz(1);
 	//$("#butNext").enable();
+
+
+	initQuiz(1);
+
+
 
 }
 
+var incercariGresite=0;
+var maxIncercari=0;
+//maxIncercari - numarul maxim de incercari gresite dupa care apare solutia pe parcurs per total(0 - nelimitat)
 
+function initQuiz(id){
+	//log("initQuiz"+id);
+	var quiz = document.getElementById("quiz1"+id);
+	$("#quizContainer"+id).css('display','block');
+	$(quiz).initQuizDndAsim(maxIncercari);
+	//$("#quizContainer"+id).animate({left:'25px'}, 500);
+			
+	incercariGresite = 0;
+	$("#quizContainer"+id).on("onValidateQuiz", function(evt){
+		if (evt.valid){
+			$(this).removeClass("quizContainer_incorrect");
+			$(this).addClass("quizContainer_correct");
+			if (evt.end) setTimeout(function(){onEndQuiz(id);},1500);
+		}else{
+			incercariGresite++;
+			$(this).addClass("quizContainer_incorrect");
+			if (incercariGresite==maxIncercari){
+				onEndQuiz(id);
+			}
+		}
+
+		console.log("Ai validat "+evt.valid+" drag-ul "+evt.id+". Trase "+evt.nrTrase+" / "+evt.nrDropuri);
+	});
+}
+
+
+function onEndQuiz(id){
+	if (id==1){
+		API.info("finish");
+	}
+}
+
+
+
+/*
 
 var incercari=0;
 function initDndQuiz(id){
@@ -146,15 +73,11 @@ function initDndQuiz(id){
 	incercari = 0;
 	$("#quiz1"+id).on("onValidateQuiz", function(evt){
 		if (evt.valid){
-			//API.info("todo3");
 			//$(this).removeClass("quizContainer_incorrect");
 			//$(this).addClass("quizContainer_correct");
-			//playSound("correct", null);
 			if (evt.end) setTimeout(function(){onEndDndQuiz(id);},1500);
 		}else{
-			//API.info("todo2");
 			//$(this).addClass("quizContainer_incorrect");
-			//playSound("wrong", null);
 		}
 
 		//log("Ai validat "+evt.valid+" drag-ul "+evt.id+". Trase "+evt.nrTrase+" / "+evt.nrDropuri);
@@ -339,22 +262,4 @@ function navigare(){
 }
 
 
-
-
-/*playSound("correct", onSoundComplete);
-function onSoundComplete(evt){
-	log("onSoundComplete => "+snd.id);
-	playSound("wrong", onSoundComplete);
-}*/
-
-function getImageById(val){
-	for(var j=0; j<images.length; j++){
-		if(images[j].id == val){
-			return images[j];
-			break;
-		}
-	}
-	return null;
-}
-
-
+*/

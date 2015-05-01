@@ -1,201 +1,298 @@
-		<link rel='stylesheet' href='javascripts/tests/ael/rlo.css'/>
-        <script>
-            var createjs = window;
-        </script>
-        <script src='javascripts/tests/ael/jquery-1.8.3.min.js' type="text/javascript"></script>
-        <script src="javascripts/tests/libs/preloadjs-0.4.1.min.js" type="text/javascript"></script>
-        <script src="javascripts/tests/libs/easeljs-0.5.0.min.js" type="text/javascript"></script>
 
 
+<link rel='stylesheet' href='javascripts/tests/ael/rlo.css' />
 
-        <script src="javascripts/tests/libs/stagex.js" type="text/javascript"></script>
+<script src="javascripts/tests/libs/easeljs-0.5.0.min.js" type="text/javascript"></script>
 
-        <link rel="stylesheet" type="text/css" href="javascripts/tests/style.css"/>
+<link rel="stylesheet" type="text/css" href="javascripts/tests/style.css" />
 
-        <script src="javascripts/tests/interact-js/button.js" type="text/javascript"></script>
-        <script src="javascripts/tests/interact-js/dnd.js" type="text/javascript"></script>
-        <script src="javascripts/tests/interact-js/quizradio.js" type="text/javascript"></script>
-        <script src="javascripts/tests/interact-js/quizcheckbox.js" type="text/javascript"></script>
-        <script src="javascripts/tests/interact-js/applet.js" type="text/javascript"></script>
+<script src="javascripts/tests/interact-js/button.js" type="text/javascript"></script>
+
+<script src="javascripts/tests/interact-js/dndasim.js" type="text/javascript"></script>
+
+<script src="javascripts/tests/interact-js/applet.js" type="text/javascript"></script>
+
+
 <div id="block-page"></div>
-<div id="appletScreen">
-			<div id="screenArea" class="screenClass">Descriere RLO pentru screen reader.</div>
-			<div id="applet" aria-hidden="true">
-				<canvas id="stage1" width="700" height="520"></canvas>
-				<!-- create divs here -->
+    <div id="applet" aria-hidden="true">
 
-
-				<div id="quizContainer1" class="quizContainer">
-					<div id="titlu1">تابع الرسم أدناه وضع عليه القوى التي تؤثر على المادة الموجودة على المنحدر. </div>
-					<div id="titlu2">أهم أسباب الانزلاق الكتلي هي: نوع المواد الموجودة على المنحدر, رطوبة هذه المواد, عدم وجود غطاء نباتي, التأثيرات البشرية, وميل المنحدرات. </div>
-					<div id="subtitlu2">لاحظ الرسمين. </div>
-					<div id="qMark"></div>
-					<div id="text1">مقاومة القص</div>
-					<div id="text2">قوه القص</div>
-					<div id="text3">الجاذبية</div>
-					<div id="text4">القوة <br/>العمودية</div>
-					<div id="text5">مقاومة <br/>القص</div>
-					<div id="text6">قوه <br/>القص</div>
-					<div id="text7">الجاذبية</div>
-					<div id="text8">القوة <br/>العمودية</div>
-					<div id="text9"><b>ا</b></div>
-
-					<div id="text10"><b>ب</b></div>
-
-
-
-
-
+<div id="quizContainer1" class="quizContainer">
 					<div id="quiz11" class="quiz_dnd" idx="1" asimilare="true">
 						<div id="question_1" class="question_init">
-							<span></span>
+							<span>First rule is about attendance</span>
 						</div>
-						<div class="container_answersDND">
+						<p>The mouse pointer position is at: <span id="myspan"></span></p>
+						<div class="container_answers">
 							<div id="dropContainer">
-								<div class="drop spacer" id="drop_1_1" corect="1"></div>
-								<div class="drop spacer" id="drop_1_2" corect="2"></div>
-								<div class="drop spacer" id="drop_1_3" corect="3"></div>
-								<div class="drop spacer" id="drop_1_4" corect="4"></div>
+								<div class="drop alb spacer" id="drop_1_1" corect="1"></div>
+								<div class="drop alb spacer" id="drop_1_2" corect="2,3"></div>
+								<div class="drop alb spacer" id="drop_1_3" corect="2,3"></div>
 							</div>
-
+							
 							<div style="height:10px"></div>
-
+							
 							<div id="dragContainer">
-								<div class="drag spacer" id="drag_1_1">
-									<span class="text-drag" id="tdr1">
+								<div class="drag objTooltip spacer" id="drag_1_1">
+									<span class="text-drag" id="tdr11">
+										drag1
+									</span>
+								</div>
+								<div class="drag objTooltip spacer" id="drag_1_2">
+									<span class="text-drag" id="tdr12">
+										drag2
+									</span>
+								</div>
+								<div class="drag objTooltip spacer" id="drag_1_3">
+									<span class="text-drag" id="tdr13">
+										drag3
+									</span>
+								</div>
+								<div class="drag objTooltip spacer" id="drag_1_4">
+									<span class="text-drag" id="tdr14">
+										drag4
+									</span>
+								</div>
+								<div class="drag objTooltip spacer" id="drag_1_5">
+									<span class="text-drag" id="tdr15">
+										drag5
+									</span>
+								</div>
+							</div>
+							
+							<button id="butVerifica" class="valideaza">
+								<div class="simbol validare"></div>
+							</button>
+						</div>
+					</div>
+				</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+        <div id="quizContainer1" class="quizContainer">
+            <div id="titlu1">تابع الرسم أدناه وضع عليه القوى التي تؤثر على المادة الموجودة على المنحدر. </div>
+            <div id="titlu2">أهم أسباب الانزلاق الكتلي هي: نوع المواد الموجودة على المنحدر, رطوبة هذه المواد, عدم وجود غطاء نباتي, التأثيرات البشرية, وميل المنحدرات. </div>
+            <div id="subtitlu2">لاحظ الرسمين. </div>
+            <div id="qMark"></div>
+            <div id="text1">مقاومة القص</div>
+            <div id="text2">قوه القص</div>
+            <div id="text3">الجاذبية</div>
+            <div id="text4">القوة
+                <br/>العمودية</div>
+            <div id="text5">مقاومة
+                <br/>القص</div>
+            <div id="text6">قوه
+                <br/>القص</div>
+            <div id="text7">الجاذبية</div>
+            <div id="text8">القوة
+                <br/>العمودية</div>
+            <div id="text9"><b>ا</b></div>
+
+            <div id="text10"><b>ب</b></div>
+
+
+
+
+
+            <div id="quiz14" class="quiz_dnd" idx="4" asimilare="true">
+                <div id="question_1" class="question_init">
+                    <span></span>
+                </div>
+                <div class="container_answersDND">
+                    <div id="dropContainer">
+                        <div class="drop spacer" id="drop_1_1" corect="1"></div>
+                        <div class="drop spacer" id="drop_1_2" corect="2"></div>
+                        <div class="drop spacer" id="drop_1_3" corect="3"></div>
+                        <div class="drop spacer" id="drop_1_4" corect="4"></div>
+                    </div>
+
+                    <div style="height:10px"></div>
+
+                    <div id="dragContainer">
+                        <div class="drag spacer" id="drag_1_1">
+                            <span class="text-drag" id="tdr1">
 										قوة الاحتكاك<br />(مقاومة القص)
 									</span>
-								</div>
-								<div class="drag spacer" id="drag_1_2">
-									<span class="text-drag2" id="tdr2">
+                        </div>
+                        <div class="drag spacer" id="drag_1_2">
+                            <span class="text-drag2" id="tdr2">
 										القوة العمودية
 									</span>
-								</div>
-								<div class="drag spacer" id="drag_1_3">
-									<span class="text-drag" id="tdr12">
+                        </div>
+                        <div class="drag spacer" id="drag_1_3">
+                            <span class="text-drag" id="tdr12">
 										قوة الانزلاق<br />(قوه القص)
 									</span>
-								</div>
-								<div class="drag spacer" id="drag_1_4">
-									<span class="text-drag3" id="tdr12">
+                        </div>
+                        <div class="drag spacer" id="drag_1_4">
+                            <span class="text-drag3" id="tdr12">
 										الجاذبية
 									</span>
-								</div>
-							</div>
-						</div>
-					</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-					<div id="quiz12" class="quiz_radio quizContainer">
+            <div id="quiz12" class="quiz_radio quizContainer">
 
-						<div id="question_2" class="question_init">
-							في أي من الرسمين يكون خطر حدوث الانزلاق الكتلي أكبر من الآخر؟
-						</div>
-						<div class="container_answers">
-							<div class="answer">
-								<div class="radio" id="1" grup="1"></div>
-								في الرسم أ
-							</div>
-							<div class="answer">
-								<div class="radio" id="2" grup="1" value="true"></div>
-								في الرسم ب*
-							</div>
-							<div class="answer">
-								<div class="radio" id="3" grup="1"></div>
-								في كلا الرسمين, الخطر هو نفسه
-							</div>
-							<button id="butVerifica" class="valideaza disabled">
-								<div class="simbol validare disabled"></div>
-							</button>
-							<button id="butReset" class="reseteaza disabled">
-								<span class="simbol reset disabled"></span>
-							</button>
-						</div>
-					</div>
-					<div id="quiz13" class="quizcheckbox quizContainer">
-						<div id="question_3" class="question_init">
-							اختر الأسباب التي تزيد من خطر حدوث الانزلاق الكتلي:
-						</div>
-						<div class="container_answers">
-							<div class="answer">
-								<div class="check" id="1" grup="1" value="true"></div>
-								* قوة القص لها قيمة أكبر
-							</div>
-							<div class="answer">
-								<div class="check" id="2" grup="1" value="true"></div>
-								* المنحدر هو أشد انحداراً
-							</div>
-							<div class="answer">
-								<div class="check" id="3" grup="1"></div>
-								قوة القص لها قيمة أصغر
-							</div>
-							<div class="answer">
-								<div class="check" id="4" grup="1"></div>
-								المنحدر هو أقل انحداراً
-							</div>
+                <div id="question_2" class="question_init">
+                    في أي من الرسمين يكون خطر حدوث الانزلاق الكتلي أكبر من الآخر؟
+                </div>
+                <div class="container_answers">
+                    <div class="answer">
+                        <div class="radio" id="1" grup="1"></div>
+                        في الرسم أ
+                    </div>
+                    <div class="answer">
+                        <div class="radio" id="2" grup="1" value="true"></div>
+                        في الرسم ب*
+                    </div>
+                    <div class="answer">
+                        <div class="radio" id="3" grup="1"></div>
+                        في كلا الرسمين, الخطر هو نفسه
+                    </div>
+                    <button id="butVerifica" class="valideaza disabled">
+                        <div class="simbol validare disabled"></div>
+                    </button>
+                    <button id="butReset" class="reseteaza disabled">
+                        <span class="simbol reset disabled"></span>
+                    </button>
+                </div>
+            </div>
+            <div id="quiz13" class="quizcheckbox quizContainer">
+                <div id="question_3" class="question_init">
+                    اختر الأسباب التي تزيد من خطر حدوث الانزلاق الكتلي:
+                </div>
+                <div class="container_answers">
+                    <div class="answer">
+                        <div class="check" id="1" grup="1" value="true"></div>
+                        * قوة القص لها قيمة أكبر
+                    </div>
+                    <div class="answer">
+                        <div class="check" id="2" grup="1" value="true"></div>
+                        * المنحدر هو أشد انحداراً
+                    </div>
+                    <div class="answer">
+                        <div class="check" id="3" grup="1"></div>
+                        قوة القص لها قيمة أصغر
+                    </div>
+                    <div class="answer">
+                        <div class="check" id="4" grup="1"></div>
+                        المنحدر هو أقل انحداراً
+                    </div>
 
-							<button id="butVerifica" class="valideaza disabled" style="position:absolute; top:140px;">
-								<div class="simbol validare disabled"></div>
-							</button>
-							<button id="butReset" class="reseteaza disabled" style="position:absolute; top:140px;">
-								<span class="simbol reset disabled"></span>
-							</button>
-						</div>
-					</div>
-				</div>
+                    <button id="butVerifica" class="valideaza disabled" style="position:absolute; top:140px;">
+                        <div class="simbol validare disabled"></div>
+                    </button>
+                    <button id="butReset" class="reseteaza disabled" style="position:absolute; top:140px;">
+                        <span class="simbol reset disabled"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
 
-				<div id="quizContainer2" class="quizContainer">
-					<div id="titlu3">أنواع مختلفة من الانزلاق الكتلي، اعتمادا على سرعة الحركة ورطوبة المواد.</div>
-					<div id="numar1" class="numar"><span>1</span></div>
-					<div id="numar2" class="numar"><span>2</span></div>
-					<div id="numar3" class="numar"><span>3</span></div>
-					<div id="numar4" class="numar"><span>4</span></div>
+        <div id="quizContainer2" class="quizContainer">
+            
 
-					<div id="textNumar1">الزحف – الحركة البطيئة لحبيبات التربة</div>
-					<div id="textNumar2">الانزلاق (الانزلاق الأرضي) –  انزلاق المواد على المنحدر</div>
-					<div id="textNumar3">التساقط (التساقط الصخري) – انهيارات, تساقطات, تدحرج الصخور </div>
-					<div id="textNumar4">التدفق – ترطب بقوة تدفق المواد</div>
+            <div id="tabel" style="display:none">
+                <div id="titluCol1">نوع الانزلاق الكتلي</div>
+                <div id="titluCol2">السرعة </div>
+                <div id="titluCol3">مستوى الرطوبة</div>
 
-					<div id="A">ا</div>
-					<div id="B">ب</div>
-					<div id="C">ج</div>
-					<div id="D">د</div>
+                <div id="r1col1">الزحف</div>
+                <div id="r2col1">الانزلاق الأرضي </div>
+                <div id="r3col1">التساقط الصخري </div>
+                <div id="r4col1">التدفق </div>
 
-					<div id="textA">ا – سريعة</div>
-					<div id="textB">ب – بطيئة</div>
-					<div id="textC">ج – جاف</div>
-					<div id="textD">د – رطب</div>
-					<div id="tabel" style="display:none">
-						<div id="titluCol1">نوع الانزلاق الكتلي</div>
-						<div id="titluCol2">السرعة </div>
-						<div id="titluCol3">مستوى الرطوبة</div>
+                <div id="r1col2">بطيئة </div>
+                <div id="r2col2">متوسطة </div>
+                <div id="r3col2">سريعة </div>
+                <div id="r4col2">سريعة </div>
 
-						<div id="r1col1">الزحف</div>
-						<div id="r2col1">الانزلاق الأرضي </div>
-						<div id="r3col1">التساقط الصخري </div>
-						<div id="r4col1">التدفق </div>
-
-						<div id="r1col2">بطيئة </div>
-						<div id="r2col2">متوسطة </div>
-						<div id="r3col2">سريعة </div>
-						<div id="r4col2">سريعة </div>
-
-						<div id="r1col3">جاف </div>
-						<div id="r2col3">متوسطة </div>
-						<div id="r3col3">جاف </div>
-						<div id="r4col3">رطب </div>
+                <div id="r1col3">جاف </div>
+                <div id="r2col3">متوسطة </div>
+                <div id="r3col3">جاف </div>
+                <div id="r4col3">رطب </div>
 
 
-					</div>
-				</div>
-				<button id="butNext" class="">
-					<div class="simbol next"></div>
-				</button>
+            </div>
+        </div>
 
-				<button id="butPrev" class="">
-					<div class="simbol prev"></div>
-				</button>
-				<!--  ####################  C O N C L U Z I E  -->
-			   <div id='concluzie' class='popup' title=''>Conclusion !</div>
-				<!-- stop here -->
-			</div>
-		</div>
+    -->
+        <button id="butNext" class="">
+            <div class="simbol next"></div>
+        </button>
+
+        <button id="butPrev" class="">
+            <div class="simbol prev"></div>
+        </button>
+        <!-- stop here -->
+    </div>
