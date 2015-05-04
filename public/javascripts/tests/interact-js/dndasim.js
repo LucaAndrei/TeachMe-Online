@@ -3,7 +3,7 @@ $(document).ready(function(){
 	onValidateQ.type = "onValidateQuiz";
 	onValidateQ.incercari = 0;
 	onValidateQ.maxIncercari = 0;
-	
+
 	var dragCurent = null;
 	var tmpEl;
 	var nrDraguri;
@@ -29,7 +29,7 @@ $(document).ready(function(){
 
 			coords=[];
 			asimilare = $(this).attr("asimilare");
-		
+
 			dragsWidth = 0;
 			quiz = $(this);
 			idx = $(this).attr("idx");
@@ -39,20 +39,20 @@ $(document).ready(function(){
 			hDropContainer = quiz.children(".container_answers").children("#dropContainer").height();
 			quiz.children(".container_answers").children("#dragContainer").css("height",hDragContainer);
 			quiz.children(".container_answers").children("#dropContainer").css("height",hDropContainer);
-		
+
 			//log("hDragContainer="+hDragContainer);
 			//log("hDropContainer="+hDropContainer);
 
 			nrDraguri = dragList.length;
 			nrDropuri = dropList.length;
-			
+
 			for(var i=nrDropuri; i>=1; i--){
 				var drop = quiz.children(".container_answers").children("#dropContainer").find("#drop_"+idx+"_"+i);
 				drop.attr("ocupat","");
 				drop.attr("nr", i);
 				drop.attr("green","false");
 			}
-			
+
 			for(var i=nrDraguri; i>=1; i--){
 				var drag = quiz.children(".container_answers").children("#dragContainer").find("#drag_"+idx+"_"+i);
 				drag.attr("nr",i);
@@ -71,7 +71,7 @@ $(document).ready(function(){
 				var drop = quiz.children(".container_answers").children("#dropContainer").find("#drop_"+idx+"_"+i);
 				drag.data("init_top",coords[i-1].top);
 				drag.data("init_left",coords[i-1].left);
-				drag.css({"position":"absolute",left:coords[i-1].left,top:coords[i-1].top});
+				drag.css({"position":"absolute",left:coords[i-1].left + 8,top:coords[i-1].top});
 			}
 			nrTrase = 0;
 		};
@@ -100,7 +100,7 @@ $(document).ready(function(){
 			console.log("event.pageY : " + event.pageY)
 			console.log("event.pageY-dragCurent.height()/2 : " + parseFloat(event.pageY-dragCurent.height()/2))*/
 
-			dragCurent.css({"position":"absolute", "left":parseFloat(event.pageX-dragCurent.width()/2 - 410),"top":parseFloat(event.pageY-dragCurent.height()/2 - 220)});
+			dragCurent.css({"position":"absolute", "left":parseFloat(event.pageX-dragCurent.width()/2 - 410),"top":parseFloat(event.pageY-dragCurent.height()/2 - 180)});
 			//dragCurent.css({"position":"absolute", "left":100,"top":100});
 			$("#applet").on("mousemove", appletMouseMove);
 			$("#applet").on("mouseup", appletMouseUp);
@@ -113,13 +113,13 @@ $(document).ready(function(){
 			dragCurent.data("parent").append(dragCurent);
 			forceMouseUp();
 		}
-		
+
 		function appletMouseUp(event){
 			checkHitTest({x: event.pageX, y: event.pageY});
 		}
 
 		function appletMouseMove(event){
-			dragCurent.css({left:event.pageX-dw/2 - 410,top:event.pageY-dh/2 -220});
+			dragCurent.css({left:event.pageX-dw/2 - 410,top:event.pageY-dh/2 - 180});
 		}
 
 		function forceMouseUp(){
@@ -127,8 +127,8 @@ $(document).ready(function(){
 			$("#applet").off("mouseleave", appletMouseLeave);
 			$("#applet").off("mouseup", appletMouseUp);
 		}
-		
-		function checkHitTest(mousePoint){	
+
+		function checkHitTest(mousePoint){
 			var g = false;
 			for(var i=1; i<=nrDropuri; i++){
 				var drop = quiz.children(".container_answers").children("#dropContainer").find("#drop_"+idx+"_"+i);
@@ -175,7 +175,7 @@ $(document).ready(function(){
 		function verificare_asimilare(dragCurent,drop){
 			//log("******  verificare asimilare");
 			onValidateQ.valid = false;
-			
+
 			var arr_cor = drop.attr("corect").split(",");
 			//log(arr_cor+" => "+dragCurent.attr("nr"));
 			if (arr_cor.indexOf(dragCurent.attr("nr"))==-1){
@@ -205,7 +205,7 @@ $(document).ready(function(){
 				onValidateQ.valid = true;
 				nrTrase++;
 			}
-			
+
 			onValidateQ.id = dragCurent.attr("id");
 			onValidateQ.nrTrase = nrTrase;
 			onValidateQ.nrDropuri = nrDropuri;
@@ -217,7 +217,7 @@ $(document).ready(function(){
 			}else{
 				onValidateQ.end = false;
 			}
-			
+
 			quiz.parent().trigger(onValidateQ);
 		}
 
@@ -252,7 +252,7 @@ $(document).ready(function(){
 
 		$.fn.solveQuizDndAsim = function(){
 			quiz.children(".container_answers").children("#dragContainer").hide();
-		
+
 			var dropCont = quiz.children(".container_answers").children("#dropContainer");
 			var contAns = quiz.children(".container_answers");
 
@@ -266,17 +266,17 @@ $(document).ready(function(){
 					var corArr = $(this).attr("corect").split(",");
 					for(var i=0; i<corArr.length; i++){
 						var dragGasit = quiz.children(".container_answers").find("#drag_"+idx+"_"+corArr[i]);
-						
+
 						if(dragGasit.attr("drop") == "" &&  $(this).attr("ocupat") == ""){
 							$(this).parent().append(dragGasit);
 							var marginh = ($(this).outerWidth(true) - $(this).outerWidth(false)) / 2;
 							var marginv = ($(this).outerHeight(true) - $(this).outerHeight(false)) / 2;
-							dragGasit.css({position:"absolute", top:$(this).position().top+marginv, left:$(this).position().left+marginh});		
+							dragGasit.css({position:"absolute", top:$(this).position().top+marginv, left:$(this).position().left+marginh});
 							dragGasit.attr("drop",$(this).attr("nr"));
 							$(this).attr("drag",corArr[i]);
 							$(this).attr("ocupat","true");
 						}
-					}					
+					}
 				}
 			});
 		}

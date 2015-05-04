@@ -12,7 +12,7 @@ var mongoose = require('mongoose');
 //var passport = require('passport');
 //var cookieParser = require('cookie-parser');
 //var bodyParser = require('body-parser');
-var MongoClient = require('mongodb').MongoClient;//Driver for connecting to MongoDB
+//var MongoClient = require('mongodb').MongoClient;//Driver for connecting to MongoDB
 
 var formidable = require('formidable'),
     util = require('util')

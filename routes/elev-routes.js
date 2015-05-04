@@ -68,6 +68,9 @@ module.exports = function(app, db) {
         }, {
             $set : {
                 "registeredUsers.$.lastAccessed" : req.body.today
+            },
+            $inc : {
+                "registeredUsers.$.incercari" : 1
             }
         },function(err, updated) {
             if (err) {

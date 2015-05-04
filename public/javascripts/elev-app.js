@@ -101,6 +101,11 @@ config(function($stateProvider, $urlRouterProvider) {
                 var today;
                 computeToday();
 
+                $scope.butQuitClicked = function(){
+                    console.log("BUT QUIT CLICKED")
+                    $state.go('account_elev.exams')
+                }
+
                 function computeToday() {
                     today = new Date();
                     var dd = today.getDate();

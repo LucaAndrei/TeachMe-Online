@@ -790,3 +790,28 @@ body.modal-open {overflow : auto;}
 .background_color_grey{
   background-color: #ececec;
 }
+
+#block-page{
+  display: block;
+}
+#block-left{
+  background-color: red;
+  width: 225px;
+  height: 430px;
+  position: absolute;
+  left: 0px;
+  top: 110px;
+  z-index : 1030;
+  opacity: 0.01;
+}
+
+#block-top{
+  background-color: blue;
+  width: 1920px;
+  height: 110px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 1030;
+  opacity: 0.01;
+}
