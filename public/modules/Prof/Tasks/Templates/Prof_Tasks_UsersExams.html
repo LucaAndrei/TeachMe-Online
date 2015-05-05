@@ -32,8 +32,8 @@ Prof_Tasks_UsersExams.html
                     </td>
                     <td class="col-md-2 alignRightWithPadding">
                         <div class="buttons" ng-show="!rowform.$visible">
-                            <button class="btn btn-primary" ng-click="revokeAcess(task.customId)" ng-show="task.hasAccess == true"><i class="fa fa-2x fa-unlock-alt"></i></button>
-                            <button class="btn btn-danger" ng-click="grantAccess(task.customId)" ng-show="task.hasAccess == false"><i class="fa fa-2x fa-lock"></i></button>
+                            <button class="btn btn-primary" ng-click="modifyAccess(task.customId, false)" ng-show="task.hasAccess == true"><i class="fa fa-2x fa-unlock-alt"></i></button>
+                            <button class="btn btn-danger" ng-click="modifyAccess(task.customId, true)" ng-show="task.hasAccess == false"><i class="fa fa-2x fa-lock"></i></button>
                         </div>
                     </td>
                 </tr>

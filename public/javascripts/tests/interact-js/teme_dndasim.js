@@ -14,8 +14,8 @@ $(document).ready(function(){
 	var dw;
 	var dh;
 	var idx;
-	var col_corect = "#669900"
-	var col_gresit = "#FF3300"
+	var col_corect = "#4cae4c"
+	var col_gresit = "#d43f3a"
 	var col_default = "#000000"
 	var coords=[];
 	var asimilare;
@@ -70,7 +70,7 @@ $(document).ready(function(){
 				var drag = quiz.children(".container_answers").children("#dragContainer").find("#drag_"+idx+"_"+i);
 				var drop = quiz.children(".container_answers").children("#dropContainer").find("#drop_"+idx+"_"+i);
 				drag.data("init_top",coords[i-1].top);
-				drag.data("init_left",coords[i-1].left);
+				drag.data("init_left",coords[i-1].left + 8);
 				drag.css({"position":"absolute",left:coords[i-1].left + 8,top:coords[i-1].top});
 			}
 			nrTrase = 0;
@@ -191,8 +191,6 @@ $(document).ready(function(){
 						dragCurent.css({"color":col_default});
 						dragCurent.data("parent").append(dragCurent);
 						dragCurent.css({"position":"absolute",top:dragCurent.data("init_top"),left:dragCurent.data("init_left")});
-					}else{
-						quiz.solveQuizDndAsim();
 					}
 				},1500);
 			}else{
@@ -221,19 +219,6 @@ $(document).ready(function(){
 			quiz.parent().trigger(onValidateQ);
 		}
 
-		$.fn.resetQuizDndAsim = function(){
-			quiz.children(".container_answers").children("#dragContainer").height(hDragContainer);
-			var dragList = quiz.children(".container_answers").find(".drag[drop='']");
-			dragList.each(function(){
-				if ($(this).attr("corect")=="true"){
-					$(this).on("mousedown",dragMouseDown);
-					$(this).css({"color":col_default});
-					$(this).data("parent").append($(this));
-					$(this).css({"position":"absolute",top:$(this).data("init_top"),left:$(this).data("init_left")});
-				}
-			});
-		}
-
 		$.fn.blockQuizDndAsim = function(){
 			var dragList = quiz.children(".container_answers").find(".drag");
 			dragList.each(function(){
@@ -246,37 +231,6 @@ $(document).ready(function(){
 			dragList.each(function(){
 				if ($(this).attr("corect")!="true"){
 					$(this).on("mousedown",dragMouseDown);
-				}
-			});
-		}
-
-		$.fn.solveQuizDndAsim = function(){
-			quiz.children(".container_answers").children("#dragContainer").hide();
-
-			var dropCont = quiz.children(".container_answers").children("#dropContainer");
-			var contAns = quiz.children(".container_answers");
-
-			contAns.find(".drag[drop='']").each(function(){
-				$(this).data("parent").append($(this));
-				$(this).css({"color":col_default});
-			});
-
-			dropList.each(function(){
-				if ($(this).attr("green")=="false"){
-					var corArr = $(this).attr("corect").split(",");
-					for(var i=0; i<corArr.length; i++){
-						var dragGasit = quiz.children(".container_answers").find("#drag_"+idx+"_"+corArr[i]);
-
-						if(dragGasit.attr("drop") == "" &&  $(this).attr("ocupat") == ""){
-							$(this).parent().append(dragGasit);
-							var marginh = ($(this).outerWidth(true) - $(this).outerWidth(false)) / 2;
-							var marginv = ($(this).outerHeight(true) - $(this).outerHeight(false)) / 2;
-							dragGasit.css({position:"absolute", top:$(this).position().top+marginv, left:$(this).position().left+marginh});
-							dragGasit.attr("drop",$(this).attr("nr"));
-							$(this).attr("drag",corArr[i]);
-							$(this).attr("ocupat","true");
-						}
-					}
 				}
 			});
 		}

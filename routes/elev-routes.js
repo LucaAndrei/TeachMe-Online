@@ -15,9 +15,38 @@ module.exports = function(app, db) {
         });
     });
 
+    app.get('/api/users/tasks_hw', function(req, res) {
+        console.log("/api/users/tasks_hw")
+        Task.find({
+            _id : {$in : ["Test_Radio_hw","Test_Check_hw","Test_DND_hw"]},
+        }, function(err, tasks) {
+            if (err) {
+                //console.log("Error processing request. Cannot find user with this id.");
+            } else if (tasks) {
+                console.log("tasks list",tasks);
+                res.json(tasks);
+            }
+        });
+    });
+
+    app.get('/api/users/tasks_exam', function(req, res) {
+        console.log("/api/users/tasks_exam")
+        Task.find({
+            _id : {$in : ["Test_Radio","Test_Check","Test_Dnd"]},
+        }, function(err, tasks) {
+            if (err) {
+                //console.log("Error processing request. Cannot find user with this id.");
+            } else if (tasks) {
+                console.log("tasks list",tasks);
+                res.json(tasks);
+            }
+        });
+    });
+
     app.get('/api/users/exams', function(req, res, next) {
         console.log("/api/users/exams")
         Task.find({
+            _id : {$in : ["Test_Radio","Test_Check","Test_Dnd"]},
             "registeredUsers.idUser" : {$in : [req.user_id]}
         }, function(err, exams) {
             if (err) {
@@ -25,6 +54,21 @@ module.exports = function(app, db) {
             } else if (exams) {
                 console.log("exams found",exams);
                 res.json(exams);
+            }
+        });
+    });
+
+    app.get('/api/users/homework', function(req, res, next) {
+        console.log("/api/users/homework")
+        Task.find({
+            _id : {$in : ["Test_Radio_hw","Test_Check_hw","Test_DND_hw"]},
+            "registeredUsers.idUser" : {$in : [req.user_id]}
+        }, function(err, homework) {
+            if (err) {
+                //console.log("Error processing request. Cannot find user with this id.");
+            } else if (homework) {
+                console.log("homework found",homework);
+                res.json(homework);
             }
         });
     });
@@ -44,23 +88,7 @@ module.exports = function(app, db) {
         });
     });
 
-
-    app.get('/api/users/my_exams', function(req, res, next) {
-        console.log("/api/users/my_classes")
-        console.log("req.body",req.params.day)
-        Task.find({
-            "registeredUsers.idUser" : {$in : [req.user_id]}
-        }, function(err, taskList) {
-            if (err) {
-                //console.log("Error processing request. Cannot find user with this id.");
-            } else if (taskList) {
-                console.log("taskList",taskList);
-                res.json(taskList);
-            }
-        });
-    });
-
-    app.put('/api/users/userAccessedTest', function(req, res, next) {
+    app.put('/api/users/userAccessedTest', function(req, res) {
         console.log("/api/users/userAccessedTest")
         Task.update({
             "_id" : req.body.idTest,

@@ -1,0 +1,43 @@
+Prof_Tasks_UsersHomework.html
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Teme</h1>
+        </div>
+    </div><!-- /.row -->
+    <div class="row">
+        <div class="gradesTable col-md-6 col-md-offset-3">
+            <table id="myTable">
+                <tr>
+                    <th colspan="4">
+                        {{selectedUser.nume}} {{selectedUser.prenume}}
+                    </th>
+                </tr>
+                <tr>
+                    <th class="alignLeftWithPadding">Nume Test</th>
+                    <th class="alignRightWithPadding">Incercari</th>
+                    <th class="alignRightWithPadding">Ultima accesare</th>
+                    <th style="padding-left:70px;">Modifica Acces</th>
+                </tr>
+                <tr ng-repeat="task in tasksArray"><!-- track by $index-->
+                    <td class="col-md-2" style="text-align:left">
+                        <div>{{task.nume}}</div>
+                    </td>
+                    <td class="col-md-2">
+                        <div>{{task.incercari}}</div>
+                    </td>
+                    <td class="col-md-2 alignRightWithPadding">
+                        <div>{{task.lastAccessed}}</div>
+                    </td>
+                    <td class="col-md-2 alignRightWithPadding">
+                        <div class="buttons" ng-show="!rowform.$visible">
+                            <button class="btn btn-primary" ng-click="modifyAccess(task.customId, false)" ng-show="task.hasAccess == true"><i class="fa fa-2x fa-unlock-alt"></i></button>
+                            <button class="btn btn-danger" ng-click="modifyAccess(task.customId, true)" ng-show="task.hasAccess == false"><i class="fa fa-2x fa-lock"></i></button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

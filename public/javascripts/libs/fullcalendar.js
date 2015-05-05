@@ -4649,7 +4649,6 @@ var DayGrid = Grid.extend({
 		var dates = [];
 		var offset = -1;
 		var offsets = [];
-
 		while (date.isBefore(this.end)) { // loop each day from start to end
 			if (view.isHiddenDay(date)) {
 				offsets.push(offset + 0.5); // mark that it's between offsets

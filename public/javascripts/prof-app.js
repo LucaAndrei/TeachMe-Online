@@ -142,17 +142,29 @@ config(function($stateProvider, $urlRouterProvider) {
                     });
                 },
                 tasksPromise: function($http) {
-                    return $http.get('/api/users/tasks').success(function(data) {
-                        console.log(">>>>>>>>>>>>> usersExams tasks-> data : ", data);
+                    return $http.get('/api/users/tasks_exam').success(function(data) {
+                        console.log(">>>>>>>>>>>>> tasks_exam tasks-> data : ", data);
                     });
                 }
             }
         })
         .state('account_prof.usersHomework', {
             url: "homework/:ID",
-            templateUrl: "/modules/Prof/Grades/Templates/Prof_Grades_UsersGrades.html",
+            templateUrl: "/modules/Prof/Tasks/Templates/Prof_Tasks_UsersHomework.html",
             controller: prof_tasks_users_homework_controller,
-            resolve: {}
+            resolve: {
+                selectedUserPromise: function($http, $stateParams) {
+                    console.log("selectedUserPromise : " + $stateParams.ID)
+                    return $http.get('/api/users/getSelectedUser/' + $stateParams.ID).success(function(data) {
+                        console.log(">>>>>>>>>>>>> getSelectedUser selectedUserPromise-> data : ", data);
+                    });
+                },
+                tasksPromise: function($http) {
+                    return $http.get('/api/users/tasks_hw').success(function(data) {
+                        console.log(">>>>>>>>>>>>> tasks_hw tasks-> data : ", data);
+                    });
+                }
+            }
         })
         .state('account_prof.profile_settings', {
             url: "settings",

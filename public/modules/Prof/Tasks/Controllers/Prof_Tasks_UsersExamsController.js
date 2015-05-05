@@ -7,6 +7,8 @@ var prof_tasks_users_exams_controller = function($scope, $http, $state, $rootSco
     var tasksArray = [];
     checkIfSelectedUserHasAccess();
 
+
+
     $scope.userCredentials = userCredentials;
     $scope.selectedUser = selectedUserPromise.data;
 
@@ -14,30 +16,19 @@ var prof_tasks_users_exams_controller = function($scope, $http, $state, $rootSco
 
     // function called when the button EDIT from the template is pressed
     // this is used to show the edit/delete button and to make a dropdown list from the grade.
-    $scope.revokeAcess = function(customId) {
+    $scope.modifyAccess = function(customId, grantAccess) {
         var task;
         var found = false;
+        console.log("grantAccess",grantAccess)
         for (var i = 0; i < tasksArray.length; i++) {
             if (tasksArray[i].customId == customId) {
-                tasksArray[i].hasAccess = false;
-                tasksArray[i].incercari = "-";
-                tasksArray[i].lastAccessed = "-";
-                found = true;
-                break;
-            }
-        }
-        if (found) {
-            $http.put('/api/users/modifyAccessToUser/' + $scope.selectedUser._id, tasksArray[i]).success(function(data) {});
-        }
-    }
-
-    $scope.grantAccess = function(customId) {
-        var task;
-        var found = false;
-        for (var i = 0; i < tasksArray.length; i++) {
-            if (tasksArray[i].customId == customId) {
-                tasksArray[i].hasAccess = true;
-                tasksArray[i].incercari = 0;
+                if(grantAccess){
+                    tasksArray[i].hasAccess = true;
+                    tasksArray[i].incercari = 0;
+                } else {
+                    tasksArray[i].hasAccess = false;
+                    tasksArray[i].incercari = "-";
+                }
                 tasksArray[i].lastAccessed = "-";
                 found = true;
                 break;

@@ -13,13 +13,14 @@ var calendar_controller = function($scope, $http, $state, $rootScope, $timeout, 
 
 
     function initCalendar(myEvents) {
+        console.log("init calendar",myEvents)
         $('#calendar').fullCalendar({
             header: {
                 left: 'prev,next today',
                 center: 'title',
                 right: 'month,agendaWeek,agendaDay' //month,agendaWeek,agendaDay
             },
-            defaultDate: today,
+            //defaultDate: today,
             selectable: true,
             selectHelper: true,
             select: addEventFunction,

@@ -13,7 +13,7 @@ var elev_dashboard_controller = function($scope, $http, $state, $rootScope, $tim
     weekday[4] = "Vineri";
     var n = weekday[d.getDay() - 4];
 
-    $http.get('/api/users/my_exams').success(function(data) {
+    $http.get('/api/users/exams').success(function(data) {
         console.log("data",data)
         $scope.nr_examene = data.length;
         if(data.length == 1){

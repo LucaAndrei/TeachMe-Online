@@ -1,25 +1,20 @@
-/*Since we are making a single page application and we don’t want any page refreshes, we’ll use Angular’s routing capabilities.
-
-Let’s look in our Angular file and add to our application. We will be using $routeProvider in Angular to handle our routing.
-This way, Angular will handle all of the magic required to go get a new file and inject it into our layout.
-
-Tutorial luat de pe : http://scotch.io/tutorials/javascript/single-page-apps-with-angularjs-routing-and-templating
-
-Pentru documentatie, vezi ce e scris in acest site.
-
-*/
 'use strict';
 var elev_tasks_exams_controller = function($scope, $http, $state, $rootScope, $timeout,exams){
     console.log("elev_tasks_exams_controller.js : ",userCredentials);
+
     var examsArray = [];
     computeExamsArray(exams.data);
+
+    $('[data-toggle="tooltip"]').tooltip({
+        placement : 'bottom'
+    });
 
     $scope.exams = examsArray;
     console.log($scope.exams)
     if($scope.exams.length == 0){
-        console.log("USER HAS NO ACCESS TO ANY EXAMS");
+        $scope.emptyList = true;
     } else {
-        console.log("USER HAS ACCESS TO EXAMS");
+        $scope.emptyList = false;
     }
 
     function computeExamsArray(exams){
@@ -46,13 +41,15 @@ var elev_tasks_exams_controller = function($scope, $http, $state, $rootScope, $t
         switch(examName){
             case "Test_Dnd":
                 console.log("This is test DND");
-                $state.go('account_elev.test_dnd');
+                $state.go('account_elev.test_examen_dnd');
                 break;
             case "Test_Radio":
                 console.log("this is test radio");
+                $state.go('account_elev.test_examen_radio');
                 break;
             case "Test_Check":
                 console.log("this is test check");
+                $state.go('account_elev.test_examen_check');
                 break;
             default:
             break;

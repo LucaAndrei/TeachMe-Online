@@ -16,6 +16,12 @@ $(document).ready(function(){
 			butReset = $(this).children(".container_answers").children("#butReset");
 
 			$(this).children(".container_answers").randomize("div.answer");
+
+			var answersList =  $(this).find(".answer");
+			answersList.each(function(index){
+				//log($(this).height());
+			});
+
 			butVerifica.parent().append(butVerifica);
 			butReset.parent().append(butReset);
 
@@ -85,7 +91,7 @@ $(document).ready(function(){
 						onValidateQ.valid = false;
 						butReset.enable();
 					}
-					quiz.trigger(onValidateQ);
+					quiz.parent().trigger(onValidateQ);
 				}
 			});//end .valideaza.on
 
@@ -104,10 +110,18 @@ $(document).ready(function(){
 			answers.each(function(index){
 				$(this).off("click");
 				if ($(this).attr("value") == "true"){
-					$(this).parent().css("color","#669900")
+					$(this).parent().css("color","#4cae4c")
 				}
 			});
 		}
+
+		$.fn.blockQuizCheck = function(){
+			var answers = $(this).children(".container_answers").children(".answer").children(".check");
+			answers.each(function(index){
+				$(this).attr("blocat","true");
+			});
+		}
+
 
 		$.fn.resetQuizCheck = function(){
 			var answers = $(this).children(".container_answers").children(".answer").children(".check");

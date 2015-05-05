@@ -52,7 +52,7 @@ $(document).ready(function(){
 							butReset.enable();
 						}
 					});//end rsel.each
-					quiz.trigger(onValidateQ);
+					quiz.parent().trigger(onValidateQ);
 				}
 			});//end .valideaza.on
 
@@ -71,7 +71,7 @@ $(document).ready(function(){
 			answers.each(function(index){
 				$(this).off("click");
 				if ($(this).attr("value") == "true"){
-					$(this).parent().css("color","#669900")
+					$(this).parent().css("color","#4cae4c")
 				}
 			});
 		}
@@ -83,6 +83,33 @@ $(document).ready(function(){
 				$(this).removeClass("selected");
 			});
 		}
+
+		$.fn.blockQuizRadio = function(){
+			var answers = $(this).children(".container_answers").children(".answer").children(".radio");
+				answers.each(function(index){
+				$(this).off("click");
+			});
+		}
+		$.fn.unblockQuizRadio = function(){
+			var answers = $(this).children(".container_answers").children(".answer").children(".radio");
+			answers.on("click",function(){
+				answers.each(function(index){
+					if ($(this).hasClass("gresit")) {
+						$(this).removeClass("gresit");
+					}
+					if ($(this).hasClass("selected")) {
+						$(this).removeClass("selected");
+					}
+				});
+				var isSel = $(this).hasClass("selected");
+				if (isSel == false){
+					$(this).addClass("selected");
+				}
+
+				butVerifica.enable();
+			});
+		}
+
 	});
 });//end window.load
 

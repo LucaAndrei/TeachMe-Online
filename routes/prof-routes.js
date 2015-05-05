@@ -92,6 +92,7 @@ module.exports = function(app, db) {
 
     app.put('/api/users/grades', function(req, res, next) {
         console.log("app put /users/grades")
+        console.log("req.body",req.body)
         var flag = false;
         User.findOne({
             _id: req.body.user
@@ -114,33 +115,7 @@ module.exports = function(app, db) {
                         res.json(grade); // Send the grade back to the caller
                     });
                 } else {
-                    for (var i = 0; i < user.grades.length; i++) {
-                        //console.log(">>>id : "  + user.grades[i]._id);
-                        if (req.body.uid == user.grades[i]._id) {
-                            User.update({
-                                    _id: req.body.user,
-                                    "grades._id": user.grades[i]._id
-                                }, {
-                                    $set: {
-                                        "grades.$.nota": req.body.nota
-                                    }
-                                },
-                                function(err, userGrade) {
-                                    if (err) {
-                                        //console.log("Error processing request. Cannot find user with this id with a grade with this name.");
-                                    } else if (userGrade) {
-                                        //console.log("Grade has been found for this user. Updated successfuly");
-                                    }
-                                }
-                            );
-                            res.json({
-                                message: "Grade has been updated"
-                            });
-                            flag = true;
-                            break;
-                        }
-                    }
-                    if (flag == false) {
+                    if(req.body.tip == "exam"){
                         var grade = new Grade();
                         grade.user = req.body.user;
                         grade.name = req.body.name;
@@ -153,6 +128,47 @@ module.exports = function(app, db) {
                             }
                             res.json(grade); // Send the grade back to the caller
                         });
+                    } else {
+                        for (var i = 0; i < user.grades.length; i++) {
+                            //console.log(">>>id : "  + user.grades[i]._id);
+                            if (req.body.uid == user.grades[i]._id) {
+                                User.update({
+                                        _id: req.body.user,
+                                        "grades._id": user.grades[i]._id
+                                    }, {
+                                        $set: {
+                                            "grades.$.nota": req.body.nota
+                                        }
+                                    },
+                                    function(err, userGrade) {
+                                        if (err) {
+                                            //console.log("Error processing request. Cannot find user with this id with a grade with this name.");
+                                        } else if (userGrade) {
+                                            //console.log("Grade has been found for this user. Updated successfuly");
+                                        }
+                                    }
+                                );
+                                res.json({
+                                    message: "Grade has been updated"
+                                });
+                                flag = true;
+                                break;
+                            }
+                        }
+                        if (flag == false) {
+                            var grade = new Grade();
+                            grade.user = req.body.user;
+                            grade.name = req.body.name;
+                            grade.nota = req.body.nota;
+                            grade.data = req.body.data;
+                            user.grades.push(grade); // Save the grade and also push the grade object in the user's grades array
+                            user.save(function(err, user) {
+                                if (err) {
+                                    return next(err);
+                                }
+                                res.json(grade); // Send the grade back to the caller
+                            });
+                        }
                     }
                 }
             }
