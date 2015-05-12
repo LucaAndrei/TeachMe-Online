@@ -68,8 +68,8 @@ $(document).ready(function(){
 				var drag = quiz.children(".container_answers").children("#dragContainer").find("#drag_"+idx+"_"+i);
 				//var drop = quiz.children(".container_answers").children("#dropContainer").find("#drop_"+idx+"_"+i);
 				drag.data("init_top",coords[i-1].top);
-				drag.data("init_left",coords[i-1].left);
-				drag.css({"position":"absolute",left:coords[i-1].left,top:coords[i-1].top});
+				drag.data("init_left",coords[i-1].left + 8);
+				drag.css({"position":"absolute",left:coords[i-1].left + 8,top:coords[i-1].top});
 			}
 			nrTrase = 0;
 		};
@@ -110,7 +110,7 @@ $(document).ready(function(){
 		}
 
 		function appletMouseMove(event){
-			dragCurent.css({left:event.pageX-dw/2,top:event.pageY-dh/2});
+			dragCurent.css({left:event.pageX-dw/2 - 410,top:event.pageY-dh/2 - 180});
 		}
 
 		function forceMouseUp(){
@@ -130,7 +130,7 @@ $(document).ready(function(){
 						drop.attr("drag", dragCurent.attr("nr"));
 						dragCurent.attr("drop",i);
 						drop.parent().append(dragCurent);
-						var marginh = (drop.outerWidth(true) - drop.outerWidth(false)) / 2;
+						var marginh = (drop.outerWidth(true) - drop.outerWidth(false)) / 2 + 8;
 						var marginv = (drop.outerHeight(true) - drop.outerHeight(false)) / 2;
 						dragCurent.css({"position":"absolute", "left":drop.position().left+marginh,"top":drop.position().top+marginv});
 						if (asimilare=="true"){

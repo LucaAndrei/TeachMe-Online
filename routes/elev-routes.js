@@ -15,6 +15,20 @@ module.exports = function(app, db) {
         });
     });
 
+    app.get('/api/users/listAllUsers', function(req, res) {
+        console.log("/api/users/tasks")
+        User.find({
+            _id : {$ne : req.user_id}
+        }, function(err, users) {
+            if (err) {
+                //console.log("Error processing request. Cannot find user with this id.");
+            } else if (users) {
+                console.log("users list",users);
+                res.json(users);
+            }
+        });
+    });
+
     app.get('/api/users/tasks_hw', function(req, res) {
         console.log("/api/users/tasks_hw")
         Task.find({

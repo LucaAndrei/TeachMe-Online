@@ -70,7 +70,7 @@ module.exports = function(app, db) {
     });
 
     app.param('user', function(req, res, next, id) {
-        //console.log("param user id: " + id);
+        console.log("param user id: " + id);
         var query = User.findById(id);
         query.exec(function(err, user) {
             if (err) {
@@ -169,6 +169,8 @@ module.exports = function(app, db) {
             res.redirect('/')
           });
     });
+
+
 
 
 

@@ -120,7 +120,9 @@ button{
     border: none;
 }
 #butVerifica{
-	position: relative;
+	position: absolute;
+	left: 1250px;
+	top:580px;
 	display: none;
 	cursor: pointer;
 	width: 72px;

@@ -402,6 +402,18 @@ config(function($stateProvider, $urlRouterProvider) {
             templateUrl: "modules/Settings/Templates/Settings.html",
             controller: settings_controller,
             resolve: {}
+        })
+        .state('account_elev.chat', {
+            url: "chat",
+            templateUrl: "/modules/Elev/Chat/Templates/Elev_Chat_ListUsers.html",
+            controller: elev_chat_controller,
+            resolve: {
+                promise: function($http) {
+                    return $http.get('/api/users/listAllUsers').success(function(data) {
+                        console.log("promise data", data);
+                    });
+                }
+            }
         });
     $urlRouterProvider.otherwise('/dashboard');
 

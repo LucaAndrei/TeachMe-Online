@@ -9,6 +9,7 @@ module.exports = function(app, db) {
     // =====================================
     app.get('/', function(req, res) {
         console.log(" ---=== auth-routes.js --->>> /")
+        //res.cookie('session', '');
         res.render('index.ejs')
     });
 
@@ -19,7 +20,7 @@ module.exports = function(app, db) {
    /* app.post('/signup', passport.authenticate('local-signup', {
         successRedirect: '/profile', // redirect to the secure profile section
         failureRedirect: '/login', // redirect back to the login page if there is an error
-        failureFlash: true // allow flash messages
+        failureFlash: true // allow flash message
     }));*/
 
 
@@ -28,7 +29,25 @@ module.exports = function(app, db) {
     // =====================================
     app.get('/logout', function(req, res) {
         console.log(" ---=== auth-routes.js --->>> /logout " + session_id);
+        console.log("app logout " + req.user_id)
         var session_id = req.cookies.session;
+
+        db.collection('user_session').findOne({ '_id' : session_id }, function(err, session) {
+            User.findOne({_id : session.user_id},function(err,user){
+                if(err) {
+                    console.log("err")
+                }
+                console.log(">>>>>>>.retuyrn the user",user)
+                user.isOnline = false;
+                 user.save(function(err, user) {
+                        if (err) {
+                            return next(err);
+                        }
+                    });
+            })
+        })
+
+
         db.collection("user_session").remove({ '_id' : session_id }, function (err, numRemoved) {
             //console.log("numRemoved : " + numRemoved)
             res.cookie('session', '');
@@ -64,13 +83,21 @@ module.exports = function(app, db) {
                     return next(err);
                    // return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.')); // create the loginMessage and save it to session as flashdata
                 } else {
+
+                    user.isOnline = true;
+                    user.save(function(err, user) {
+                        if (err) {
+                            return next(err);
+                        }
+                    });
+
                     // Generate session id
                     var current_date = (new Date()).valueOf().toString();
                     var random = Math.random().toString();
                     var session_id = crypto.createHash('sha1').update(current_date + random).digest('hex');
 
                     // Create session document
-                    var session = {'username': req.body.email, '_id': session_id, 'user_id' : user._id}
+                    var session = {'username': req.body.email, '_id': session_id, 'user_id' : user._id, 'created_at' : new Date()}
 
                     // Insert session document
                     db.collection('user_session').insert(session, function (err, result) {
