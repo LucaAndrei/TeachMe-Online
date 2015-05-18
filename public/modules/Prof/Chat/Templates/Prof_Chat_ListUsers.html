@@ -1,71 +1,56 @@
-
-<div class="row">
-	<div class="col-lg-12">
-	    <h1 class="page-header">Exams : {{emptyClassesList}}</h1>
-	        </div>
-	    </div><!-- /.row -->
-<div ng-if="emptyList == true">
-	No users in the database
-</div>
-<div class="container">
-	<div class="row " style="padding-top:40px;">
-		<div class="col-md-4">
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-				ONLINE USERS
-				</div>
-				<div class="panel-body">
-					<ul class="media-list">
-						<li class="media" ng-repeat="user in users">
-							<div class="media-body" ng-dblclick="startChatWithUser(user)" style="cursor:pointer">
-								<div class="media">
-									<img class="media-object img-circle" style="max-height:40px; float:left" ng-src="{{user.imgPath}}" />
-									<div class="media-body" >
-										<div ng-if="user.isOnline == true" class="user_online"></div>
-										<div ng-if="user.isOnline == false" class="user_offline"></div>
-										<h5 class="user_chat">{{user.nume}} {{user.prenume}}</h5>
+Prof_Chat_ListUsers.html
+<div class="container-fluid">
+	<div class="row" id="loginMessage">
+		<div class="col-lg-12"><h3>Te-ai conectat la Chat.</h3></div>
+	</div>
+	<div class="row">
+		<div class="col-lg-12">
+		    <h1 class="page-header">Chat</h1>
+		        </div>
+		    </div><!-- /.row -->
+	<div class="container">
+		<div class="row " style="padding-top:40px;">
+			<div class="col-md-4">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+					UTILIZATORI ONLINE
+					</div>
+					<div class="panel-body">
+						<ul class="media-list">
+							<li class="media" ng-repeat="user in users">
+								<div class="media-body" ng-dblclick="startChatWithUser(user)" style="cursor:pointer">
+									<div class="media">
+										<img class="media-object img-circle" style="max-height:40px; float:left" ng-src="{{user.imgPath}}" />
+										<div class="media-body" >
+											<div ng-if="user.isOnline == true" class="user_online"></div>
+											<div ng-if="user.isOnline == false" class="user_offline"></div>
+											<h5 class="user_chat">{{user.nume}} {{user.prenume}}</h5>
+										</div>
 									</div>
 								</div>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-8">
-			<div class="panel panel-info">
-				<div class="panel-heading">
-					RECENT CHAT HISTORY
-				</div>
-				<div class="panel-body chat">
-					<div id="tabs">
-						<ul>
-							<li><a href="#tabs-1">Nunc tincidunt</a></li>
-							<li><a href="#tabs-2">Proin dolor</a></li>
-							<li><a href="#tabs-3">Aenean lacinia</a></li>
+							</li>
 						</ul>
-						<div id="tabs-1" style="min-height:300px">
-						<p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem.</p>
-						</div>
-						<div id="tabs-2" style="min-height:300px">
-							<p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante,</p>
-						</div>
-						<div id="tabs-3" style="min-height:300px">
-								<div class="chat-message">
-									Alex : Hello there
-								</div>
-								<div class="chat-message">
-									Billy : Hello
-								</div>
-						</div>
 					</div>
-					<textarea id="chat-texta" class="chat-textarea" placeholder="type your message"></textarea>
+				</div>
+			</div>
+			<div class="col-md-8 chat-box hidden">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						MESAJE
+					</div>
+					<div class="panel-body chat">
+						<div id="tabs">
+							<ul>
+							</ul>
+						</div>
+						<textarea id="chat-texta" class="chat-textarea" placeholder="type your message"></textarea>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="row" style="padding-top:40px;">
+		<div class="row" style="padding-top:40px;">
 
+		</div>
 	</div>
 </div>
 

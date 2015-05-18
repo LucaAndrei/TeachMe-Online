@@ -171,6 +171,52 @@ module.exports = function(app, db) {
     });
 
 
+    app.get('/api/users/loginToChat', function(req, res, next) {
+        console.log("app put /loginToChat")
+        /*console.log("req.user",req.user);
+        console.log("req.body",req.body);*/
+        User.findOne({
+            _id : req.user_id
+        }, function(err, user){
+            if(err){
+                throw err;
+            }
+            if(user){
+                console.log("user login to chat",user)
+                res.json(user.loggedInChat)
+            } else {
+                console.log("error task not found");
+            }
+        })
+    });
+
+    app.put('/api/users/loginToChat', function(req, res, next) {
+        console.log("app put /loginToChat")
+        /*console.log("req.user",req.user);
+        console.log("req.body",req.body);*/
+        User.findOne({
+            _id : req.user_id
+        }, function(err, user){
+            if(err){
+                throw err;
+            }
+            if(user){
+                console.log("user login to chat",user)
+                user.loggedInChat = true;
+                user.save(function(err, user) {
+                        if (err) {
+                            return next(err);
+                        }
+                        res.json(user.loggedInChat)
+                        //res.json(grade); // Send the grade back to the caller
+                    });
+            } else {
+                console.log("error task not found");
+            }
+        })
+    });
+
+
 
 
 

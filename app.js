@@ -105,11 +105,9 @@ var db = mongoose.connection;
             next(err);
         });*/
 
-
     client.on('connection',function(socket){
         console.log("client on connection");
         //console.log("socket",socket);
-        var usernames = {};
         socket.on('input',function(data){
             console.log("data",data);
             var whitespacePattern=/^\s*$/;
@@ -118,13 +116,12 @@ var db = mongoose.connection;
                 console.log("mesaj null");
             } else {
                 console.log("try to push message")
-                var mMsg = {numeUser : data.numeSender, mesaj : data.mesaj};
                 db.collection('chat').update({
-                    'idReceiver' : {$in : [data.idReceiver, data.idSender]},
-                    'idSender' : {$in : [data.idReceiver, data.idSender]}
+                    'chatIDReceiver' : {$in : [data.chatIDReceiver, data.chatIDSender]},
+                    'chatIDSender' : {$in : [data.chatIDReceiver, data.chatIDSender]}
                 }, {
                     $push : {
-                        'messages' : {numeSender : data.numeSender, mesaj : data.mesaj}
+                        'messages' : {numeSender : data.numeSender, mesaj : data.mesaj, sentAt : data.sentAt, msgIDSender : data.chatIDSender, msgIDReceiver : data.chatIDReceiver},
                     }
                 },function(err, inserted) {
                     if(err) {
@@ -133,13 +130,17 @@ var db = mongoose.connection;
                     console.log("inserted : ", inserted);
                     if(inserted == 0){
                         console.log("chat does not exist.create");
-                        var messages = [{numeUser : data.numeSender, mesaj : data.mesaj}];
-                        var initChat = {'idReceiver' : data.idReceiver, 'idSender' : data.idSender, 'messages' : messages};
+                        var messages = [{numeSender : data.numeSender, mesaj : data.mesaj, sentAt : data.sentAt, msgIDSender : data.chatIDSender, msgIDReceiver : data.chatIDReceiver}];
+                        var initChat = {'chatIDReceiver' : data.chatIDReceiver, 'chatIDSender' : data.chatIDSender, 'messages' : messages};
                         db.collection('chat').insert(initChat, function (err, result) {
                             "use strict";
                             console.log("result inserted",result)
                         });
                     }
+                    data['msgIDReceiver'] = data.chatIDReceiver;
+                    data['msgIDSender'] = data.chatIDSender;
+                                        console.log("data is ",data)
+
                     client.emit('output',[data])
                     //res.json(mClass);
                 });
@@ -149,8 +150,8 @@ var db = mongoose.connection;
         socket.on('showHistory',function(data){
             console.log("data",data)
              db.collection('chat').findOne({
-                    'idReceiver' : {$in : [data.idReceiver, data.idSender]},
-                    'idSender' : {$in : [data.idReceiver, data.idSender]}
+                    'chatIDReceiver' : {$in : [data.chatIDReceiver, data.chatIDSender]},
+                    'chatIDSender' : {$in : [data.chatIDReceiver, data.chatIDSender]}
                 },function(err, chat) {
                     if(err) {
                         console.log("err",err);
@@ -159,11 +160,64 @@ var db = mongoose.connection;
                     if(!chat || chat == null){
                         client.emit('history',[])
                     } else {
-                        client.emit('history',chat.messages)
+                        client.emit('history',{mesaje : chat.messages, chatIDSender : chat.chatIDSender, chatIDReceiver : chat.chatIDReceiver})
                     }
                 });
         })
+
+        socket.on('initLogin', function(data){
+            console.log("init login!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+            var cursor = db.collection('chat').find({
+                    $or : [{'chatIDReceiver' : {$in : [data.userId]}}, {'chatIDSender' : {$in : [data.userId]}}]
+                });
+            cursor.each(function(err, doc){
+                console.log("doc",doc)
+                var found = false;
+                if(doc != null){
+                    if(doc.messages.length > 0){
+                        for(var i = 0; i<doc.messages.length ; i++){
+                            if(doc.messages[i].seenBy.length > 0){
+                                console.log("i : " + i)
+                                found = false;
+                                for(var j = 0; j < doc.messages[i].seenBy.length ; j++){
+                                    if(doc.messages[i].seenBy[j] == data.userId){
+                                        //console.log("this message has not been seen by :" + data.userId)
+                                        //console.log("message is : ", doc.messages[i])
+                                        found = true;
+                                    }
+                                }
+                            }
+                            if(!found){
+                                var messageNotSeen = {
+                                    numeSender : doc.messages[i].numeSender,
+                                    chatIDReceiver : doc.chatIDReceiver,
+                                    chatIDSender : doc.chatIDSender,
+                                    msgIDReceiver : doc.messages[i].msgIDReceiver,
+                                    msgIDSender : doc.messages[i].msgIDSender,
+                                    mesaj : doc.messages[i].mesaj,
+                                    sentAt : doc.messages[i].sentAt
+                                }
+                                console.log("messageNotSeen ",messageNotSeen)
+                                client.emit('offline',[messageNotSeen])
+                            }
+                        }
+                    }
+                }
+            })
+        })
+
+        socket.on('seen', function(data){
+            console.log("seen data : ",data)
+            db.collection('chat').update({
+                'chatIDReceiver' : {$in : [data.chatIDReceiver, data.chatIDSender]},
+                'chatIDSender' : {$in : [data.chatIDReceiver, data.chatIDSender]},
+                'messages' : {$elemMatch : {sentAt : data.seen}}
+            }, {$addToSet : {"messages.$.seenBy" : data.seenBy}},function(err,updated){
+                console.log("chat is ",updated)
+            })
+        })
     });
+
 
 
 

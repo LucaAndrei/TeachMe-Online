@@ -11,6 +11,7 @@ config(function($stateProvider, $urlRouterProvider) {
             controller: function($scope, $state, $http, $rootScope) {
                 $scope.logout = function() {
                     console.log("logging out");
+                    //$rootScope.disconnectSocket();
                     return $http.get("/cookie").success(function(data) {
                         console.log("/cookie data ", data);
                         if (data != null && data != "") {
@@ -181,6 +182,11 @@ config(function($stateProvider, $urlRouterProvider) {
                     return $http.get('/api/users/listUsers').success(function(data) {
                         console.log("promise data", data);
                     });
+                },
+                loginUserToChat : function($http) {
+                    return $http.get('/api/users/loginToChat').success(function(data){
+                        console.log("is logged in to chat",data)
+                    })
                 }
             }
         });

@@ -39,6 +39,7 @@ module.exports = function(app, db) {
                 }
                 console.log(">>>>>>>.retuyrn the user",user)
                 user.isOnline = false;
+                user.loggedInChat = false;
                  user.save(function(err, user) {
                         if (err) {
                             return next(err);
