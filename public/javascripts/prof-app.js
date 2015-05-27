@@ -15,6 +15,8 @@ config(function($stateProvider, $urlRouterProvider) {
                         console.log("prof app login to chat data ",data)
                         if(data == "true") {
                             $rootScope.disconnectSocket();
+                            $(".chat-message-nin-chat").removeClass("visible");
+                            $(".chat-message-nin-chat").addClass("hidden")
                         }
                     })
                     return $http.get("/cookie").success(function(data) {

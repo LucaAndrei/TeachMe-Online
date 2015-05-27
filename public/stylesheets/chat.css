@@ -97,9 +97,11 @@
   position: absolute;
   cursor: pointer;
   border: 1px solid #bbb;
-  width: 300px;
+  width: 250px;
   height: 300px;
   overflow-y:scroll;
+  background-color : white;
+  padding : 10px;
 }
 
 #loginMessage{

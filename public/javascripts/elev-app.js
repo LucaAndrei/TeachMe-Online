@@ -17,6 +17,8 @@ config(function($stateProvider, $urlRouterProvider) {
                         if(data == "true") {
                             console.log("logged in to chat")
                             $rootScope.disconnectSocket();
+                            $(".chat-message-nin-chat").removeClass("visible");
+                            $(".chat-message-nin-chat").addClass("hidden")
                         } else {
                             console.log("not logged to chat")
                         }

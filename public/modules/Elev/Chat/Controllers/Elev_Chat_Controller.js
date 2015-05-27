@@ -2,6 +2,7 @@
 var elev_chat_controller = function($scope, $http, $state, $rootScope, $timeout, promise, loginUserToChat) {
     console.log("elev_chat_controller.js : ", userCredentials);
     console.log("loginUserToChat : " + loginUserToChat.data)
+
     if(loginUserToChat.data == "false"){
         $http.put('/api/users/loginToChat').success(function(data){
             console.log("logged in ?",data)
@@ -213,6 +214,7 @@ var elev_chat_controller = function($scope, $http, $state, $rootScope, $timeout,
 
     function markMessageSeen(){
         console.log("markMessageSeen currentActiveTabId() : " + currentActiveTabId());
+
         $("#tabs-"+currentActiveTabId()).find(".chat-date").each(function(){
             if(!$(this).hasClass("seen")){
                 console.log("doesn't have class seen. set class seen and mark it seen")
@@ -228,11 +230,13 @@ var elev_chat_controller = function($scope, $http, $state, $rootScope, $timeout,
     }
 
     function outsideChatMessage(numeSender, mesaj, idSender){
-        var posLeft = $(document).width() - 300;
+        var posLeft = $(document).width() - 250;
         var posTop = $(document).height() - 500;
         var mesaj = "<div>" + numeSender + " : " + mesaj;
         if(!$(".chat-message-nin-chat").length){
             $('body').append("<div class='chat-message chat-message-nin-chat visible' style='left:" + posLeft + "px; top:" + posTop +"px'></div>");
+            var chat_menu = document.getElementById("sref-chat");
+            console.log(chat_menu)
             $(".chat-message-nin-chat").on("click",function(event){
                 $state.go("account_elev.chat");
                 createTabAndMakeItActive(idSender, numeSender)
