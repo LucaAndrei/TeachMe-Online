@@ -24,6 +24,7 @@ var elev_chat_controller = function($scope, $http, $state, $rootScope, $timeout,
     console.log("mySocket", mySocket)
     if(!mySocket.connected){
         mySocket.connect();
+        $rootScope.connectedToChat = true;
     }
 
     var tabs = $("#tabs").tabs();

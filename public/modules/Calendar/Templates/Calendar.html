@@ -3,7 +3,7 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Calendar</h1>
+            <h1 class="page-header">Calendar {{eventTitle}}</h1>
         </div>
     </div><!-- /.row -->
 
@@ -14,5 +14,88 @@
 		<div id="msg-delete" style="display:none; color:#5cb85c">Stergerea evenimentului s-a efectua cu succes.</div>
     </div>
 </div>
+
+<div class="modal fade" id="class_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header icon">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <div class="text">
+                        <p class="heading ng-binding"><i class="fa fa-fw fa-calendar-o fa-2x"></i>Eveniment</p>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6"><h4>Ora inceput</h4></div>
+                        <div class="col-md-6"><h4 id="event_start">-<h4></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6"><h4>Ora sfarsit</h4></div>
+                        <div class="col-md-6"><h4 id="event_end">-</h4></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6"><h4>Titlu</h4></div>
+                        <div class="col-md-6"><h4 id="eventTitle">-</h4></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6"><h4>Descriere</h4></div>
+                        <div class="col-md-6"><h4 style="word-wrap: break-word;" id="eventDescriere">-</h4></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btn-lg dark-blue-btn" data-dismiss="modal">Inchide</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="modal fade" id="modal_add_event" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header icon">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <div class="text">
+                        <p class="heading ng-binding"><i class="fa fa-fw fa-calendar-o fa-2x"></i>Eveniment</p>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6"><h4>Ora</h4></div>
+                        <div class="col-md-6">
+                            <input type="text" style="width : 80px" id="start_time" name="start_time" placeholder="h:mm" data-default-time="false" value="8:00" />
+                            pana la
+                            <input type="text" style="width : 80px" id="end_time" name="end_time" placeholder="h:mm" data-default-time="false" value="10:00" />
+
+                            <div class="alert alert-danger" role="alert" ng-show="error_time == true">
+                                <span class="fa fa-fw fa-exclamation-circle" aria-hidden="true"></span>
+                                <span class="sr-only">Eroare:</span>Orele introduse sunt invalide.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6"><h4>Nume eveniment</h4></div>
+                        <div class="col-md-6">
+                            <input class="ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength ng-valid-minlength" type="text" ng-maxlength="50" ng-minlength="2" name="name" id="eventName">
+                            <div class="alert alert-danger" role="alert" ng-show="error_nume_event == true">
+                                <span class="fa fa-fw fa-exclamation-circle" aria-hidden="true"></span>
+                                <span class="sr-only">Eroare:</span>Trebuie sa specificati numele evenimentului
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6"><h4>Descriere eveniment [optional]</h4></div>
+                        <div class="col-md-6">
+                            <textarea placeholder="Descrie evenimentul..." class="form-control" id="descriptionEvent" rows="3" style="resize:none"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btn-lg dark-blue-btn" data-dismiss="modal">Inchide</button>
+                    <button type="button" class="btn btn-primary btn-lg dark-blue-btn" ng-click="saveEvent()" ng-disabled="class_registered == true">Salveaza</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 <br /><br /><br />

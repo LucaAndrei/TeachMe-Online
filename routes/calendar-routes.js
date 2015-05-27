@@ -40,9 +40,18 @@ module.exports = function(app, db) {
     app.put('/api/users/events', function(req, res, next) {
         console.log("app put /events/:user")
         var event = new Event();
+        console.log(("req.body : ",req.body))
         event.title = req.body.title;
         event.start = req.body.start;
+        console.log("date",Date.UTC(event.start))
         event.end = req.body.end;
+        if(req.body.descriere != "") {
+            console.log("descriere IS NOT emtpy")
+            event.descriere = req.body.descriere;
+        } else {
+            console.log("descriere is emtpy")
+            event.descriere = "";
+        }
 
         User.update({
             _id: req.user_id

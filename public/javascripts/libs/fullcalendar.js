@@ -73,11 +73,11 @@ function addListeners(){
 		}
 	})
 	$(".fc-title").css("cursor","pointer");
-	$(".fc-title").on("mousedown",function(ev){
+	/*$(".fc-title").on("mousedown",function(ev){
 		alert(""+($(this).html()));
 		//console.log("hai gratica",ev.css("attr","id"));
 		//deleteEventById({eventId : $(this).attr("id")});
-	})
+	})*/
 }
 
 // Recursively combines all passed-in option-hash arguments into a new single option-hash.

@@ -12,7 +12,15 @@ config(function($stateProvider, $urlRouterProvider) {
 
                 $scope.logout = function() {
                     console.log("logging out");
-                    $rootScope.disconnectSocket();
+                    $http.get('/api/users/loginToChat').success(function(data){
+                        console.log("elev app login to chat data ",data)
+                        if(data == "true") {
+                            console.log("logged in to chat")
+                            $rootScope.disconnectSocket();
+                        } else {
+                            console.log("not logged to chat")
+                        }
+                    })
                     return $http.get("/cookie").success(function(data) {
                         //console.log("/cookie data ", data);
                         if (data != null && data != "") {

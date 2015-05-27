@@ -4,6 +4,7 @@ var eventSchema = mongoose.Schema({
 	title : String,
 	start : String,
 	end : String,
+	descriere : String,
 	user : { type : mongoose.Schema.Types.ObjectId, ref : 'User'}
 });
 

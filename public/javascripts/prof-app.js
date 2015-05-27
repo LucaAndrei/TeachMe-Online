@@ -11,7 +11,12 @@ config(function($stateProvider, $urlRouterProvider) {
             controller: function($scope, $state, $http, $rootScope) {
                 $scope.logout = function() {
                     console.log("logging out");
-                    //$rootScope.disconnectSocket();
+                    $http.get('/api/users/loginToChat').success(function(data){
+                        console.log("prof app login to chat data ",data)
+                        if(data == "true") {
+                            $rootScope.disconnectSocket();
+                        }
+                    })
                     return $http.get("/cookie").success(function(data) {
                         console.log("/cookie data ", data);
                         if (data != null && data != "") {
