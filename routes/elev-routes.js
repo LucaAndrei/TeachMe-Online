@@ -16,7 +16,7 @@ module.exports = function(app, db) {
     });
 
     app.get('/api/users/listAllUsers', function(req, res) {
-        console.log("/api/users/tasks")
+        console.log("/api/users/listAllUsers")
         User.find({
             _id : {$ne : req.user_id}
         }, function(err, users) {

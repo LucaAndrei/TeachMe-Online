@@ -1,11 +1,5 @@
 // app/routes.js
 var User = require('../models/user');
-var Task = require('../models/task');
-var Subject = require('../models/subject');
-var Class = require('../models/class');
-var Grade = require('../models/grade');
-var Event = require('../models/event');
-var Message = require('../models/message');
 var formidable = require('formidable'),
     util = require('util')
     fs   = require('fs-extra');
@@ -185,7 +179,7 @@ module.exports = function(app, db) {
                 console.log("user login to chat",user)
                 res.json(user.loggedInChat)
             } else {
-                console.log("error task not found");
+                console.log("error user not found");
             }
         })
     });
@@ -208,10 +202,9 @@ module.exports = function(app, db) {
                             return next(err);
                         }
                         res.json(user.loggedInChat)
-                        //res.json(grade); // Send the grade back to the caller
                     });
             } else {
-                console.log("error task not found");
+                console.log("error user not found");
             }
         })
     });

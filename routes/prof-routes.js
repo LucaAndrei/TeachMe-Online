@@ -64,7 +64,7 @@ module.exports = function(app, db) {
 
 
     app.get('/api/users/getSelectedUser/:user', function(req, res, next) {
-        console.log("app get /users/tasks/:user : "); // + req.user)
+        console.log("app get /users/getSelectedUser/:user : "); // + req.user)
         res.json(req.user);
     });
 

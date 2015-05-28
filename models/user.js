@@ -11,12 +11,8 @@ var userSchema = mongoose.Schema({
 		imgPath : String,
 		isOnline : false,
 		loggedInChat : false,
-		tasks: [{type:mongoose.Schema.Types.Mixed, ref: 'Task'}],
-		subjects: [{type:mongoose.Schema.Types.Mixed, ref: 'Subject'}],
 		grades: [{type:mongoose.Schema.Types.Mixed, ref: 'Grade'}],
-		events: [{type:mongoose.Schema.Types.Mixed, ref: 'Event'}],
-		messages: [{type:mongoose.Schema.Types.Mixed, ref: 'Message'}],
-		userClasses: [{type:mongoose.Schema.Types.Mixed, ref: 'Class'}]
+		events: [{type:mongoose.Schema.Types.Mixed, ref: 'Event'}]
 });
 
 userSchema.methods.generateHash = function(password){
