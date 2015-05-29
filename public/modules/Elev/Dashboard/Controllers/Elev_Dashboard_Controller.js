@@ -28,6 +28,11 @@ var elev_dashboard_controller = function($scope, $http, $state, $rootScope, $tim
         $scope.nr_cursuri = data.length;
     });
 
+    $http.get('/api/users/my_messages').success(function(data) {
+        console.log(data);
+        $scope.nr_mesaje = data;
+    });
+
     /*$http.get('/api/users/prof_mesaje/'+n).success(function(data) {
         console.log("data mesaje : ",data);
         $scope.nr_mesaje = data.length;

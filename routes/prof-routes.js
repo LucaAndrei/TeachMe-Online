@@ -66,6 +66,40 @@ module.exports = function(app, db) {
         });
     });
 
+    app.get('/api/users/my_messages', function(req, res, next) {
+        console.log("/api/users/my_messages")
+        console.log("messages req.user_id",req.user_id)
+        var cursor = db.collection('chat').find({
+            $or : [{'chatIDReceiver' : ""+req.user_id}, {'chatIDSender' : ""+req.user_id}]
+        });
+        var counter = 0;
+        cursor.each(function(err, doc){
+            console.log("doc",doc)
+            var found = false;
+            if(doc != null){
+                if(doc.messages.length > 0){
+                    for(var i = 0; i<doc.messages.length ; i++){
+                        if(doc.messages[i].seenBy.length > 0){
+                            console.log("i : " + i)
+                            found = false;
+                            for(var j = 0; j < doc.messages[i].seenBy.length ; j++){
+                                if(doc.messages[i].seenBy[j] == ("" + req.user_id)){
+                                    found = true;
+                                }
+                            }
+                        }
+                        if(!found){
+                            counter++;
+                        }
+                    }
+                }
+            } else {
+                console.log("counter is : ",counter);
+                res.json(counter);
+            }
+        });
+    });
+
 
 
     app.get('/api/users/getSelectedUser/:user', function(req, res, next) {
