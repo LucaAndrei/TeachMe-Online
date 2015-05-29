@@ -43,6 +43,7 @@ module.exports = function(app, db) {
                 if (!session) {
                     console.log("cookie session not found");
                     //return next();
+                    res.json();
                 }
 
                 if (!err && session) {

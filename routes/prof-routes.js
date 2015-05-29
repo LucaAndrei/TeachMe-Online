@@ -27,6 +27,7 @@ module.exports = function(app, db) {
                     }
                     for(var i = 0 ; i <classList.length ; i++){
                         for(var t = 0; t<classList[i].registeredUsers.length ; t++){
+
                             for(var j = 0 ; j <userList.length ; j++){
                                 if(("" + classList[i].registeredUsers[t]) == userList[j]._id){
                                        var index1 = Arr.indexOf(userList[j]._id);
@@ -48,8 +49,12 @@ module.exports = function(app, db) {
     app.get('/api/users/my_classes/:day', function(req, res, next) {
         console.log("/api/users/my_classes")
         console.log("req.body",req.params.day)
+        console.log("req.user_id",req.user_id)
         Class.find({
-            user: req.user_id,
+            $or : [
+                {"registeredUsers" : {$in : [req.user_id]}},
+                {"user": req.user_id}
+            ],
             day : req.params.day
         }, function(err, classList) {
             if (err) {

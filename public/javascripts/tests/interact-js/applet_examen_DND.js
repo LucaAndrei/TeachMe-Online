@@ -48,15 +48,12 @@ function initQuiz(id){
 	});
 }
 
-
-
 function onEndQuiz(id){
 	console.log("on end quiz")
-	/*if (id==nrQuiz){
+	if (id==nrQuiz){
 		ended = true;
 		$("#butPrev").enable();
 		$("#butText").enable();
-
 
 
 
@@ -70,11 +67,10 @@ function onEndQuiz(id){
 
 
 
-
 	}else{
 		$("#butNext").enable();
 	}
-	$("#quizContainer"+id).off("onValidateQuiz");*/
+	$("#quizContainer"+id).off("onValidateQuiz");
 }
 
 

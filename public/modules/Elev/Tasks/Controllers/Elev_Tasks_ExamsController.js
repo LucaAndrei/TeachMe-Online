@@ -5,9 +5,8 @@ var elev_tasks_exams_controller = function($scope, $http, $state, $rootScope, $t
     var examsArray = [];
     computeExamsArray(exams.data);
 
-    $('[data-toggle="tooltip"]').tooltip({
-        placement : 'bottom'
-    });
+    $('.nota').tooltip();
+
 
     $scope.exams = examsArray;
     console.log($scope.exams)

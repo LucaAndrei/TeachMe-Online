@@ -14,17 +14,24 @@ html, body {margin:0; overflow:hidden; cursor:default;}
 
 
 #applet {
-	font-size: 16px; width : 1350px; height : 670px; border : 0; position : absolute; left : 410px; top : 170px; overflow:hidden; font-family:Arial, Helvetica, sans-serif; background:#F7F7F7; }
+	font-size: 16px;
+	/*width : 1350px;*/
+	height : 500px;
+	border : 0;
+	position : absolute;
+	/*left : 410px;*/
+	top : 170px;
+	overflow:hidden; font-family:Arial, Helvetica, sans-serif; background:#F7F7F7; }
 
 #quizContainer1{
-	width: 1350px;
-	height: 670px;
+	/*width: 1350px;
+	height: 500px;*/
 	top: 0px;
 	left: 0px;
 }
 #quizContainer2{
-	width: 1350px;
-	height: 670px;
+	/*width: 1350px;
+	height: 500px;*/
 	top: 0px;
 	left: 1400px;
 }
@@ -47,7 +54,7 @@ html, body {margin:0; overflow:hidden; cursor:default;}
 	background-color:#ECECEC;
 	display: block;
 	margin: 2px 2px;
-	height: 585px;
+	height: 415px;
 	padding: 5px 5px 5px 5px;
 }
 
@@ -67,7 +74,7 @@ html, body {margin:0; overflow:hidden; cursor:default;}
 .answer span{
 	display:inline-block;
 	vertical-align: middle;
-	width: 93%;
+	width: 85%;
 }
 .check {
 	display: inline-block;
@@ -96,8 +103,8 @@ button{
 
 #butText{
 	position: absolute;
-	top: 630px;
-	left: 580px;
+	top: 460px;
+	/*left: 580px;*/
 	display: block;
 	cursor: pointer;
 	width: 110px;
@@ -121,8 +128,8 @@ button{
 
 #butNext {
 	position: absolute;
-	top: 630px; /*630*/
-	right: 25px;
+	top: 460px; /*630*/
+	/*right: 25px;*/
 	width: 72px;
 	height: 31px;
 	display: block;
@@ -141,8 +148,8 @@ button{
 
 #butPrev {
 	position: absolute;
-	top: 630px;
-	left: 25px;
+	top: 460px;
+	/*left: 25px;*/
 	width: 72px;
 	height: 31px;
 	display: block;

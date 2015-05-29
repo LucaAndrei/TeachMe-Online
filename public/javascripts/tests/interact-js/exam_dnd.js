@@ -293,7 +293,7 @@ $(document).ready(function(){
 
 						if(dragGasit.attr("drop") == "" &&  $(this).attr("ocupat") == ""){
 							$(this).parent().append(dragGasit);
-							var marginh = ($(this).outerWidth(true) - $(this).outerWidth(false)) / 2;
+							var marginh = ($(this).outerWidth(true) - $(this).outerWidth(false)) / 2 + 8;
 							var marginv = ($(this).outerHeight(true) - $(this).outerHeight(false)) / 2;
 							dragGasit.css({position:"absolute", top:$(this).position().top+marginv, left:$(this).position().left+marginh});
 							dragGasit.attr("drop",$(this).attr("nr"));

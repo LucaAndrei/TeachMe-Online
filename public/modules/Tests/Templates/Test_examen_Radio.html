@@ -17,9 +17,9 @@
         <div id="block-left"></div>
         <div id="block-top"></div>
     </div>
-    <div id="applet" aria-hidden="true">
-
-                <div id="quizContainer1" class="quizContainer">
+    <div id="applet" class="col-md-8 col-md-offset-1 col-sm-8 col-xs-10 col-xs-offset-1" aria-hidden="true">
+            <div class="row">
+                <div id="quizContainer1" class="quizContainer col-md-12 col-sm-12 col-xs-12">
 					<div id="quiz11" class="quiz_radio">
                         <div id="question_1" class="question_init">
                             <span><h3>Ce este Express JS :</h3></span>
@@ -38,6 +38,7 @@
                                 API oferit de Google pentru crearea aplicatiilor Web
                             </div>
 
+
                             <button id="butVerifica" class="valideaza disabled">
                                 <div class="simbol validare disabled"></div>
                             </button>
@@ -45,7 +46,7 @@
                     </div>
 				</div>
 
-                <div id="quizContainer2" class="quizContainer">
+                <div id="quizContainer2" class="quizContainer col-md-12 col-sm-12 col-xs-12">
                     <div id="quiz12" class="quiz_radio">
                         <div id="question_2" class="question_init">
                             <span><h3>MongoDB este :</h3></span>
@@ -69,17 +70,17 @@
                         </div>
                     </div>
                 </div>
-
-
-
-                <button id="butText" class="" ng-click="butQuitClicked($event)">
+            </div>
+            <div class="row">
+                <button id="butText" class="col-md-4 col-md-offset-5 col-sm-offset-5 col-xs-offset-5" ng-click="butQuitClicked($event)">
                     <span>Quit</span>
                 </button>
-                <button id="butNext" class="">
+                <button id="butNext" class="col-md-4 col-md-offset-10 col-sm-offset-10 col-xs-offset-10">
                     <div class="simbol next"></div>
                 </button>
 
-                <button id="butPrev" class="">
+                <button id="butPrev" class="col-md-4 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
                     <div class="simbol prev"></div>
                 </button>
+            </div>
     </div>

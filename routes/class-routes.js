@@ -103,14 +103,16 @@ module.exports = function(app, db) {
 
      app.get('/api/users/registeredClasses/:user', function(req,res,next){
         console.log("/registeredClasses/"+req.user._id)
+        console.log("req.user_id",req.user_id);
         Class.find({
+            "user" : req.user_id,
             "registeredUsers" : {$in : [req.user._id]}
         }, function(err, classList) {
             if (err) {
                 //console.log("err : " + err);
                 return next(err);
             }
-            console.log("classList : " + classList);
+           // console.log("classList : " + classList);
             res.json(classList);
         });
      })

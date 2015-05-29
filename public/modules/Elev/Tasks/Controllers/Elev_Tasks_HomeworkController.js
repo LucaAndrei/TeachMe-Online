@@ -14,9 +14,7 @@ var elev_tasks_homework_controller = function($scope, $http, $state, $rootScope,
     var homeworkArray = [];
     computeHomeworkArray(homework.data);
 
-    $('[data-toggle="tooltip"]').tooltip({
-            placement : 'bottom'
-        });
+    $('.nota').tooltip();
 
     $scope.homeworkArr = homeworkArray;
     console.log($scope.homework)

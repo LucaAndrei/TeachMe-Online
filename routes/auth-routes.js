@@ -140,6 +140,7 @@ module.exports = function(app, db) {
                         newUser.prenume = req.body.prenume;
                         newUser.facultate = req.body.facultate;
                         newUser.tipUser = req.body.tipUser;
+                        newUser.imgPath = "images/uploads/dummyuser.png";
 
 
 

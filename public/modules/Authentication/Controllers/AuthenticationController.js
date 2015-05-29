@@ -86,7 +86,7 @@ var signUpController = function($scope, $http, $state, $rootScope, $timeout) {
             if (document.getElementById("tipUser").checked) {
                 user.tipUser = "teacher";
             } else {
-                user.tipUser = "elev";
+                user.tipUser = "student";
             }
 
             $http.post('/signup', user).success(function(data) {

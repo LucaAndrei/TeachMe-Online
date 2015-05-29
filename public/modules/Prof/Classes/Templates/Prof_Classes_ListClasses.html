@@ -1,4 +1,3 @@
-Prof_Classes_ListClasses.html
 <div class="container-fluid">
     <!-- Page Heading -->
 
@@ -11,7 +10,7 @@ Prof_Classes_ListClasses.html
     <div class="row">
 		<div class="col-lg-6">
 			<div id="loading" ng-if="emptyClassesList == null"></div>
-			<div class="col-md-4 col-md-offset-4" ng-if="emptyClassesList == true"><b>Nu au fost adaugate cursuri. Apasati pe butonul 'Adauga Curs' pentru a adauga un curs nou.</b></div>
+			<div class="col-md-6 col-md-offset-4" ng-if="emptyClassesList == true"><b>Nu au fost adaugate cursuri. Apasati pe butonul 'Adauga Curs' pentru a adauga un curs nou.</b></div>
 			<div class="tec-list ">
 				<ul class="ng-scope">
 					<li class="class" ng-repeat="class in classes" data-toggle="modal" data-target="#class_modal" ng-click="selectClass(class)">

@@ -4,7 +4,7 @@ var prof_classes_new_class_controller = function($scope, $http, $state, $rootSco
     //console.log("prof_classes_new_class_controller.js : ", userCredentials);
     $scope.userCredentials = userCredentials;
     $scope.subjects = promise.data;
-    $scope.days = ['Luni', 'Marti', 'Miercuri', 'Joi', 'vineri'];
+    $scope.days = ['Luni', 'Marti', 'Miercuri', 'Joi', 'Vineri'];
     $scope.subjectExists = false;
     $scope.error_subjectListEmpty = false;
     $scope.teacher = {
@@ -35,6 +35,7 @@ var prof_classes_new_class_controller = function($scope, $http, $state, $rootSco
 
 
     $scope.addNewSubject = function(user) {
+        console.log("add new subject")
         $scope.subjectExists = false;
         var objToInsert = {
             name: '' + $("#subjectName").val(),
@@ -44,20 +45,31 @@ var prof_classes_new_class_controller = function($scope, $http, $state, $rootSco
             $scope.error_empty_string = true;
         } else {
             $scope.error_empty_string = false;
-            for (var i = 0; i < $scope.subjects.length; i++) {
-                if ($scope.subjects[i].subject_name == $("#subjectName").val()) {
-                    $scope.subjectExists = true;
-                    break;
-                } else {
-                    return $http.post('/api/users/addSubject', objToInsert).success(function(data) {
-                        $scope.subjects.push(data[0]);
-                        if ($scope.subjects.length > 0) {
-                            $scope.error_subjectListEmpty = false;
-                        }
-                        $("#new_subject_modal").modal("hide");
-                        $scope.subjectExists = false;
-                    });
+            if($scope.subjects.length > 0){
+                for (var i = 0; i < $scope.subjects.length; i++) {
+                    if ($scope.subjects[i].subject_name == $("#subjectName").val()) {
+                        $scope.subjectExists = true;
+                        break;
+                    } else {
+                        return $http.post('/api/users/addSubject', objToInsert).success(function(data) {
+                            $scope.subjects.push(data[0]);
+                            if ($scope.subjects.length > 0) {
+                                $scope.error_subjectListEmpty = false;
+                            }
+                            $("#new_subject_modal").modal("hide");
+                            $scope.subjectExists = false;
+                        });
+                    }
                 }
+            } else {
+                return $http.post('/api/users/addSubject', objToInsert).success(function(data) {
+                    $scope.subjects.push(data[0]);
+                    if ($scope.subjects.length > 0) {
+                        $scope.error_subjectListEmpty = false;
+                    }
+                    $("#new_subject_modal").modal("hide");
+                    $scope.subjectExists = false;
+                });
             }
         }
     }

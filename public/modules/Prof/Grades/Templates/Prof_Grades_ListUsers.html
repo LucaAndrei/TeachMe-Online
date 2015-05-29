@@ -1,4 +1,3 @@
-Prof_Grades_ListUsers.html
 <div class="container-fluid">
     <!-- Page Heading -->
 
@@ -9,30 +8,36 @@ Prof_Grades_ListUsers.html
     </div><!-- /.row -->
     <div class="row">
     	<div ng-if="emptyList == true">
-			Nu exista utilizatori inregistrati la cursurile dumneavoastra
+			<div class="col-md-6 col-md-offset-4">
+				<b>Nu exista utilizatori inregistrati la cursurile dumneavoastra.</b>
+			</div>
 		</div>
 		<div id="loading" ng-if="emptyList == null"></div>
 		<div ng-repeat="user in users" ng-if="emptyList == false">
 			<div class="row-fluid">
-				<div class="container-fluid well col-lg-4 col-lg-offset-1">
+				<div class="container-fluid well col-lg-5 col-lg-offset-1">
 					<div class="row-fluid">
-						<div class="col-lg-1" >
+						<div class="col-md-4">
 							<img ng-src="{{user.imgPath}}" class="img-circle" style="width:140px; height:140px">
 						</div>
-
-						<div class="col-lg-4 col-lg-offset-3">
-							<h3>{{user.nume}} {{user.prenume}}</h3>
-							<h4>Email: {{user.email}}</h4>
-							<h4>Facultate: {{user.facultate}}</h4>
-						</div>
-
-						<div class="col-lg-4 col-lg-offset-3">
-							<div class="btn-group">
-								<a ui-sref="account_prof.usersGrades({ID: user._id })">
-									<button type="button" class="btn btn-info">
-										Note
-									</button>
-								</a>
+						<div class="col-md-8">
+							<div class="row">
+								<div class="col-md-4">
+									<h3>{{user.nume}} {{user.prenume}}</h3>
+									<h4>Email: {{user.email}}</h4>
+									<h4>Facultate: {{user.facultate}}</h4>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-4">
+									<div class="btn-group">
+										<a ui-sref="account_prof.usersGrades({ID: user._id })">
+											<button type="button" class="btn btn-info">
+												Note
+											</button>
+										</a>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
