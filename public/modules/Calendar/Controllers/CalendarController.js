@@ -89,6 +89,7 @@ var calendar_controller = function($scope, $http, $state, $rootScope, $timeout, 
                 }
                 $("#eventTitle").text("" + calEvent.title)
                 $("#eventDescriere").text("" + calEvent.descriere)
+                $("#event_zi").text("" + calEvent._start._i.split("T")[0]);
                 $('#class_modal').modal('show')
             },
             dayClick: function(date, jsEvent, view){

@@ -23,11 +23,12 @@
         <div class="gradesTable col-md-8 col-md-offset-2" ng-if="emptyList == false">
             <table>
                 <tr>
-                    <td colspan="2">{{userCredentials.nume}}</td>
+                    <td colspan="3">{{userCredentials.nume}} {{userCredentials.prenume}}</td>
                 </tr>
                 <tr ng-repeat="grade in grades | orderBy:sortType:sortReverse | filter:cautaNote">
-                    <td class="col-md-6">{{grade.name}}</td>
-                    <td class="col-md-6">{{grade.nota}}</td>
+                    <td class="col-md-4">{{grade.name}}</td>
+                    <td class="col-md-4">{{grade.nota}}</td>
+                    <td class="col-md-4">{{grade.data}}</td>
                 </tr>
             </table>
         </div>

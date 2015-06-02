@@ -160,7 +160,7 @@ var db = mongoose.connection;
                     if(!chat || chat == null){
                         client.emit('history',[])
                     } else {
-                        client.emit('history',{mesaje : chat.messages, chatIDSender : chat.chatIDSender, chatIDReceiver : chat.chatIDReceiver})
+                        client.emit('history',{mesaje : chat.messages, chatIDSender : chat.chatIDSender, chatIDReceiver : chat.chatIDReceiver, clickedBy : data.chatIDSender})
                     }
                 });
         })

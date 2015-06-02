@@ -1,6 +1,7 @@
 'use strict';
 var prof_grades_users_grades_controller = function($scope, $http, $state, $rootScope, $timeout, $stateParams, $filter, usersClasses, selectedUserPromise) {
     console.log("Grades for user. Users Classes : ",usersClasses)
+    console.log("selectedUserPromise.data.grades",selectedUserPromise.data.grades)
     var selectedUser = [];
     var gradesNames = [];
     $scope.gradesNames = gradesNames;
@@ -20,7 +21,6 @@ var prof_grades_users_grades_controller = function($scope, $http, $state, $rootS
     computeSelectedUserGrades();
     computeGradesNames();
     computeToday();
-
 
     $scope.noGrades = [{
         value: 1,
@@ -65,10 +65,10 @@ var prof_grades_users_grades_controller = function($scope, $http, $state, $rootS
         var selected = [];
         if (grade.status) {
             selected = $filter('filter')($scope.noGrades, {
-                value: grade.status
+                value: Math.ceil(grade.status)
             });
         }
-        return selected.length ? selected[0].text : 'Not set';
+        return selected.length ? selected[0].text : '-';
     };
 
 

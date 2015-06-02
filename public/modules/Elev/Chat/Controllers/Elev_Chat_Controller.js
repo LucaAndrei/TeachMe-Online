@@ -116,18 +116,23 @@ var elev_chat_controller = function($scope, $http, $state, $rootScope, $timeout,
         });
 
         mySocket.on('history', function(data){
-            if(!historyRequested){
-                if(data.mesaje.length){
-                    $("#tabs-"+currentActiveTabId()).empty();
-                    for(var i = 0; i<data.mesaje.length ; i++){
-                        insertMessageInTab(data.mesaje[i].numeSender, data.mesaje[i].mesaj,
-                            data.mesaje[i].sentAt,
-                            data.chatIDSender == userCredentials._id ? data.chatIDReceiver : data.chatIDSender);
-                        historyRequested = true;
+            console.log("history data",data)
+            if(data.clickedBy == userCredentials._id) {
+                if(!historyRequested){
+                    if(data.mesaje.length){
+                        $("#tabs-"+currentActiveTabId()).empty();
+                        for(var i = 0; i<data.mesaje.length ; i++){
+                            insertMessageInTab(data.mesaje[i].numeSender, data.mesaje[i].mesaj,
+                                data.mesaje[i].sentAt,
+                                data.chatIDSender == userCredentials._id ? data.chatIDReceiver : data.chatIDSender);
+                            historyRequested = true;
+                        }
+                        var d = $("#tabs-"+currentActiveTabId());
+                        d.scrollTop(d.prop("scrollHeight"));
                     }
-                    var d = $("#tabs-"+currentActiveTabId());
-                    d.scrollTop(d.prop("scrollHeight"));
                 }
+            } else {
+                console.log("history received. history NOT request by me")
             }
         })
 
@@ -173,7 +178,7 @@ var elev_chat_controller = function($scope, $http, $state, $rootScope, $timeout,
     }
 
     $("#tabs").on('click','.chat-messages #showPrevious',function(){
-        mySocket.emit('showHistory',{chatIDSender : userCredentials._id, chatIDReceiver : currentActiveTabId()});
+        mySocket.emit('showHistory',{chatIDSender : userCredentials._id, chatIDReceiver : currentActiveTabId(), clickedBy : userCredentials._id});
     });
 
     $("#tabs").on('click','ul li',function(){

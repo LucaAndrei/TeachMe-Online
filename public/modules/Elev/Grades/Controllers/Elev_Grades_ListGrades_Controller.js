@@ -1,6 +1,7 @@
 'use strict';
 var elev_grades_list_grades_controller = function($scope, $http, $state, $rootScope, $timeout, grades) {
     //console.log("gradesElevController.js : ",userCredentials);
+    console.log(grades)
     $scope.userCredentials = userCredentials;
     $scope.emptyList = null;
 

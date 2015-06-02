@@ -50,9 +50,7 @@ config(function($stateProvider, $urlRouterProvider) {
             resolve: {
                 userLoggedIn: function($http, $state, $rootScope) {
                     return $http.get("/cookie").success(function(data) {
-                        console.log("/cookie data ", data);
                         if (data != null && data != "") {
-                            console.log("redirect")
                             userCredentials = data;
                             $rootScope.userCredentials = userCredentials;
                             if (data.tipUser == "teacher") {
@@ -62,7 +60,6 @@ config(function($stateProvider, $urlRouterProvider) {
                                 $state.go('account_elev.dashboard');
                             }
                         } else {
-                            console.log("no cookie. set user credentials to null")
                             userCredentials = null;
                             $rootScope.userCredentials = null;
                         }
@@ -77,9 +74,7 @@ config(function($stateProvider, $urlRouterProvider) {
             resolve: {
                 userLoggedIn: function($http, $state, $rootScope) {
                     return $http.get("/cookie").success(function(data) {
-                        console.log("/cookie data ", data);
                         if (data != null && data != "") {
-                            console.log("redirect")
                             userCredentials = data;
                             $rootScope.userCredentials = userCredentials;
                             if (data.tipUser == "teacher") {
@@ -89,7 +84,6 @@ config(function($stateProvider, $urlRouterProvider) {
                                 $state.go('account_elev.dashboard');
                             }
                         } else {
-                            console.log("no cookie. set user credentials to null")
                             userCredentials = null;
                             $rootScope.userCredentials = null;
                         }
