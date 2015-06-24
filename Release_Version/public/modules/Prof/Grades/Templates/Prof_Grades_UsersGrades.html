@@ -1,0 +1,62 @@
+<div class="container-fluid">
+    <!-- Page Heading -->
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Note : {{selectedUser.nume}} {{selectedUser.prenume}}</h1>
+        </div>
+    </div><!-- /.row -->
+    <div class="row">
+        <div id="loading" ng-if="emptyGradesList == null"></div>
+
+        <div ng-if="emptyGradesList == true">
+            <div class="col-md-6 col-md-offset-5">
+                <b>Nu exista note pentru acest utilizator.</b>
+            </div>
+        </div>
+
+        <div class="gradesTable col-md-8 col-lg-6 col-md-offset-3">
+            <table id="myTable">
+                <tr>
+                    <th colspan="4">
+                        {{selectedUser.nume}} {{selectedUser.prenume}}
+                    </th>
+                </tr>
+                <tr>
+                    <th class="alignLeftWithPadding">Materie</th>
+                    <th>Nota</th>
+                    <th class="alignRightWithPadding">Data</th>
+                    <th class="">Edit</th>
+                </tr>
+                <tr ng-repeat="grade in gradesArray track by $index">
+                    <td class="col-md-2 alignLeftWithPadding">
+                        <select ng-attr-id="{{ 'selectedUserSubject-' + grade.customId }}" ng-if = "grade.validated == false && grade.editing == false" ng-model="myselect" ng-options="option as option for option in gradesNames" required ng-init="myselect = gradesNames[0]"></select>
+                        <div ng-attr-id="{{ 'selectedUserSubjectName-' + grade.customId }}" ng-if = "grade.validated == true || grade.editing == true"> {{grade.nume}}</div>
+                    </td>
+                    <td class="col-md-2">
+                        <select ng-attr-id="{{ 'selectedUserGrade-' + grade.customId }}" ng-if = "grade.validated == false" ng-model="myselect" ng-options="s.value as s.text for s in noGrades" required ng-init="myselect = noGrades[0].value"></select>
+                        <div ng-attr-id="{{ 'selectedUserSubjectGrade-' + grade.customId }}" ng-if = "grade.validated == true"> {{showGrade(grade)}} </div>
+                    </td>
+                    <td class="col-md-2 alignRightWithPadding">
+                        <div ng-if = "grade.validated == false"> {{today}} </div>
+                        <div ng-if = "grade.validated == true"> {{grade.data}} </div>
+                    </td>
+                    <td class="col-md-2">
+                        <div class="buttons" ng-show="!rowform.$visible" ng-if="grade.validated == true">
+                            <button class="btn btn-primary" ng-click="editGrade(grade.customId)" ng-disabled="disableAddRow == true"><i class="fa fa-2x fa-edit"></i></button>
+                            <button class="btn btn-danger" ng-click="removeRow($index)" ng-disabled="disableAddRow == true"><i class="fa fa-2x fa-remove"></i></button>
+                        </div>
+                        <div class="buttons" ng-show="!rowform.$visible" ng-if="grade.validated == false">
+                            <button class="btn btn-primary" ng-click="saveGrade(grade.customId)" ng-if="grade.editing == false"><i class="fa fa-2x fa-save"></i></button>
+                            <button class="btn btn-primary" ng-click="saveEditGrade(grade.customId)" ng-if="grade.editing == true"><i class="fa fa-2x fa-save"></i></button>
+
+                            <button class="btn btn-danger" ng-click="removeRow($index)" ng-if="grade.editing == false"><i class="fa fa-2x fa-close"></i></button>
+                            <button class="btn btn-danger" ng-click="cancelEdit(grade.customId)" ng-if="grade.editing == true"><i class="fa fa-2x fa-close"></i></button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <button type="button" ng-click="addRow()" class="btn btn-primary btn-lg dark-blue-btn" style="margin-left:15px; margin-top:15px" ng-disabled="disableAddRow == true">Adauga</button>
+        </div>
+    </div>
+</div>

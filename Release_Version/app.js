@@ -44,12 +44,12 @@ MongoClient.connect('mongodb://127.0.0.1:27017/licentaDB', function(err, db) {
     mongoose.connect('mongodb://127.0.0.1/licentaDB');
     var db = mongoose.connection;
 
-    require('./routes/routes.js')(app, db); // load our routes and pass in our app and fully configured passport
-    require('./routes/auth-routes.js')(app, db); // load our routes and pass in our app and fully configured passport
-    require('./routes/prof-routes.js')(app, db); // load our routes and pass in our app and fully configured passport
-    require('./routes/elev-routes.js')(app, db); // load our routes and pass in our app and fully configured passport
-    require('./routes/calendar-routes.js')(app, db); // load our routes and pass in our app and fully configured passport
-    require('./routes/class-routes.js')(app, db); // load our routes and pass in our app and fully configured passport
+    require('./routes/routes.js')(app, db); // load our routes and pass in our app and database
+    require('./routes/auth-routes.js')(app, db); // load our routes and pass in our app and database
+    require('./routes/prof-routes.js')(app, db); // load our routes and pass in our app and database
+    require('./routes/elev-routes.js')(app, db); // load our routes and pass in our app and database
+    require('./routes/calendar-routes.js')(app, db); // load our routes and pass in our app and database
+    require('./routes/class-routes.js')(app, db); // load our routes and pass in our app and database
 
     client.on('connection',function(socket){
         //console.log("client on connection");

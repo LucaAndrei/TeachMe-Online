@@ -1,0 +1,65 @@
+<div id="wrapper">
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" ui-sref="account_elev.dashboard">Teach Me</a>
+        </div>
+        <!-- Top Menu Items -->
+        <ul class="nav navbar-right top-nav">
+            <li class="dropdown">
+                <a style="cursor:pointer" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{userCredentials.nume}} {{userCredentials.prenume}} <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a ui-sref="account_elev.profile_settings"><i class="fa fa-fw fa-power-off"></i> Setari</a>
+                        <a style="cursor:pointer" ng-click="logout()"><i class="fa fa-fw fa-power-off"></i> Logout</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav side-nav my-nav">
+                <li>
+                    <a ui-sref="account_elev.dashboard"><i class="fa fa-fw fa-dashboard"></i> Acasa</a>
+                </li>
+                <li>
+                    <a ui-sref="account_elev.calendar"><i class="fa fa-fw fa-calendar"></i> Calendar</a>
+                </li>
+                <li>
+                    <a ui-sref="account_elev.grades"><i class="fa fa-fw fa-pencil"></i> Note</a>
+                </li>
+                <li>
+                    <a ui-sref="account_elev.classes"><i class="fa fa-fw fa-university"></i> Cursuri</a>
+                </li>
+                <li>
+                    <a ui-sref="account_elev.chat"><i class="fa fa-fw fa-group"></i> Chat <div ng-if="messageReceived == true">rec</div></a>
+                </li>
+                <li>
+                    <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Task <i class="fa fa-fw fa-caret-down"></i></a>
+                    <ul id="demo" class="collapse">
+                        <li>
+                            <a ui-sref="account_elev.homework">Teme</a>
+                        </li>
+                        <li>
+                            <a ui-sref="account_elev.exams">Examene</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </nav>
+
+    <div id="page-wrapper">
+        <div ui-view></div>
+    </div>
+    <!-- /#page-wrapper -->
+</div>
+<!-- /#wrapper -->

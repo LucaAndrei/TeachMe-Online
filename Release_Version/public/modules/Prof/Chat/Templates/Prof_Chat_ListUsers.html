@@ -1,0 +1,50 @@
+<div class="container-fluid">
+	<div class="row" id="loginMessage">
+		<div class="col-lg-12"><h3>Te-ai conectat la Chat.</h3></div>
+	</div>
+	<div class="row">
+		<div class="col-lg-12">
+		    <h1 class="page-header">Chat</h1>
+		</div>
+    </div><!-- /.row -->
+	<div class="container">
+		<div class="row " style="padding-top:40px;">
+			<div class="col-md-4">
+				<div class="panel panel-primary">
+					<div class="panel-heading">UTILIZATORI ONLINE</div>
+					<div class="panel-body">
+						<ul class="media-list">
+							<li class="media" ng-repeat="user in users">
+								<div class="media-body" ng-dblclick="startChatWithUser(user)" style="cursor:pointer">
+									<div class="media">
+										<img class="media-object img-circle" style="max-height:40px; float:left" ng-src="{{user.imgPath}}" />
+										<div class="media-body" >
+											<div ng-if="user.isOnline == true" class="user_online"></div>
+											<div ng-if="user.isOnline == false" class="user_offline"></div>
+											<h5 class="user_chat">{{user.nume}} {{user.prenume}}</h5>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-8 chat-box hidden">
+				<div class="panel panel-info">
+					<div class="panel-heading">MESAJE</div>
+					<div class="panel-body chat">
+						<div id="tabs">
+							<ul></ul>
+						</div>
+						<textarea id="chat-texta" class="chat-textarea" placeholder="type your message"></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" style="padding-top:40px;"></div>
+	</div>
+</div>
+
+
+
