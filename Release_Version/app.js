@@ -123,7 +123,7 @@ MongoClient.connect('mongodb://127.0.0.1:27017/licentaDB', function(err, db) {
                     if(doc.messages.length > 0){
                         for(var i = 0; i<doc.messages.length ; i++){
                             if(doc.messages[i].seenBy.length > 0){
-                                console.log("i : " + i)
+                                //console.log("i : " + i)
                                 found = false;
                                 for(var j = 0; j < doc.messages[i].seenBy.length ; j++){
                                     if(doc.messages[i].seenBy[j] == data.userId){

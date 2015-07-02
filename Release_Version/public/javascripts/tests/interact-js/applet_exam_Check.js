@@ -12,7 +12,7 @@ var incercari=0;
 var nota_test1 = 10;
 var nota_test2 = 10;
 function initQuiz(id){
-	console.log("initQuiz"+id);
+	//console.log("initQuiz"+id);
 	var quiz = document.getElementById("quiz1"+id);
 	$("#quizContainer"+id).css('display','block');
 
@@ -25,7 +25,7 @@ function initQuiz(id){
 		if (evt.valid){
 			$(this).removeClass("quizContainer_incorrect");
 			$(this).addClass("quizContainer_correct");
-			console.log("correct")
+			//console.log("correct")
 			setTimeout(function(){onEndQuiz(id);},1500);
 		}else{
 			if(id == 1){
@@ -48,7 +48,7 @@ function initQuiz(id){
 }
 
 function onEndQuiz(id){
-	console.log("on end quiz")
+	//console.log("on end quiz")
 	if (id==nrQuiz){
 		ended = true;
 		$("#butPrev").enable();
@@ -62,7 +62,7 @@ function onEndQuiz(id){
 		onEndedQuiz.nota_test1 = nota_test1;
 		onEndedQuiz.nota_test2 = nota_test2;
 		$("#quizContainer2").trigger(onEndedQuiz);
-		console.log("onEndedQuiz",onEndedQuiz);
+		//console.log("onEndedQuiz",onEndedQuiz);
 
 
 
@@ -74,7 +74,7 @@ function onEndQuiz(id){
 
 
 function navigare(){
-	console.log("navigare")
+	//console.log("navigare")
 	$("#butNext").disable();
 	$("#butPrev").disable();
 	$("#butText").disable();
@@ -83,9 +83,9 @@ function navigare(){
 	$("#butPrev").on("click", onPrev);
 
 	function onNext(){
-		console.log("on next")
+		//console.log("on next")
 		if ($("#butNext").isEnabled()){
-			console.log("click #butNext");
+			//console.log("click #butNext");
 			$("#butNext").disable();
 			$("#butPrev").disable();
 			if (!ended){

@@ -4,12 +4,14 @@ var prof_dashboard_controller = function($scope, $http, $state, $rootScope, $tim
 
     var d = new Date();
     var weekday = new Array(5);
-    weekday[0] = "Luni";
-    weekday[1] = "Marti";
-    weekday[2] = "Miercuri";
-    weekday[3] = "Joi";
-    weekday[4] = "Vineri";
-    var n = weekday[d.getDay() - 4];
+    weekday[0] = "Duminica";
+    weekday[1] = "Luni";
+    weekday[2] = "Marti";
+    weekday[3] = "Miercuri";
+    weekday[4] = "Joi";
+    weekday[5] = "Vineri";
+    weekday[6] = "Sambata";
+    var n = weekday[d.getDay()];
 
     $http.get('/api/users/listUsers').success(function(data) {
         $scope.nr_useri = data.length;

@@ -9,7 +9,7 @@ var ended = false;
 
 
 function initQuiz(id){
-	console.log("initQuiz"+id);
+	//console.log("initQuiz"+id);
 	var quiz = document.getElementById("quiz1"+id);
 	$("#quizContainer"+id).css('display','block');
 	if(id == 1){
@@ -34,7 +34,7 @@ function initQuiz(id){
 
 
 function onEndQuiz(id){
-	console.log("on end quiz")
+	//console.log("on end quiz")
 	if (id==nrQuiz){
 		ended = true;
 		$("#butPrev").enable();
@@ -46,7 +46,7 @@ function onEndQuiz(id){
 
 
 function navigare(){
-	console.log("navigare")
+	//console.log("navigare")
 	//$("#butNext").disable();
 	$("#butPrev").disable();
 
@@ -54,9 +54,9 @@ function navigare(){
 	$("#butPrev").on("click", onPrev);
 
 	function onNext(){
-		console.log("on next")
+		//console.log("on next")
 		if ($("#butNext").isEnabled()){
-			console.log("click #butNext");
+			//console.log("click #butNext");
 			$("#butNext").disable();
 			$("#butPrev").disable();
 			if (!ended){

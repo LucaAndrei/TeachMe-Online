@@ -30,6 +30,7 @@ var calendar_controller = function($scope, $http, $state, $rootScope, $timeout, 
             eventLimit: true, // allow "more" link when too many events
             events: myEvents,
             eventClick: function(calEvent, jsEvent, view) {
+                console.log(calEvent)
                 if (calEvent._start.hours() < 10) {
                     if (calEvent._start.minutes() < 10) {
                         if (calEvent._start.minutes() == 0) {
@@ -94,39 +95,46 @@ var calendar_controller = function($scope, $http, $state, $rootScope, $timeout, 
     }
 
     $scope.saveEvent = function() {
+
+        console.log("saveEvent")
         var start_time_hour = parseInt($('#start_time').val().split(":")[0]);
         var end_time_hour = parseInt($('#end_time').val().split(":")[0]);
         var start_time_minutes = parseInt($('#start_time').val().split(":")[1]);
         var end_time_minutes = parseInt($('#end_time').val().split(":")[1]);
 
-
-        var clickedYear = currentDate.split("-")[0];
-        var clickedMonth = currentDate.split("-")[1];
-        var clickedDay = currentDate.split("-")[2];
-        startTime = new Date(clickedYear, clickedMonth - 1, clickedDay, start_time_hour, start_time_minutes);
-        endTime = new Date(clickedYear, clickedMonth - 1, clickedDay, end_time_hour, end_time_minutes);
-
-        if ($('#eventName').val() == "") {
-            $scope.error_nume_event = true;
-        } else {
-            $scope.error_nume_event = false;
-        }
-        if (start_time_hour < end_time_hour) {
+        if(!isNaN(start_time_hour) && !isNaN(end_time_hour) && !isNaN(start_time_minutes) && !isNaN(end_time_minutes)){
             $scope.error_time = false;
-        }
-        if (start_time_hour > end_time_hour) {
-            $scope.error_time = true;
-        } else if ((start_time_hour < end_time_hour) && ($('#eventName').val() != "")) {
-            $scope.error_time = false;
-            $scope.error_nume_event = false;
-            addNewEvent()
-        } else if (end_time_hour == start_time_hour) {
-            if ((start_time_minutes < end_time_minutes) && $('#eventName').val() != "") {
-                addNewEvent()
+            var clickedYear = currentDate.split("-")[0];
+            var clickedMonth = currentDate.split("-")[1];
+            var clickedDay = currentDate.split("-")[2];
+            startTime = new Date(clickedYear, clickedMonth - 1, clickedDay, start_time_hour, start_time_minutes);
+            endTime = new Date(clickedYear, clickedMonth - 1, clickedDay, end_time_hour, end_time_minutes);
+
+            if ($('#eventName').val() == "") {
+                $scope.error_nume_event = true;
             } else {
-                $scope.error_time = true;
+                $scope.error_nume_event = false;
             }
+            if (start_time_hour < end_time_hour) {
+                $scope.error_time = false;
+            }
+            if (start_time_hour > end_time_hour) {
+                $scope.error_time = true;
+            } else if ((start_time_hour < end_time_hour) && ($('#eventName').val() != "")) {
+                $scope.error_time = false;
+                $scope.error_nume_event = false;
+                addNewEvent()
+            } else if (end_time_hour == start_time_hour) {
+                if ((start_time_minutes < end_time_minutes) && $('#eventName').val() != "") {
+                    addNewEvent()
+                } else {
+                    $scope.error_time = true;
+                }
+            }
+        } else {
+            $scope.error_time = true;
         }
+
     }
 
 

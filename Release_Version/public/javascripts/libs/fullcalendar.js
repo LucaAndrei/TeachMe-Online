@@ -64,9 +64,9 @@ var complexOptions = [ // names of options that are objects whose properties sho
 ];
 
 function addListeners(){
-	console.log("add listeners");
+	//console.log("add listeners");
 	$(".fc-delete").on("mousedown",function(ev){
-		console.log("fc delete click")
+		//console.log("fc delete click")
 		var deleteEvent = confirm("Are you sure?");
 		if(deleteEvent){
 			deleteEventById({eventId : $(this).attr("id")});
@@ -10810,5 +10810,5 @@ return fc; // export for Node/CommonJS
 
 
 $(".fc-content").on("mousedown",function(){
-	console.log("content click");
+	//console.log("content click");
 })
