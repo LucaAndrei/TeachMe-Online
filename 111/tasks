@@ -1,0 +1,112 @@
+{
+    "_id" : "Test_Radio",
+    "numeTest" : "Test Radio",
+    "registeredUsers" : [
+        {
+            "idUser" : "5568122df6b802a143466583",
+            "incercari" : 2,
+            "lastAccessed" : "11.06.2015",
+            "_id" : ObjectId("556820dab3e81b6148ff4f17")
+        },
+        {
+            "idUser" : "55681944f6b802a143466591",
+            "incercari" : 0,
+            "lastAccessed" : "-",
+            "_id" : ObjectId("556820eeb3e81b6148ff4f1c")
+        }
+    ],
+    "__v" : 62
+}
+
+
+{
+    "_id" : "Test_Check",
+    "numeTest" : "Test Checkbox",
+    "registeredUsers" : [
+        {
+            "idUser" : "5568122df6b802a143466583",
+            "incercari" : 9,
+            "lastAccessed" : "30.06.2015",
+            "_id" : ObjectId("556820d9b3e81b6148ff4f15")
+        }
+    ],
+    "__v" : 32
+}
+
+{
+    "_id" : "Test_Dnd",
+    "numeTest" : "Test Drag&Drop",
+    "registeredUsers" : [
+        {
+            "idUser" : "5568122df6b802a143466583",
+            "incercari" : 1,
+            "lastAccessed" : "29.05.2015",
+            "_id" : ObjectId("556820d9b3e81b6148ff4f16")
+        },
+        {
+            "idUser" : "55681944f6b802a143466591",
+            "incercari" : 0,
+            "lastAccessed" : "-",
+            "_id" : ObjectId("556820eeb3e81b6148ff4f1b")
+        }
+    ],
+    "__v" : 38
+}
+
+
+
+{
+    "_id" : "Test_Radio_hw",
+    "numeTest" : "Test Radio",
+    "registeredUsers" : [
+        {
+            "idUser" : "5568122df6b802a143466583",
+            "incercari" : 8,
+            "lastAccessed" : "30.06.2015",
+            "_id" : ObjectId("556820ddb3e81b6148ff4f1a")
+        },
+        {
+            "idUser" : "55681965f6b802a143466592",
+            "incercari" : 0,
+            "lastAccessed" : "-",
+            "_id" : ObjectId("556820f0b3e81b6148ff4f1d")
+        }
+    ],
+    "__v" : 70
+}
+
+
+{
+    "_id" : "Test_Check_hw",
+    "numeTest" : "Test Check",
+    "registeredUsers" : [
+        {
+            "idUser" : "5568122df6b802a143466583",
+            "incercari" : 19,
+            "lastAccessed" : "30.06.2015",
+            "_id" : ObjectId("556820dcb3e81b6148ff4f18")
+        },
+        {
+            "idUser" : "55681944f6b802a143466591",
+            "incercari" : 0,
+            "lastAccessed" : "-",
+            "_id" : ObjectId("556820f3b3e81b6148ff4f1e")
+        }
+    ],
+    "__v" : 66
+}
+
+{
+    "_id" : "Test_DND_hw",
+    "numeTest" : "Test Drag&Drop",
+    "registeredUsers" : [
+        {
+            "idUser" : "5568122df6b802a143466583",
+            "incercari" : 5,
+            "lastAccessed" : "30.06.2015",
+            "_id" : ObjectId("556820ddb3e81b6148ff4f19")
+        }
+    ],
+    "__v" : 65
+}
+

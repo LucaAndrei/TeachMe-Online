@@ -1,0 +1,830 @@
+{
+    "_id" : ObjectId("55683cd12c822341548f146f"),
+    "chatIDReceiver" : "5568124bf6b802a143466584",
+    "chatIDSender" : "5568122df6b802a143466583",
+    "messages" : [
+        {
+            "numeSender" : "Luca Andrei",
+            "mesaj" : "Buna ziua !",
+            "sentAt" : "1432894673059",
+            "msgIDSender" : "5568122df6b802a143466583",
+            "msgIDReceiver" : "5568124bf6b802a143466584",
+            "seenBy" : [
+                "5568122df6b802a143466583",
+                "5568124bf6b802a143466584"
+            ]
+        },
+        {
+            "numeSender" : "Stefanescu Diana",
+            "mesaj" : "Buna ziua !",
+            "sentAt" : "1432894676722",
+            "msgIDSender" : "5568124bf6b802a143466584",
+            "msgIDReceiver" : "5568122df6b802a143466583",
+            "seenBy" : [
+                "5568124bf6b802a143466584",
+                "5568122df6b802a143466583"
+            ]
+        },
+        {
+            "numeSender" : "Luca Andrei",
+            "mesaj" : "Acesta este un test pentru 'Chat'-ul aplicatiei 'Teach Me'",
+            "sentAt" : "1432894694338",
+            "msgIDSender" : "5568122df6b802a143466583",
+            "msgIDReceiver" : "5568124bf6b802a143466584",
+            "seenBy" : [
+                "5568122df6b802a143466583",
+                "5568124bf6b802a143466584"
+            ]
+        },
+        {
+            "numeSender" : "Stefanescu Diana",
+            "mesaj" : "Mesajul a fost receptionat cu succes. Acesta este un reply",
+            "sentAt" : "1432894703768",
+            "msgIDSender" : "5568124bf6b802a143466584",
+            "msgIDReceiver" : "5568122df6b802a143466583",
+            "seenBy" : [
+                "5568124bf6b802a143466584",
+                "5568122df6b802a143466583"
+            ]
+        },
+        {
+            "numeSender" : "Stefanescu Diana",
+            "mesaj" : "Acesta este inca un mesaj din partea profesorului.",
+            "sentAt" : "1432894735148",
+            "msgIDSender" : "5568124bf6b802a143466584",
+            "msgIDReceiver" : "5568122df6b802a143466583",
+            "seenBy" : [
+                "5568124bf6b802a143466584",
+                "5568122df6b802a143466583"
+            ]
+        },
+        {
+            "numeSender" : "Luca Andrei",
+            "mesaj" : "Eu ma voi deconecta acum",
+            "sentAt" : "1432894880112",
+            "msgIDSender" : "5568122df6b802a143466583",
+            "msgIDReceiver" : "5568124bf6b802a143466584",
+            "seenBy" : [
+                "5568122df6b802a143466583",
+                "5568124bf6b802a143466584"
+            ]
+        },
+        {
+            "numeSender" : "Stefanescu Diana",
+            "mesaj" : "Ok",
+            "sentAt" : "1432894882688",
+            "msgIDSender" : "5568124bf6b802a143466584",
+            "msgIDReceiver" : "5568122df6b802a143466583",
+            "seenBy" : [
+                "5568124bf6b802a143466584",
+                "5568122df6b802a143466583"
+            ]
+        },
+        {
+            "numeSender" : "Stefanescu Diana",
+            "mesaj" : "In acest moment utilizatorul 'Luca Andrei' s-a deconectat",
+            "sentAt" : "1432894895744",
+            "msgIDSender" : "5568124bf6b802a143466584",
+            "msgIDReceiver" : "5568122df6b802a143466583",
+            "seenBy" : [
+                "5568124bf6b802a143466584",
+                "5568122df6b802a143466583"
+            ]
+        },
+        {
+            "numeSender" : "Stefanescu Diana",
+            "mesaj" : "Aceste mesaje vor fi mesaje 'offline'",
+            "sentAt" : "1432894907464",
+            "msgIDSender" : "5568124bf6b802a143466584",
+            "msgIDReceiver" : "5568122df6b802a143466583",
+            "seenBy" : [
+                "5568124bf6b802a143466584",
+                "5568122df6b802a143466583"
+            ]
+        },
+        {
+            "numeSender" : "Luca Andrei",
+            "mesaj" : "Voi incerca acum sa obtin istoricul acestei conversatii",
+            "sentAt" : "1432894930824",
+            "msgIDSender" : "5568122df6b802a143466583",
+            "msgIDReceiver" : "5568124bf6b802a143466584",
+            "seenBy" : [
+                "5568122df6b802a143466583",
+                "5568124bf6b802a143466584"
+            ]
+        },
+        {
+            "numeSender" : "Luca Andrei",
+            "mesaj" : "Istoricul a fost obtinut !",
+            "sentAt" : "1432894940928",
+            "msgIDSender" : "5568122df6b802a143466583",
+            "msgIDReceiver" : "5568124bf6b802a143466584",
+            "seenBy" : [
+                "5568122df6b802a143466583",
+                "5568124bf6b802a143466584"
+            ]
+        },
+        {
+            "numeSender" : "Luca Andrei",
+            "mesaj" : "Acum, daca voi incerca sa mai apas inca o data pentru a obtine istoricul, acesta nu va fi primit.",
+            "sentAt" : "1432894956984",
+            "msgIDSender" : "5568122df6b802a143466583",
+            "msgIDReceiver" : "5568124bf6b802a143466584",
+            "seenBy" : [
+                "5568122df6b802a143466583",
+                "5568124bf6b802a143466584"
+            ]
+        },
+        {
+            "numeSender" : "Luca Andrei",
+            "mesaj" : "Scroll text test 1 !",
+            "sentAt" : "1432895008504",
+            "msgIDSender" : "5568122df6b802a143466583",
+            "msgIDReceiver" : "5568124bf6b802a143466584",
+            "seenBy" : [
+                "5568122df6b802a143466583",
+                "5568124bf6b802a143466584"
+            ]
+        },
+        {
+            "numeSender" : "Luca Andrei",
+            "mesaj" : "Scroll text test 2 !",
+            "sentAt" : "1432895015154",
+            "msgIDSender" : "5568122df6b802a143466583",
+            "msgIDReceiver" : "5568124bf6b802a143466584",
+            "seenBy" : [
+                "5568122df6b802a143466583",
+                "5568124bf6b802a143466584"
+            ]
+        },
+        {
+            "numeSender" : "Luca Andrei",
+            "mesaj" : "ce test",
+            "sentAt" : "1432895397368",
+            "msgIDSender" : "5568122df6b802a143466583",
+            "msgIDReceiver" : "5568124bf6b802a143466584",
+            "seenBy" : [
+                "5568122df6b802a143466583",
+                "5568124bf6b802a143466584"
+            ]
+        },
+        {
+            "numeSender" : "Stefanescu Diana",
+            "mesaj" : "1",
+            "sentAt" : "1432895880859",
+            "msgIDSender" : "5568124bf6b802a143466584",
+            "msgIDReceiver" : "5568122df6b802a143466583",
+            "seenBy" : [
+                "5568124bf6b802a143466584",
+                "5568122df6b802a143466583"
+            ]
+        },
+        {
+            "numeSender" : "Stefanescu Diana",
+            "mesaj" : "2",
+            "sentAt" : "1432895881180",
+            "msgIDSender" : "5568124bf6b802a143466584",
+            "msgIDReceiver" : "5568122df6b802a143466583",
+            "seenBy" : [
+                "5568124bf6b802a143466584",
+                "5568122df6b802a143466583"
+            ]
+        },
+        {
+            "numeSender" : "Stefanescu Diana",
+            "mesaj" : "3",
+            "sentAt" : "1432895881451",
+            "msgIDSender" : "5568124bf6b802a143466584",
+            "msgIDReceiver" : "5568122df6b802a143466583",
+            "seenBy" : [
+                "5568124bf6b802a143466584",
+                "5568122df6b802a143466583"
+            ]
+        },
+        {
+            "numeSender" : "Stefanescu Diana",
+            "mesaj" : "1",
+            "sentAt" : "1432896064041",
+            "msgIDSender" : "5568124bf6b802a143466584",
+            "msgIDReceiver" : "5568122df6b802a143466583",
+            "seenBy" : [
+                "5568124bf6b802a143466584",
+                "5568122df6b802a143466583"
+            ]
+        },
+        {
+            "numeSender" : "Stefanescu Diana",
+            "mesaj" : "2",
+            "sentAt" : "1432896064341",
+            "msgIDSender" : "5568124bf6b802a143466584",
+            "msgIDReceiver" : "5568122df6b802a143466583",
+            "seenBy" : [
+                "5568124bf6b802a143466584",
+                "5568122df6b802a143466583"
+            ]
+        },
+        {
+            "numeSender" : "Stefanescu Diana",
+            "mesaj" : "3",
+            "sentAt" : "1432896064587",
+            "msgIDSender" : "5568124bf6b802a143466584",
+            "msgIDReceiver" : "5568122df6b802a143466583",
+            "seenBy" : [
+                "5568124bf6b802a143466584",
+                "5568122df6b802a143466583"
+            ]
+        },
+        {
+            "numeSender" : "Stefanescu Diana",
+            "mesaj" : "si inca un mesaj",
+            "sentAt" : "1432896131299",
+            "msgIDSender" : "5568124bf6b802a143466584",
+            "msgIDReceiver" : "5568122df6b802a143466583",
+            "seenBy" : [
+                "5568124bf6b802a143466584",
+                "5568122df6b802a143466583"
+            ]
+        },
+        {
+            "numeSender" : "Luca Andrei",
+            "mesaj" : "de",
+            "sentAt" : "1432896236642",
+            "msgIDSender" : "5568122df6b802a143466583",
+            "msgIDReceiver" : "5568124bf6b802a143466584",
+            "seenBy" : [
+                "5568122df6b802a143466583",
+                "5568124bf6b802a143466584"
+            ]
+        },
+        {
+            "numeSender" : "Luca Andrei",
+            "mesaj" : "de",
+            "sentAt" : "1432896236963",
+            "msgIDSender" : "5568122df6b802a143466583",
+            "msgIDReceiver" : "5568124bf6b802a143466584",
+            "seenBy" : [
+                "5568122df6b802a143466583",
+                "5568124bf6b802a143466584"
+            ]
+        },
+        {
+            "numeSender" : "Luca Andrei",
+            "mesaj" : "de",
+            "sentAt" : "1432896237473",
+            "msgIDSender" : "5568122df6b802a143466583",
+            "msgIDReceiver" : "5568124bf6b802a143466584",
+            "seenBy" : [
+                "5568122df6b802a143466583",
+                "5568124bf6b802a143466584"
+            ]
+        },
+        {
+            "numeSender" : "Luca Andrei",
+            "mesaj" : "re de",
+            "sentAt" : "1432896239969",
+            "msgIDSender" : "5568122df6b802a143466583",
+            "msgIDReceiver" : "5568124bf6b802a143466584",
+            "seenBy" : [
+                "5568122df6b802a143466583",
+                "5568124bf6b802a143466584"
+            ]
+        },
+        {
+            "numeSender" : "Stefanescu Diana",
+            "mesaj" : "123",
+            "sentAt" : "1432896280781",
+            "msgIDSender" : "5568124bf6b802a143466584",
+            "msgIDReceiver" : "5568122df6b802a143466583",
+            "seenBy" : [
+                "5568124bf6b802a143466584",
+                "5568122df6b802a143466583"
+            ]
+        },
+        {
+            "numeSender" : "Stefanescu Diana",
+            "mesaj" : "Buna ziua !",
+            "sentAt" : "1433239637455",
+            "msgIDSender" : "5568124bf6b802a143466584",
+            "msgIDReceiver" : "5568122df6b802a143466583",
+            "seenBy" : [
+                "5568124bf6b802a143466584",
+                "5568122df6b802a143466583"
+            ]
+        },
+        {
+            "numeSender" : "Luca Andrei",
+            "mesaj" : "Buna ziua !",
+            "sentAt" : "1433239641825",
+            "msgIDSender" : "5568122df6b802a143466583",
+            "msgIDReceiver" : "5568124bf6b802a143466584",
+            "seenBy" : [
+                "5568122df6b802a143466583",
+                "5568124bf6b802a143466584"
+            ]
+        },
+        {
+            "numeSender" : "Luca Andrei",
+            "mesaj" : "buna ziua",
+            "sentAt" : "1434008101301",
+            "msgIDSender" : "5568122df6b802a143466583",
+            "msgIDReceiver" : "5568124bf6b802a143466584",
+            "seenBy" : [
+                "5568122df6b802a143466583",
+                "5568124bf6b802a143466584"
+            ]
+        },
+        {
+            "numeSender" : "Luca Andrei",
+            "mesaj" : "ddee",
+            "sentAt" : "1435670303428",
+            "msgIDSender" : "5568122df6b802a143466583",
+            "msgIDReceiver" : "5568124bf6b802a143466584",
+            "seenBy" : [
+                "5568122df6b802a143466583"
+            ]
+        }
+    ]
+}
+
+
+
+
+
+111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+
+{
+    "_id" : ObjectId("55683d1c2c822341548f1470"),
+    "chatIDReceiver" : "5568122df6b802a143466583",
+    "chatIDSender" : "55681944f6b802a143466591",
+    "messages" : [
+        {
+            "numeSender" : "Mihai Madalin",
+            "mesaj" : "Acesta este un mesaj de test de la Mihai Madalin",
+            "sentAt" : "1432894748792",
+            "msgIDSender" : "55681944f6b802a143466591",
+            "msgIDReceiver" : "5568122df6b802a143466583",
+            "seenBy" : [
+                "55681944f6b802a143466591",
+                "5568122df6b802a143466583"
+            ]
+        },
+        {
+            "numeSender" : "Mihai Madalin",
+            "mesaj" : "Mesaj pentru a testa mai multe tab-uri",
+            "sentAt" : "1432894777233",
+            "msgIDSender" : "55681944f6b802a143466591",
+            "msgIDReceiver" : "5568122df6b802a143466583",
+            "seenBy" : [
+                "55681944f6b802a143466591",
+                "5568122df6b802a143466583"
+            ]
+        },
+        {
+            "numeSender" : "Mihai Madalin",
+            "mesaj" : "Utilizatorul 'Luca Andrei' nu se afla in acest moment al testarii pe pagina de 'Chat'. El ar trebui sa primeasca acest mesaj intr-un pop-up",
+            "sentAt" : "1432894815688",
+            "msgIDSender" : "55681944f6b802a143466591",
+            "msgIDReceiver" : "5568122df6b802a143466583",
+            "seenBy" : [
+                "55681944f6b802a143466591",
+                "5568122df6b802a143466583"
+            ]
+        },
+        {
+            "numeSender" : "Luca Andrei",
+            "mesaj" : "Mesajul a fost receptionat in pop-up. Am efectuat click pe caseta popup si am fost adus inapoi pe aceasta pagina",
+            "sentAt" : "1432894838200",
+            "msgIDSender" : "5568122df6b802a143466583",
+            "msgIDReceiver" : "55681944f6b802a143466591",
+            "seenBy" : [
+                "5568122df6b802a143466583",
+                "55681944f6b802a143466591"
+            ]
+        },
+        {
+            "numeSender" : "Luca Andrei",
+            "mesaj" : "test",
+            "sentAt" : "1432895391867",
+            "msgIDSender" : "5568122df6b802a143466583",
+            "msgIDReceiver" : "55681944f6b802a143466591",
+            "seenBy" : [
+                "5568122df6b802a143466583",
+                "55681944f6b802a143466591"
+            ]
+        },
+        {
+            "numeSender" : "Mihai Madalin",
+            "mesaj" : "1",
+            "sentAt" : "1432895874875",
+            "msgIDSender" : "55681944f6b802a143466591",
+            "msgIDReceiver" : "5568122df6b802a143466583",
+            "seenBy" : [
+                "55681944f6b802a143466591",
+                "5568122df6b802a143466583"
+            ]
+        },
+        {
+            "numeSender" : "Mihai Madalin",
+            "mesaj" : "2",
+            "sentAt" : "1432895875242",
+            "msgIDSender" : "55681944f6b802a143466591",
+            "msgIDReceiver" : "5568122df6b802a143466583",
+            "seenBy" : [
+                "55681944f6b802a143466591",
+                "5568122df6b802a143466583"
+            ]
+        },
+        {
+            "numeSender" : "Mihai Madalin",
+            "mesaj" : "3",
+            "sentAt" : "1432895875580",
+            "msgIDSender" : "55681944f6b802a143466591",
+            "msgIDReceiver" : "5568122df6b802a143466583",
+            "seenBy" : [
+                "55681944f6b802a143466591",
+                "5568122df6b802a143466583"
+            ]
+        },
+        {
+            "numeSender" : "Mihai Madalin",
+            "mesaj" : "4",
+            "sentAt" : "1432895875899",
+            "msgIDSender" : "55681944f6b802a143466591",
+            "msgIDReceiver" : "5568122df6b802a143466583",
+            "seenBy" : [
+                "55681944f6b802a143466591",
+                "5568122df6b802a143466583"
+            ]
+        },
+        {
+            "numeSender" : "Mihai Madalin",
+            "mesaj" : "5",
+            "sentAt" : "1432895876204",
+            "msgIDSender" : "55681944f6b802a143466591",
+            "msgIDReceiver" : "5568122df6b802a143466583",
+            "seenBy" : [
+                "55681944f6b802a143466591",
+                "5568122df6b802a143466583"
+            ]
+        },
+        {
+            "numeSender" : "Mihai Madalin",
+            "mesaj" : "1",
+            "sentAt" : "1432896066417",
+            "msgIDSender" : "55681944f6b802a143466591",
+            "msgIDReceiver" : "5568122df6b802a143466583",
+            "seenBy" : [
+                "55681944f6b802a143466591",
+                "5568122df6b802a143466583"
+            ]
+        },
+        {
+            "numeSender" : "Mihai Madalin",
+            "mesaj" : "2",
+            "sentAt" : "1432896066685",
+            "msgIDSender" : "55681944f6b802a143466591",
+            "msgIDReceiver" : "5568122df6b802a143466583",
+            "seenBy" : [
+                "55681944f6b802a143466591",
+                "5568122df6b802a143466583"
+            ]
+        },
+        {
+            "numeSender" : "Mihai Madalin",
+            "mesaj" : "3",
+            "sentAt" : "1432896066931",
+            "msgIDSender" : "55681944f6b802a143466591",
+            "msgIDReceiver" : "5568122df6b802a143466583",
+            "seenBy" : [
+                "55681944f6b802a143466591",
+                "5568122df6b802a143466583"
+            ]
+        },
+        {
+            "numeSender" : "Mihai Madalin",
+            "mesaj" : "4",
+            "sentAt" : "1432896067189",
+            "msgIDSender" : "55681944f6b802a143466591",
+            "msgIDReceiver" : "5568122df6b802a143466583",
+            "seenBy" : [
+                "55681944f6b802a143466591",
+                "5568122df6b802a143466583"
+            ]
+        },
+        {
+            "numeSender" : "Mihai Madalin",
+            "mesaj" : "5",
+            "sentAt" : "1432896067838",
+            "msgIDSender" : "55681944f6b802a143466591",
+            "msgIDReceiver" : "5568122df6b802a143466583",
+            "seenBy" : [
+                "55681944f6b802a143466591",
+                "5568122df6b802a143466583"
+            ]
+        },
+        {
+            "numeSender" : "Mihai Madalin",
+            "mesaj" : "a bc",
+            "sentAt" : "1432896126410",
+            "msgIDSender" : "55681944f6b802a143466591",
+            "msgIDReceiver" : "5568122df6b802a143466583",
+            "seenBy" : [
+                "55681944f6b802a143466591",
+                "5568122df6b802a143466583"
+            ]
+        },
+        {
+            "numeSender" : "Mihai Madalin",
+            "mesaj" : "c d",
+            "sentAt" : "1432896127825",
+            "msgIDSender" : "55681944f6b802a143466591",
+            "msgIDReceiver" : "5568122df6b802a143466583",
+            "seenBy" : [
+                "55681944f6b802a143466591",
+                "5568122df6b802a143466583"
+            ]
+        },
+        {
+            "numeSender" : "Luca Andrei",
+            "mesaj" : "re de",
+            "sentAt" : "1432896178051",
+            "msgIDSender" : "5568122df6b802a143466583",
+            "msgIDReceiver" : "55681944f6b802a143466591",
+            "seenBy" : [
+                "5568122df6b802a143466583",
+                "55681944f6b802a143466591"
+            ]
+        },
+        {
+            "numeSender" : "Luca Andrei",
+            "mesaj" : "de re",
+            "sentAt" : "1432896179018",
+            "msgIDSender" : "5568122df6b802a143466583",
+            "msgIDReceiver" : "55681944f6b802a143466591",
+            "seenBy" : [
+                "5568122df6b802a143466583",
+                "55681944f6b802a143466591"
+            ]
+        },
+        {
+            "numeSender" : "Luca Andrei",
+            "mesaj" : "1",
+            "sentAt" : "1432896210650",
+            "msgIDSender" : "5568122df6b802a143466583",
+            "msgIDReceiver" : "55681944f6b802a143466591",
+            "seenBy" : [
+                "5568122df6b802a143466583",
+                "55681944f6b802a143466591"
+            ]
+        },
+        {
+            "numeSender" : "Luca Andrei",
+            "mesaj" : "2",
+            "sentAt" : "1432896210843",
+            "msgIDSender" : "5568122df6b802a143466583",
+            "msgIDReceiver" : "55681944f6b802a143466591",
+            "seenBy" : [
+                "5568122df6b802a143466583",
+                "55681944f6b802a143466591"
+            ]
+        },
+        {
+            "numeSender" : "Luca Andrei",
+            "mesaj" : "3",
+            "sentAt" : "1432896211041",
+            "msgIDSender" : "5568122df6b802a143466583",
+            "msgIDReceiver" : "55681944f6b802a143466591",
+            "seenBy" : [
+                "5568122df6b802a143466583",
+                "55681944f6b802a143466591"
+            ]
+        },
+        {
+            "numeSender" : "Luca Andrei",
+            "mesaj" : "4",
+            "sentAt" : "1432896211786",
+            "msgIDSender" : "5568122df6b802a143466583",
+            "msgIDReceiver" : "55681944f6b802a143466591",
+            "seenBy" : [
+                "5568122df6b802a143466583",
+                "55681944f6b802a143466591"
+            ]
+        },
+        {
+            "numeSender" : "Mihai Madalin",
+            "mesaj" : "Salut !",
+            "sentAt" : "1433239613681",
+            "msgIDSender" : "55681944f6b802a143466591",
+            "msgIDReceiver" : "5568122df6b802a143466583",
+            "seenBy" : [
+                "55681944f6b802a143466591",
+                "5568122df6b802a143466583"
+            ]
+        },
+        {
+            "numeSender" : "Mihai Madalin",
+            "mesaj" : "Salut !",
+            "sentAt" : "1433239657958",
+            "msgIDSender" : "55681944f6b802a143466591",
+            "msgIDReceiver" : "5568122df6b802a143466583",
+            "seenBy" : [
+                "55681944f6b802a143466591",
+                "5568122df6b802a143466583"
+            ]
+        }
+    ]
+}
+
+
+
+2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222
+
+
+
+{
+    "_id" : ObjectId("55683d8b2c822341548f1471"),
+    "chatIDReceiver" : "55681944f6b802a143466591",
+    "chatIDSender" : "5568124bf6b802a143466584",
+    "messages" : [
+        {
+            "numeSender" : "Stefanescu Diana",
+            "mesaj" : "Acesta este un mesaj din partea profesorului 'Diana Stefanescu' pentru elevul 'Mihai Madalin'",
+            "sentAt" : "1432894859312",
+            "msgIDSender" : "5568124bf6b802a143466584",
+            "msgIDReceiver" : "55681944f6b802a143466591",
+            "seenBy" : [
+                "5568124bf6b802a143466584",
+                "55681944f6b802a143466591"
+            ]
+        },
+        {
+            "numeSender" : "Stefanescu Diana",
+            "mesaj" : "sunt buguri la chat?",
+            "sentAt" : "1432895417649",
+            "msgIDSender" : "5568124bf6b802a143466584",
+            "msgIDReceiver" : "55681944f6b802a143466591",
+            "seenBy" : [
+                "5568124bf6b802a143466584",
+                "55681944f6b802a143466591"
+            ]
+        },
+        {
+            "numeSender" : "Stefanescu Diana",
+            "mesaj" : "asd",
+            "sentAt" : "1432895444265",
+            "msgIDSender" : "5568124bf6b802a143466584",
+            "msgIDReceiver" : "55681944f6b802a143466591",
+            "seenBy" : [
+                "5568124bf6b802a143466584",
+                "55681944f6b802a143466591"
+            ]
+        },
+        {
+            "numeSender" : "Stefanescu Diana",
+            "mesaj" : "dada",
+            "sentAt" : "1432895449921",
+            "msgIDSender" : "5568124bf6b802a143466584",
+            "msgIDReceiver" : "55681944f6b802a143466591",
+            "seenBy" : [
+                "5568124bf6b802a143466584",
+                "55681944f6b802a143466591"
+            ]
+        },
+        {
+            "numeSender" : "Mihai Madalin",
+            "mesaj" : "1",
+            "sentAt" : "1432896182563",
+            "msgIDSender" : "55681944f6b802a143466591",
+            "msgIDReceiver" : "5568124bf6b802a143466584",
+            "seenBy" : [
+                "55681944f6b802a143466591",
+                "5568124bf6b802a143466584"
+            ]
+        },
+        {
+            "numeSender" : "Mihai Madalin",
+            "mesaj" : "2",
+            "sentAt" : "1432896182813",
+            "msgIDSender" : "55681944f6b802a143466591",
+            "msgIDReceiver" : "5568124bf6b802a143466584",
+            "seenBy" : [
+                "55681944f6b802a143466591",
+                "5568124bf6b802a143466584"
+            ]
+        },
+        {
+            "numeSender" : "Mihai Madalin",
+            "mesaj" : "3",
+            "sentAt" : "1432896183018",
+            "msgIDSender" : "55681944f6b802a143466591",
+            "msgIDReceiver" : "5568124bf6b802a143466584",
+            "seenBy" : [
+                "55681944f6b802a143466591",
+                "5568124bf6b802a143466584"
+            ]
+        },
+        {
+            "numeSender" : "Mihai Madalin",
+            "mesaj" : "4",
+            "sentAt" : "1432896183237",
+            "msgIDSender" : "55681944f6b802a143466591",
+            "msgIDReceiver" : "5568124bf6b802a143466584",
+            "seenBy" : [
+                "55681944f6b802a143466591",
+                "5568124bf6b802a143466584"
+            ]
+        },
+        {
+            "numeSender" : "Mihai Madalin",
+            "mesaj" : "5",
+            "sentAt" : "1432896183482",
+            "msgIDSender" : "55681944f6b802a143466591",
+            "msgIDReceiver" : "5568124bf6b802a143466584",
+            "seenBy" : [
+                "55681944f6b802a143466591",
+                "5568124bf6b802a143466584"
+            ]
+        },
+        {
+            "numeSender" : "Mihai Madalin",
+            "mesaj" : "1",
+            "sentAt" : "1432896246442",
+            "msgIDSender" : "55681944f6b802a143466591",
+            "msgIDReceiver" : "5568124bf6b802a143466584",
+            "seenBy" : [
+                "55681944f6b802a143466591",
+                "5568124bf6b802a143466584"
+            ]
+        },
+        {
+            "numeSender" : "Mihai Madalin",
+            "mesaj" : "2",
+            "sentAt" : "1432896246634",
+            "msgIDSender" : "55681944f6b802a143466591",
+            "msgIDReceiver" : "5568124bf6b802a143466584",
+            "seenBy" : [
+                "55681944f6b802a143466591",
+                "5568124bf6b802a143466584"
+            ]
+        },
+        {
+            "numeSender" : "Mihai Madalin",
+            "mesaj" : "3",
+            "sentAt" : "1432896246842",
+            "msgIDSender" : "55681944f6b802a143466591",
+            "msgIDReceiver" : "5568124bf6b802a143466584",
+            "seenBy" : [
+                "55681944f6b802a143466591",
+                "5568124bf6b802a143466584"
+            ]
+        },
+        {
+            "numeSender" : "Mihai Madalin",
+            "mesaj" : "4",
+            "sentAt" : "1432896247066",
+            "msgIDSender" : "55681944f6b802a143466591",
+            "msgIDReceiver" : "5568124bf6b802a143466584",
+            "seenBy" : [
+                "55681944f6b802a143466591",
+                "5568124bf6b802a143466584"
+            ]
+        },
+        {
+            "numeSender" : "Mihai Madalin",
+            "mesaj" : "5",
+            "sentAt" : "1432896247410",
+            "msgIDSender" : "55681944f6b802a143466591",
+            "msgIDReceiver" : "5568124bf6b802a143466584",
+            "seenBy" : [
+                "55681944f6b802a143466591",
+                "5568124bf6b802a143466584"
+            ]
+        },
+        {
+            "numeSender" : "Mihai Madalin",
+            "mesaj" : "6",
+            "sentAt" : "1432896248043",
+            "msgIDSender" : "55681944f6b802a143466591",
+            "msgIDReceiver" : "5568124bf6b802a143466584",
+            "seenBy" : [
+                "55681944f6b802a143466591",
+                "5568124bf6b802a143466584"
+            ]
+        },
+        {
+            "numeSender" : "Stefanescu Diana",
+            "mesaj" : "ce",
+            "sentAt" : "1432896274274",
+            "msgIDSender" : "5568124bf6b802a143466584",
+            "msgIDReceiver" : "55681944f6b802a143466591",
+            "seenBy" : [
+                "5568124bf6b802a143466584",
+                "55681944f6b802a143466591"
+            ]
+        }
+    ]
+}
+
+
+
+

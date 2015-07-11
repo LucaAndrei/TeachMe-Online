@@ -1,0 +1,30 @@
+{
+    "_id" : ObjectId("556817baf6b802a143466587"),
+    "subject_name" : "LPOO",
+    "user" : "5568124bf6b802a143466584"
+}
+
+
+{
+    "_id" : ObjectId("556817c2f6b802a143466588"),
+    "subject_name" : "PC",
+    "user" : "5568124bf6b802a143466584"
+}
+
+{
+    "_id" : ObjectId("55681872f6b802a14346658c"),
+    "subject_name" : "Sisteme incorporate",
+    "user" : "55681863f6b802a14346658b"
+}
+
+{
+    "_id" : ObjectId("556818d7f6b802a14346658f"),
+    "subject_name" : "Sisteme Informatice",
+    "user" : "556818cff6b802a14346658e"
+}
+
+{
+    "_id" : ObjectId("556d8169abc6930c1afcb931"),
+    "subject_name" : "PC 2",
+    "user" : "5568124bf6b802a143466584"
+}

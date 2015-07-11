@@ -1,0 +1,77 @@
+{
+    "_id" : ObjectId("55681810f6b802a143466589"),
+    "subject" : "LPOO",
+    "credite" : "5",
+    "tipExam" : "Examen",
+    "room" : "G 306",
+    "day" : "Marti",
+    "start_time" : "8:00",
+    "end_time" : "10:00",
+    "teacher" : "Stefanescu Diana",
+    "descriere" : "Cursul acesta este despre limbajele de programare orientate obiect. Pentru mai multe detalii, consultati cursul domnului profesor Severin Bumbaru.\nPentru alte informatii puteti sa imi lasati mesaje pe 'Chat'.",
+    "user" : ObjectId("5568124bf6b802a143466584"),
+    "registeredUsers" : [
+        ObjectId("55681944f6b802a143466591"),
+        ObjectId("55681965f6b802a143466592"),
+        ObjectId("5568122df6b802a143466583")
+    ]
+}
+
+
+
+{
+    "_id" : ObjectId("55681837f6b802a14346658a"),
+    "subject" : "PC",
+    "credite" : "6",
+    "tipExam" : "Verificare",
+    "room" : "G 306",
+    "day" : "Joi",
+    "start_time" : "8:00",
+    "end_time" : "10:00",
+    "teacher" : "Stefanescu Diana",
+    "descriere" : "Acest curs este despre programarea calculatoarelor.\nPentru mai multe detalii puteti sa imi lasati mesaje pe 'Chat'.",
+    "user" : ObjectId("5568124bf6b802a143466584"),
+    "registeredUsers" : [
+        ObjectId("55681965f6b802a143466592"),
+        ObjectId("5568122df6b802a143466583")
+    ]
+}
+
+
+
+{
+    "_id" : ObjectId("556818aef6b802a14346658d"),
+    "subject" : "Sisteme incorporate",
+    "credite" : "5",
+    "tipExam" : "Verificare",
+    "room" : "G 307",
+    "day" : "Luni",
+    "start_time" : "8:00",
+    "end_time" : "11:00",
+    "teacher" : "Culea Mihai",
+    "descriere" : "Sisteme incorporate (embedded).\nNotarea se va face in modul urmator : 50% nota la examen, 50% nota la proiect.",
+    "user" : ObjectId("55681863f6b802a14346658b"),
+    "registeredUsers" : [
+        ObjectId("5568122df6b802a143466583")
+    ]
+}
+
+
+
+{
+    "_id" : ObjectId("5568191cf6b802a143466590"),
+    "subject" : "Sisteme Informatice",
+    "credite" : "4",
+    "tipExam" : "Verificare",
+    "room" : "G 307",
+    "day" : "Vineri",
+    "start_time" : "8:00",
+    "end_time" : "10:00",
+    "teacher" : "Dan Munteanu",
+    "descriere" : "Sisteme informatice\nNota : 50% nota verificare + 30% nota proiect + 20% nota activitate",
+    "user" : ObjectId("556818cff6b802a14346658e"),
+    "registeredUsers" : [
+        ObjectId("55681944f6b802a143466591"),
+        ObjectId("5568122df6b802a143466583")
+    ]
+}

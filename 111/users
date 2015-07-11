@@ -1,0 +1,198 @@
+{
+    "_id" : ObjectId("55681863f6b802a14346658b"),
+    "tipUser" : "teacher",
+    "facultate" : "FACIEE",
+    "prenume" : "Mihai",
+    "nume" : "Culea",
+    "imgPath" : "images/uploads/dummyuser.png",
+    "password" : "$2a$08$PEwd1Gs2lTzyyJoP79j41.dMfgMGOUfxGWhTwvrNPZM8g/LtY04EG",
+    "email" : "mihai.culea@ugal.ro",
+    "events" : [],
+    "grades" : [],
+    "__v" : 0,
+    "isOnline" : false,
+    "loggedInChat" : false
+}
+
+
+
+{
+    "_id" : ObjectId("556818cff6b802a14346658e"),
+    "tipUser" : "teacher",
+    "facultate" : "FACIEE",
+    "prenume" : "Munteanu",
+    "nume" : "Dan",
+    "password" : "$2a$08$eQEJTCPRlauYA9vqzW3BEOdwTnT78CQik/krNQik/IN367DTlZVjW",
+    "email" : "dan.munteanu@ugal.ro",
+    "imgPath" : "images/uploads/dummyuser.png",
+    "events" : [],
+    "grades" : [],
+    "__v" : 0,
+    "isOnline" : false,
+    "loggedInChat" : false
+}
+
+
+{
+    "_id" : ObjectId("55681965f6b802a143466592"),
+    "tipUser" : "student",
+    "facultate" : "FACIEE",
+    "prenume" : "Marian",
+    "nume" : "Manole",
+    "imgPath" : "images/uploads/dummyuser.png",
+    "password" : "$2a$08$y9vGJManonJvVnv8jA75zOxVAPFXaP4ouK0DIquBNfdNmH2rqiYJi",
+    "email" : "marian.manole@ugal.ro",
+    "events" : [],
+    "grades" : [
+        {
+            "data" : "29.05.2015",
+            "nota" : 8,
+            "name" : "LPOO",
+            "user" : ObjectId("55681965f6b802a143466592"),
+            "_id" : ObjectId("5568207ab3e81b6148ff4f14")
+        }
+    ],
+    "__v" : 1,
+    "isOnline" : false,
+    "loggedInChat" : false
+}
+
+
+
+
+{
+    "_id" : ObjectId("55681944f6b802a143466591"),
+    "tipUser" : "student",
+    "facultate" : "FACIEE",
+    "prenume" : "Madalin",
+    "nume" : "Mihai",
+    "imgPath" : "images/uploads/dummyuser.png",
+    "password" : "$2a$08$9wBUuym8VKo6Ft/d/L.VgeiSg66e.k7bkS5qLXF9v6C0livJPShhu",
+    "email" : "madalin.mihai@ugal.ro",
+    "events" : [],
+    "grades" : [],
+    "__v" : 0,
+    "isOnline" : false,
+    "loggedInChat" : false
+}
+
+
+
+
+
+{
+    "_id" : ObjectId("5568122df6b802a143466583"),
+    "tipUser" : "student",
+    "facultate" : "FACIEE",
+    "prenume" : "Andrei",
+    "nume" : "Luca",
+    "password" : "$2a$08$jXZjz2Q3bSVN43ti4MJeNO/HaEguM8LG3GRTo4EMruWNy5fh67c4C",
+    "email" : "andrei.luca@ugal.ro",
+    "imgPath" : "images/uploads/5568122df6b802a143466583__MG_2810.jpg",
+    "events" : [
+        {
+            "descriere" : "Prezentarea proiectului de licenta \"Teach Me - aplicatie web folosind suita de framework-uri M.E.A.N\"",
+            "end" : "2015-07-11T05:30:00.000Z",
+            "start" : "2015-07-11T05:00:00.000Z",
+            "title" : "Prezentare proiect licenta",
+            "_id" : ObjectId("556d784cabc6930c1afcb930")
+        },
+        {
+            "descriere" : "22",
+            "end" : "2015-06-10T07:00:00.000Z",
+            "start" : "2015-06-10T05:00:00.000Z",
+            "title" : "11",
+            "_id" : ObjectId("55925c39909147211e95874f")
+        },
+        {
+            "descriere" : "44",
+            "end" : "2015-06-11T07:00:00.000Z",
+            "start" : "2015-06-11T05:00:00.000Z",
+            "title" : "33",
+            "_id" : ObjectId("55925c516d11d9ac1e256dbb")
+        },
+        {
+            "descriere" : "cd",
+            "end" : "2015-06-03T07:00:00.000Z",
+            "start" : "2015-06-03T05:00:00.000Z",
+            "title" : "asd",
+            "_id" : ObjectId("559275f2e7bfa68f676d5ce1")
+        },
+        {
+            "descriere" : "dd",
+            "end" : "2015-06-02T07:00:00.000Z",
+            "start" : "2015-06-02T05:00:00.000Z",
+            "title" : "ee",
+            "_id" : ObjectId("5592760be7bfa68f676d5ce2")
+        }
+    ],
+    "grades" : [
+        {
+            "data" : "29.05.2015",
+            "nota" : "10",
+            "name" : "PC",
+            "user" : ObjectId("5568122df6b802a143466583"),
+            "_id" : ObjectId("55681f16b3e81b6148ff4f12")
+        },
+        {
+            "data" : "29.05.2015",
+            "nota" : 10,
+            "name" : "LPOO",
+            "user" : ObjectId("5568122df6b802a143466583"),
+            "_id" : ObjectId("55681f1bb3e81b6148ff4f13")
+        },
+        {
+            "data" : "29.05.2015",
+            "nota" : 9.5,
+            "name" : "Examen Check",
+            "user" : ObjectId("5568122df6b802a143466583"),
+            "_id" : ObjectId("5568306d725d30f94963b00d")
+        },
+        {
+            "data" : "29.05.2015",
+            "nota" : 9,
+            "name" : "Examen Radio",
+            "user" : ObjectId("5568122df6b802a143466583"),
+            "_id" : ObjectId("5568307c725d30f94963b00e")
+        },
+        {
+            "data" : "11.06.2015",
+            "nota" : 7.5,
+            "name" : "Examen Radio",
+            "user" : ObjectId("5568122df6b802a143466583"),
+            "_id" : ObjectId("55793ae3d16be413144c96f9")
+        }
+    ],
+    "__v" : 5,
+    "isOnline" : false,
+    "loggedInChat" : false
+}
+
+
+
+
+
+{
+    "_id" : ObjectId("5568124bf6b802a143466584"),
+    "tipUser" : "teacher",
+    "facultate" : "FACIEE",
+    "prenume" : "Diana",
+    "nume" : "Stefanescu",
+    "password" : "$2a$08$DOM5sE/jIYgH2ftaW0mMfOu2BQqvJvLFRIoIQv.26UYHK6M4Lq0my",
+    "email" : "diana.stefanescu@ugal.ro",
+    "imgPath" : "images/uploads/dummyuser.png",
+    "events" : [
+        {
+            "descriere" : "Coordonarea proiectului de licenta \"Teach Me - aplicatie web folosind suita de framework-uri M.E.A.N\" al studentului Luca Andrei",
+            "end" : "2015-05-28T05:30:00.000Z",
+            "start" : "2015-05-28T05:00:00.000Z",
+            "title" : "Coordonare proiect licenta",
+            "_id" : ObjectId("55681674f6b802a143466586")
+        }
+    ],
+    "grades" : [],
+    "__v" : 0,
+    "isOnline" : false,
+    "loggedInChat" : false
+}
+
